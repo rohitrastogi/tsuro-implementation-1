@@ -1,0 +1,58 @@
+Data Structures
+
+Tile
+  - Tile(list of four connections, rotation) 
+    + Maybe a list of Pairs?
+  - Rotation 
+
+SPlayer
+  - Carry the color and position of the token 
+  - List of held tiles 
+
+Board
+  - Nested Array
+  - Players
+    + Turn Order
+    + Which players are eliminated 
+  - Players in-game as an ordered list, elminated players as an unordered list 
+  - Tiles
+  - Singleton
+  - Holds the functions we need to implement 
+  - Container for the state of players, tiles, and board 
+    + initial game-state needs to keep track of players 
+  - Generates the list of tiles in the draw pile 
+  - Picks three random tiles for each player 
+  - Rest are shuffled into the tile pile 
+
+  - Initialize players first, then generate tiles, then shuffle tiles, then distribute to players/tile pile 
+    + for shuffle/distribution, select w/o replacement as necessary 
+  
+  - is-edge-tile?
+
+  - A function that moves a player based on the placement of a new tile, modify the position of the player
+  - A function that returns whether a player would be eliminated in case of a hypothetical move, which can't modify the position
+  - Helper function that takes a position, a tile, and a board, returns where a player at the given position would end up upon following the passed tile from its current position, does not modify anything, can be called recursively to find the ultimate position of a player after crossing multiple tiles  
+
+BoardState (Struct) 
+- Used for return from 'play-a-turn' 
+
+Position
+  - (x, y) -> how you index into board 
+  - tilePosn -> 0-8, which position of the tile you're on 
+
+
+Methods 
+legal-play? 
+  - Two ways a play can be illegal 
+    + "The placement of the tile is an elimination move for the player (unless all of the possible moves are elimination moves)"
+    + "the tile is not (a possibly rotated version of) one of the tiles of the player" 
+
+play-a-turn 
+  - takes the list of remaining tiles, the list of players still playing (in order of turn), the list of eliminated players, the current state of the board, and the tile to be placed (by first player in list)
+  - Returns list of remaining tiles (minus tile given to player who just took a turn), list of remaining players (in order), list of eliminated players, new board state, and either false or the list of winning (?) players
+  - Probably should check whether the tile is legal-play? 
+    + Check whether fifth argument tile can be played at the position of the current player 
+  - Place the tile onto the board
+  - Move all affected players properly 
+  - Check whether any players have been elminated 
+  - 
