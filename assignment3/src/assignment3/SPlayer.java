@@ -1,6 +1,6 @@
 package assignment3;
 
-import java.util.ArrayList;
+import java.util.*;
 
 enum Color
 {
@@ -19,7 +19,7 @@ public class SPlayer {
 	}
 	
 	// Checks whether a player has a certain tile in their possession 
-	private boolean hasTile(Tile tile) {
+	public boolean hasTile(Tile tile) {
 		// loop through tiles in player's possession, checking for array equality between path values 
 		for(Tile t : myTiles) {
 			if (Arrays.equals(t.getPaths(), tile.getPaths())) {
@@ -28,6 +28,11 @@ public class SPlayer {
 			}
 		}
 		return false;
+	}
+	
+	// Checks whether a player is currently holding any tiles 
+	public boolean hasTiles() {
+		return (myTiles.size() > 0); 
 	}
 	
 	// Getters and Setters 

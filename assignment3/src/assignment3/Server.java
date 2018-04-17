@@ -1,13 +1,18 @@
 package assignment3; 
 
+import java.util.*; 
+
 public class Server {
-	private board currBoard; 
+	private Board board; 
 	private ArrayList<SPlayer> currPlayers;
-	private ArrayList<SPlayer> eliminatedPlayers;
+	private ArrayList<SPlayer> elimPlayers;
 	private ArrayList<Tile> tilePile = new ArrayList<Tile>();
 	
 	// The number of tiles a player can hold in their hand at one time 
 	public static final int TILES_PER_PLAYER = 3;
+	
+	Position[] posns = {new Position(0, 0, 5), new Position(0, 3, 6), new Position(0, 5, 5), new Position(5, 0, 3), new Position(5, 3, 3),
+			new Position(5, 5, 5), new Position(0, 3, 1), new Position(0, 5, 1)};
 	
 	public Server(int numPlayers) {
 		initializeGame(numPlayers); 
@@ -76,61 +81,73 @@ public class Server {
 		return (player.hasTile(tile)) && (board.isValidMove(tile, player));
 	} 
 	
-	public BoardState playATurn(ArrayList<Tile> tilePile, ArrayList<SPlayer> currPlayers, ArrayList<SPlayer> elimPlayers,
+	private void eliminatePlayer(SPlayer player, ArrayList<SPlayer>currentPlayers, ArrayList<SPlayer> eliminatedPlayers){
+		currentPlayers.remove(player);
+		eliminatedPlayers.add(player);
+		addEliminatedPlayerTiles(player);
+	}
+	
+	
+	public BoardState playATurn(ArrayList<Tile> tilePile, ArrayList<SPlayer> cPlayers, ArrayList<SPlayer> ePlayers,
 			Board currBoard, Tile toPlay){
-		SPlayer actingPlayer = currPlayers.get(0);
 		
-		// A list of players that are eliminated during this turn, so we don't modify any lists until the end 
-		// of the method 
-		ArrayList<SPlayer> toBeEliminated = new ArrayList<SPlayer>(); 
-		
-		// Move player's position onto the new tile being placed 
+		Board newBoard = new Board(currBoard.getLayout());
+		SPlayer actingPlayer = cPlayers.get(0);
+		//moved acting player to tile being placed
 		actingPlayer.setPosn(actingPlayer.getPosn().getAdjacentPosition());
 		
-		// Check whether this player is eliminating themselves 
-		if (isEliminationMove(toPlay, actingPlayer)){
-			toBeEliminated.add(actingPlayer); 
+		// place the tile there in the board representation 
+		newBoard.placeTile(toPlay, actingPlayer.getPosn().getX(), actingPlayer.getPosn().getY());
+		
+		Position finalPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosn());
+		actingPlayer.setPosn(finalPosition);
+		if (finalPosition.isEdgePosition()){
+			eliminatePlayer(actingPlayer, cPlayers, ePlayers);
 		}
 		
-		// Get adjacent players and check whether they're being eliminated 
 		List<SPlayer> adjacentPlayers = getAdjacentPlayers(actingPlayer);
-		for (SPlayer adjacentPlayer : adjacentPlayers){
-			adjacentPlayer.setPosn(adjacentPlayer.getPosn().getAdjacentPosition());
-			if (isEliminationMove(toPlay, adjacentPlayer)) {
-				toBeEliminated.addAll(adjacentPlayers);
+		//move adjacent players to tile being placed 
+		for (SPlayer adPlayer : adjacentPlayers){
+			adPlayer.setPosn(adPlayer.getPosn().getAdjacentPosition());
+			finalPosition = currBoard.getFinalPosition(toPlay, adPlayer.getPosn());
+			adPlayer.setPosn(finalPosition);
+			if (finalPosition.isEdgePosition()){
+				eliminatePlayer(adPlayer, cPlayers, ePlayers);
 			}
-		}
-		
-		for (SPlayer eliminatedPlayer : toBeEliminated){
-			currPlayers.remove(eliminatedPlayer);
-			elimPlayers.add(eliminatedPlayer);
-			addEliminatedPlayerTiles(eliminatedPlayer);
-		}
-		
-		Position finalPosn = getFinalPosition(toPlay, actingPlayer.getPosn());
-		actingPlayer.setPosn(finalPosn);
-		
-		for (SPlayer adjacentPlayer : adjacentPlayers){
-			finalPosn = getFinalPosition(toPlay, adjacentPlayer.getPosn());
-			actingPlayer.setPosn(finalPosn);
 		}
 		
 		drawTile(actingPlayer);
 		
+		// See if the game is over 
+		ArrayList<SPlayer> winningPlayers = new ArrayList<SPlayer>(); 
+		if (isGameOver()) {
+			// if the game is over, generate a list of winning players 
+			winningPlayers = currPlayers; 
+		}
 		
-
-		//first play tile
-			// get position, update position for player - if elimination move, move player from currPlayer to elimPlayers
-			// shuffle tiles
-		//second move players with posns at adjacent tiles
-			// loop through all players
-			// if adjacent
-			// get final posn workflow
-		//drawTile(currPlayers[0]);
-		// winners is empty list 
-		//check if game is over, winners = currPlayers
-		// return new BoardState(tilePile, currPlayers, elimPlayers, board, winners);
-		return null;
+		// Generate a new board state and return
+		return (new BoardState(tilePile, currPlayers, elimPlayers, newBoard, winningPlayers));
+	}
+	
+	// returns true if the game either:
+	//   a. Has only one remaining player 
+	//   b. Has no remaining tiles to be placed 
+	public boolean isGameOver(){
+		if (currPlayers.size() <= 1) 
+			return true; 
+		
+		if (tilePile.size() <= 0) {
+			// No tiles left in pile, check if any players have a tile 
+			for(SPlayer p : currPlayers) {
+				if (p.hasTiles()) {
+					// Some player, somewhere, has a tile, so we're not done 
+					return false; 
+				}
+			}
+		}
+		
+		// Multiple players are still playing, but no one has any tiles, game is over 
+		return true; 
 	}
 	
 	public List<SPlayer> getAdjacentPlayers(SPlayer player){

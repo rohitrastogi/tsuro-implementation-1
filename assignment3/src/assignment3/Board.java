@@ -3,9 +3,6 @@ package assignment3;
 import java.util.*;
 
 public class Board {
-	//hardcoded start positions
-	Position[] posns = {new Position(0, 0, 5), new Position(0, 3, 6), new Position(0, 5, 5), new Position(5, 0, 3), new Position(5, 3, 3),
-			new Position(5, 5, 5), new Position(0, 3, 1), new Position(0, 5, 1)};
 	
 	// The number of tiles that fit on a single row of the board 
 	public static final int TILES_PER_ROW = 5; 
@@ -28,21 +25,37 @@ public class Board {
 		tileLayout = layout.clone(); 
 	}
 	
+	public Tile[][] getLayout(){
+		return tileLayout;
+	}
+	
+	public void placeTile(Tile toPlace, int x, int y){
+		tileLayout[y][x] = toPlace;
+	}
+	
 	// Checks whether a move is valid meaning it is either: 
 	// a. Not an elimination move 
 	// b. The player only has elimination moves available 
-	private boolean isValidMove(Tile tile, SPlayer player) {
+	public boolean isValidMove(Tile tile, SPlayer player) {
 		if (!isEliminationMove(tile, player)) {
 			return true; 
 		}
 		// Otherwise, check all other possible moves of the player (including rotations)
 		// If they are ALL elimination moves, return true, otherwise return false 
 		// TODO 
-		return false; 
+		for (Tile t : player.getTiles()){
+			for (int i=0; i<Tile.NUM_SIDES; i++){
+				t.setRotation(i);
+				if (!isEliminationMove(t, player)){
+					return false;
+				}
+			}
+		}
+		return true; 
 	}
 	
 	// Returns true if a move is going to eliminate the player making the move 
-	private boolean isEliminationMove(Tile t, SPlayer p) {
+	public boolean isEliminationMove(Tile t, SPlayer p) {
 		Position playerPosn = p.getPosn();
 		Position finalPosn = getFinalPosition(t, playerPosn);
 		if (finalPosn == null){
@@ -56,7 +69,7 @@ public class Board {
 	// start: The position of the player relative to t, NOT THE TILE THEY'RE CURRENTLY ON 
 	// e.g. A player on tile (1, 2) at position 0 -> a tile at (1, 1)
 	//      Pass the tile at (1, 1) and a position of (1, 1, 5) 
-	private Position getFinalPosition(Tile t, Position start) {
+	public Position getFinalPosition(Tile t, Position start) {
 		// Get the position after moving along the path on the passed tile from our starting position 
 		Position intermediatePosn = new Position(start.getX(), start.getY(), t.getOutPath(start.getTilePosn())); 
 		
@@ -114,10 +127,6 @@ public class Board {
 		return false;
 	}
 	*/ 
-	
-	public boolean isGameOver(){
-		return false;
-	}
 	
 	
 	// Getters and Setters
