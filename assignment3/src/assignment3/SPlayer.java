@@ -28,6 +28,10 @@ public class SPlayer {
 		return posn;
 	}
 	
+	public void setPosn(Position p){
+		posn = p;
+	}
+	
 	public void addTile(Tile t){
 		myTiles.add(t);
 	}

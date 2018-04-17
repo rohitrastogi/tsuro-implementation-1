@@ -3,7 +3,6 @@ package assignment3;
 import java.util.*;
 
 public class Board {
-	int turnIndex;
 	
 	ArrayList<SPlayer> currPlayers;
 	ArrayList<SPlayer> eliminatedPlayers;
@@ -25,18 +24,6 @@ public class Board {
 	// Should be toggled after every player has gone once 
 	private boolean isFirstTurn = true; 
 	*/ 
-	
-	// Mapping between the positions on the edges of two adjacent tiles 
-	Map<Integer, Integer> edgeMapping = new HashMap<Integer, Integer>() {{
-		put(0, 5); 
-		put(1, 4); 
-		put(2, 7); 
-		put (3, 6); 
-		put (4, 1); 
-		put (5, 0); 
-		put (6, 3); 
-		put (7, 2); 
-	}};
 
 	public Board(int numPlayers){
 		generateTilePile();
@@ -82,10 +69,14 @@ public class Board {
 		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
 	}
 	
-	public void createPlayers(int num){
+	
+	public void shuffleTiles(){
 		Random rand = new Random();
 		Collections.shuffle(tilePile, rand);
-		
+	}
+	
+	public void createPlayers(int num){
+		shuffleTiles();
 		for(int i=0; i<num; i++){
 			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
 			for (int j=0; j<TILES_PER_PLAYER; j++){
@@ -93,10 +84,6 @@ public class Board {
 			}
 			currPlayers.add(new SPlayer(myTiles, Color.values()[i], posns[i]));		
 		}
-	}
-	
-	public void drawTile(SPlayer player){
-		player.addTile(tilePile.remove(tilePile.size() -1));
 	}
 	
 	// Makes sure a play is legal for a given player, board, and tile, as defined in the homework spec 
@@ -113,7 +100,6 @@ public class Board {
 				return true; 
 			}
 		}
-		
 		return false;
 	}
 	
@@ -156,34 +142,31 @@ public class Board {
 		// Now, check where our current position is, and what the next tile is 
 		int currTilePosn = intermediatePosn.getTilePosn(); 
 		Tile nextTile; 
-		Position nextPosn; 
+		
 		if (currTilePosn < 2) {
 			// At the top of our current tile, move upwards if possible 
 			nextTile = getTile(intermediatePosn.getX(), intermediatePosn.getY() - 1); 
-			nextPosn = new Position(intermediatePosn.getX(), intermediatePosn.getY() - 1, edgeMapping.get(currTilePosn)); 
 		}
 		else if (currTilePosn < 4) {
 			// At the right side of our current tile
-			nextTile = getTile(intermediatePosn.getX() + 1, intermediatePosn.getY());
-			nextPosn = new Position(intermediatePosn.getX() + 1, intermediatePosn.getY(), edgeMapping.get(currTilePosn)); 
+			nextTile = getTile(intermediatePosn.getX() + 1, intermediatePosn.getY()); 
 		}
 		else if (currTilePosn < 6) {
 			// At the bottom of our current tile 
 			nextTile = getTile(intermediatePosn.getX(), intermediatePosn.getY() + 1); 
-			nextPosn = new Position(intermediatePosn.getX(), intermediatePosn.getY() + 1, edgeMapping.get(currTilePosn)); 
 		}
 		else {
 			// At the left side of our current tile 
 			nextTile = getTile(intermediatePosn.getX() - 1, intermediatePosn.getY()); 
-			nextPosn = new Position(intermediatePosn.getX() - 1, intermediatePosn.getY(), edgeMapping.get(currTilePosn)); 
 		}
 		
 		// Don't try to move onto a tile that hasn't actually been placed yet 
 		if (nextTile == null) {
 			return intermediatePosn; 
 		}
+		Position nextPosn = intermediatePosn.getAdjacentPosition();
 		
-		// Need to check if posns are same for double elimination
+		// Error null position (error code) to signify that this move would cause a double elimination
 		if (arePosnsSame(nextPosn)){
 			return null;
 		}
@@ -192,14 +175,104 @@ public class Board {
 		return getFinalPosition(nextTile, nextPosn); 
 	}
 	
+	// Check whether other players are at the same position as the input position
 	public boolean arePosnsSame(Position intermediatePosn){
 		for (SPlayer p : currPlayers){
-			if (p.getPosn() == intermediatePosn){
+			if (p.getPosn().equals(intermediatePosn)){
 					return true;
 			}
 		}
 		return false;
 	}
+	
+	public BoardState playATurn(ArrayList<Tile> tilePile, ArrayList<SPlayer> currPlayers, ArrayList<SPlayer> elimPlayers,
+			Board currBoard, Tile toPlay){
+		SPlayer actingPlayer = currPlayers.get(0);
+		
+		// A list of players that are eliminated during this turn, so we don't modify any lists until the end 
+		// of the method 
+		ArrayList<SPlayer> toBeEliminated = new ArrayList<SPlayer>(); 
+		
+		// Move player's position onto the new tile being placed 
+		actingPlayer.setPosn(actingPlayer.getPosn().getAdjacentPosition());
+		
+		// Check whether this player is eliminating themselves 
+		if (isEliminationMove(toPlay, actingPlayer)){
+			toBeEliminated.add(actingPlayer); 
+		}
+		
+		// Get adjacent players and check whether they're being eliminated 
+		List<SPlayer> adjacentPlayers = getAdjacentPlayers(actingPlayer);
+		for (SPlayer adjacentPlayer : adjacentPlayers){
+			adjacentPlayer.setPosn(adjacentPlayer.getPosn().getAdjacentPosition());
+			if (isEliminationMove(toPlay, adjacentPlayer)) {
+				toBeEliminated.addAll(adjacentPlayers);
+			}
+		}
+		
+		for (SPlayer eliminatedPlayer : toBeEliminated){
+			currPlayers.remove(eliminatedPlayer);
+			elimPlayers.add(eliminatedPlayer);
+			addEliminatedPlayerTiles(eliminatedPlayer);
+		}
+		
+		Position finalPosn = getFinalPosition(toPlay, actingPlayer.getPosn());
+		actingPlayer.setPosn(finalPosn);
+		
+		for (SPlayer adjacentPlayer : adjacentPlayers){
+			finalPosn = getFinalPosition(toPlay, adjacentPlayer.getPosn());
+			actingPlayer.setPosn(finalPosn);
+		}
+		
+		drawTile(actingPlayer);
+		
+		
+
+		//first play tile
+			// get position, update position for player - if elimination move, move player from currPlayer to elimPlayers
+			// shuffle tiles
+		//second move players with posns at adjacent tiles
+			// loop through all players
+			// if adjacent
+			// get final posn workflow
+		//drawTile(currPlayers[0]);
+		// winners is empty list 
+		//check if game is over, winners = currPlayers
+		// return new BoardState(tilePile, currPlayers, elimPlayers, board, winners);
+		return null;
+	}
+	
+	public boolean isGameOver(){
+		return false;
+	}
+	
+	public void addEliminatedPlayerTiles(SPlayer p){
+		tilePile.addAll(p.getTiles());
+		shuffleTiles();
+	}
+	
+	public List<SPlayer> getAdjacentPlayers(SPlayer player){
+		List<SPlayer> adjacentPlayers = new ArrayList<SPlayer>();
+		for (SPlayer other : currPlayers){
+			if (other == player){
+				continue;
+			}
+			else {
+				if (player.getPosn().arePosnsAdjacent(other.getPosn())){
+					adjacentPlayers.add(other);
+				}
+			}
+		}
+		return adjacentPlayers;
+	}
+	
+	public void drawTile(SPlayer player){
+		// TODO: Add dragon tile functionality (currently if there are no tiles left in the tile pile, we do nothing)
+		if (tilePile.size() != 0) {
+			player.addTile(tilePile.remove(tilePile.size() - 1));
+		}
+	}
+	
 	
 	// Getters and Setters
 	// Get a tile at an x, y position 
