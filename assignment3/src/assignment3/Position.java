@@ -40,4 +40,11 @@ public class Position {
 	public int getTilePosn() {
 		return tilePosn; 
 	}
+	
+	@Override 
+	public boolean equals(Object obj) {
+		Position p = (Position) obj; 
+		
+		return ((p.x == this.x) && (p.y == this.y) && (p.tilePosn == this.tilePosn));
+	}
 }

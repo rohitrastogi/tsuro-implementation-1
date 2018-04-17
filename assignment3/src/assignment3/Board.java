@@ -121,7 +121,7 @@ public class Board {
 	// a. Not an elimination move 
 	// b. The player only has elimination moves available 
 	private boolean isValidMove(Tile tile, SPlayer player) {
-		if (!isEliminationMove(tile)) {
+		if (!isEliminationMove(tile, player)) {
 			return true; 
 		}
 		// Otherwise, check all other possible moves of the player (including rotations)
@@ -130,10 +130,13 @@ public class Board {
 	}
 	
 	// Returns true if a move is going to eliminate the player making the move 
-	private boolean isEliminationMove(Tile t) {
-		// TODO: Actually write this
-		// Return true if getFinalPosition returns an edge position 
-		return true; 
+	private boolean isEliminationMove(Tile t, SPlayer p) {
+		Position playerPosn = p.getPosn();
+		Position finalPosn = getFinalPosition(t, playerPosn);
+		if (finalPosn == null){
+			return true;
+		}
+		return finalPosn.isEdgePosition();
 	}
 	
 	// Gets the final Position given an input Position and a tile to move onto 
@@ -181,24 +184,22 @@ public class Board {
 		}
 		
 		// Need to check if posns are same for double elimination
+		if (arePosnsSame(nextPosn)){
+			return null;
+		}
 		
 		// Move onto the next tile and get the final position from there 
 		return getFinalPosition(nextTile, nextPosn); 
 	}
 	
-	public boolean arePosnsSame(SPlayer player){
+	public boolean arePosnsSame(Position intermediatePosn){
 		for (SPlayer p : currPlayers){
-			if (p == player)
-				continue;
-			else{
-				if (p.getPosn() == player.getPosn()){
+			if (p.getPosn() == intermediatePosn){
 					return true;
-				}
 			}
 		}
 		return false;
 	}
-	
 	
 	// Getters and Setters
 	// Get a tile at an x, y position 
