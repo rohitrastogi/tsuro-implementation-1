@@ -103,7 +103,6 @@ public class Board {
 		return getFinalPosition(nextTile, nextPosn); 
 	}
 	
-	/* TODO: Do this check in a way that does not require passing currPlayers or having a list of players present in every Board
 	// Check whether other players are at the same position as the input position
 	public boolean arePosnsSame(Position intermediatePosn){
 		for (SPlayer p : currPlayers){
@@ -113,7 +112,6 @@ public class Board {
 		}
 		return false;
 	}
-	*/ 
 	
 	public boolean isGameOver(){
 		return false;
