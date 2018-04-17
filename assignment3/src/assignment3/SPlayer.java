@@ -23,4 +23,12 @@ public class SPlayer {
 	public ArrayList<Tile> getTiles() {
 		return myTiles; 
 	}
+	
+	public Position getPosn(){
+		return posn;
+	}
+	
+	public void addTile(Tile t){
+		myTiles.add(t);
+	}
 }

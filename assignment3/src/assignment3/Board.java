@@ -95,6 +95,10 @@ public class Board {
 		}
 	}
 	
+	public void drawTile(SPlayer player){
+		player.addTile(tilePile.remove(tilePile.size() -1));
+	}
+	
 	// Makes sure a play is legal for a given player, board, and tile, as defined in the homework spec 
 	public boolean isLegalPlay(SPlayer player, Board board, Tile tile) {
 		return (hasTile(tile, player)) && (isValidMove(tile, player));
@@ -103,15 +107,14 @@ public class Board {
 	// Checks whether a player has a certain tile in their possession 
 	private boolean hasTile(Tile tile, SPlayer player) {
 		// loop through tiles in player's position, checking for array equality between path values 
-		boolean isEqual = false; 
 		for(Tile t : player.getTiles()) {
 			if (Arrays.equals(t.getPaths(), tile.getPaths())) {
 				// If two tiles have the same paths, they're the same tile 
-				isEqual = true; 
+				return true; 
 			}
 		}
 		
-		return isEqual; 
+		return false;
 	}
 	
 	// Checks whether a move is valid meaning it is either: 
@@ -176,8 +179,24 @@ public class Board {
 		if (nextTile == null) {
 			return intermediatePosn; 
 		}
+		
+		// Need to check if posns are same for double elimination
+		
 		// Move onto the next tile and get the final position from there 
 		return getFinalPosition(nextTile, nextPosn); 
+	}
+	
+	public boolean arePosnsSame(SPlayer player){
+		for (SPlayer p : currPlayers){
+			if (p == player)
+				continue;
+			else{
+				if (p.getPosn() == player.getPosn()){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	
