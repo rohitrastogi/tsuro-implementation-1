@@ -18,6 +18,17 @@ public class SPlayer {
 		this.posn = posn;
 	}
 	
+	// Checks whether a player has a certain tile in their possession 
+	private boolean hasTile(Tile tile) {
+		// loop through tiles in player's possession, checking for array equality between path values 
+		for(Tile t : myTiles) {
+			if (Arrays.equals(t.getPaths(), tile.getPaths())) {
+				// If two tiles have the same paths, they're the same tile 
+				return true; 
+			}
+		}
+		return false;
+	}
 	
 	// Getters and Setters 
 	public ArrayList<Tile> getTiles() {

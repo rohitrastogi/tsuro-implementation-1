@@ -3,21 +3,16 @@ package assignment3;
 import java.util.*;
 
 public class Board {
-	
-	ArrayList<SPlayer> currPlayers;
-	ArrayList<SPlayer> eliminatedPlayers;
-	
 	//hardcoded start positions
 	Position[] posns = {new Position(0, 0, 5), new Position(0, 3, 6), new Position(0, 5, 5), new Position(5, 0, 3), new Position(5, 3, 3),
 			new Position(5, 5, 5), new Position(0, 3, 1), new Position(0, 5, 1)};
-	public static final int TILES_PER_PLAYER = 3;
 	
-	ArrayList<Tile> tilePile = new ArrayList<Tile>();
-	
+	// The number of tiles that fit on a single row of the board 
 	public static final int TILES_PER_ROW = 5; 
+	
 	// The actual layout of tiles on the board, each location starts out as null. 
 	// Once a tile is placed in a location, that index will refer to the tile object 
-	private Tile[][] tileLayout = new Tile[TILES_PER_ROW][TILES_PER_ROW]; 
+	private Tile[][] tileLayout; 
 	
 	/*
 	// TODO: Remember to toggle this to false once it's possible to take multiple turns 
@@ -25,82 +20,12 @@ public class Board {
 	private boolean isFirstTurn = true; 
 	*/ 
 
-	public Board(int numPlayers){
-		generateTilePile();
-		createPlayers(numPlayers);
+	public Board(){
+		tileLayout = new Tile[TILES_PER_ROW][TILES_PER_ROW];
 	}
 	
-	// Makes 35 unique Tiles and adds each one to the tile pile 
-	public void generateTilePile(){
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 4), new Tuple(3, 6), new Tuple(5, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 6), new Tuple(1, 5), new Tuple(2, 4), new Tuple(3, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 4), new Tuple(3, 7), new Tuple(5, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 7), new Tuple(2, 3), new Tuple(5, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 6), new Tuple(3, 7), new Tuple(4, 5)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 6), new Tuple(3, 7), new Tuple(4, 5)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 5), new Tuple(2, 6), new Tuple(3, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 4), new Tuple(5, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 7), new Tuple(3, 4), new Tuple(5, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 5), new Tuple(2, 7), new Tuple(4, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 3), new Tuple(2, 7), new Tuple(5, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 7), new Tuple(2, 6), new Tuple(4, 5)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 5), new Tuple(3, 6), new Tuple(4, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 6), new Tuple(2, 5), new Tuple(4, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 5), new Tuple(4, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 3), new Tuple(4, 5)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 2), new Tuple(3, 4), new Tuple(5, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 4), new Tuple(3, 6), new Tuple(5, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 3), new Tuple(2, 5), new Tuple(4, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 5), new Tuple(2, 6), new Tuple(3, 4)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 5), new Tuple(2, 7), new Tuple(3, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 4), new Tuple(3, 5), new Tuple(6, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 7), new Tuple(3, 5), new Tuple(4, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 5), new Tuple(2, 3), new Tuple(4, 6)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 3), new Tuple(2, 6), new Tuple(5, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 6), new Tuple(1, 3), new Tuple(2, 5), new Tuple(4, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 6), new Tuple(4, 5)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 2), new Tuple(4, 6), new Tuple(5, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 5), new Tuple(2, 6), new Tuple(4, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 3), new Tuple(4, 6), new Tuple(5, 7)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
-	}
-	
-	
-	public void shuffleTiles(){
-		Random rand = new Random();
-		Collections.shuffle(tilePile, rand);
-	}
-	
-	public void createPlayers(int num){
-		shuffleTiles();
-		for(int i=0; i<num; i++){
-			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
-			for (int j=0; j<TILES_PER_PLAYER; j++){
-				tilePile.remove(0);
-			}
-			currPlayers.add(new SPlayer(myTiles, Color.values()[i], posns[i]));		
-		}
-	}
-	
-	// Makes sure a play is legal for a given player, board, and tile, as defined in the homework spec 
-	public boolean isLegalPlay(SPlayer player, Board board, Tile tile) {
-		return (hasTile(tile, player)) && (isValidMove(tile, player));
-	}
-	
-	// Checks whether a player has a certain tile in their possession 
-	private boolean hasTile(Tile tile, SPlayer player) {
-		// loop through tiles in player's position, checking for array equality between path values 
-		for(Tile t : player.getTiles()) {
-			if (Arrays.equals(t.getPaths(), tile.getPaths())) {
-				// If two tiles have the same paths, they're the same tile 
-				return true; 
-			}
-		}
-		return false;
+	public Board(Tile[][] layout) {
+		tileLayout = layout.clone(); 
 	}
 	
 	// Checks whether a move is valid meaning it is either: 
@@ -112,6 +37,7 @@ public class Board {
 		}
 		// Otherwise, check all other possible moves of the player (including rotations)
 		// If they are ALL elimination moves, return true, otherwise return false 
+		// TODO 
 		return false; 
 	}
 	
@@ -185,98 +111,18 @@ public class Board {
 		return false;
 	}
 	
-	public BoardState playATurn(ArrayList<Tile> tilePile, ArrayList<SPlayer> currPlayers, ArrayList<SPlayer> elimPlayers,
-			Board currBoard, Tile toPlay){
-		SPlayer actingPlayer = currPlayers.get(0);
-		
-		// A list of players that are eliminated during this turn, so we don't modify any lists until the end 
-		// of the method 
-		ArrayList<SPlayer> toBeEliminated = new ArrayList<SPlayer>(); 
-		
-		// Move player's position onto the new tile being placed 
-		actingPlayer.setPosn(actingPlayer.getPosn().getAdjacentPosition());
-		
-		// Check whether this player is eliminating themselves 
-		if (isEliminationMove(toPlay, actingPlayer)){
-			toBeEliminated.add(actingPlayer); 
-		}
-		
-		// Get adjacent players and check whether they're being eliminated 
-		List<SPlayer> adjacentPlayers = getAdjacentPlayers(actingPlayer);
-		for (SPlayer adjacentPlayer : adjacentPlayers){
-			adjacentPlayer.setPosn(adjacentPlayer.getPosn().getAdjacentPosition());
-			if (isEliminationMove(toPlay, adjacentPlayer)) {
-				toBeEliminated.addAll(adjacentPlayers);
-			}
-		}
-		
-		for (SPlayer eliminatedPlayer : toBeEliminated){
-			currPlayers.remove(eliminatedPlayer);
-			elimPlayers.add(eliminatedPlayer);
-			addEliminatedPlayerTiles(eliminatedPlayer);
-		}
-		
-		Position finalPosn = getFinalPosition(toPlay, actingPlayer.getPosn());
-		actingPlayer.setPosn(finalPosn);
-		
-		for (SPlayer adjacentPlayer : adjacentPlayers){
-			finalPosn = getFinalPosition(toPlay, adjacentPlayer.getPosn());
-			actingPlayer.setPosn(finalPosn);
-		}
-		
-		drawTile(actingPlayer);
-		
-		
-
-		//first play tile
-			// get position, update position for player - if elimination move, move player from currPlayer to elimPlayers
-			// shuffle tiles
-		//second move players with posns at adjacent tiles
-			// loop through all players
-			// if adjacent
-			// get final posn workflow
-		//drawTile(currPlayers[0]);
-		// winners is empty list 
-		//check if game is over, winners = currPlayers
-		// return new BoardState(tilePile, currPlayers, elimPlayers, board, winners);
-		return null;
-	}
-	
 	public boolean isGameOver(){
 		return false;
-	}
-	
-	public void addEliminatedPlayerTiles(SPlayer p){
-		tilePile.addAll(p.getTiles());
-		shuffleTiles();
-	}
-	
-	public List<SPlayer> getAdjacentPlayers(SPlayer player){
-		List<SPlayer> adjacentPlayers = new ArrayList<SPlayer>();
-		for (SPlayer other : currPlayers){
-			if (other == player){
-				continue;
-			}
-			else {
-				if (player.getPosn().arePosnsAdjacent(other.getPosn())){
-					adjacentPlayers.add(other);
-				}
-			}
-		}
-		return adjacentPlayers;
-	}
-	
-	public void drawTile(SPlayer player){
-		// TODO: Add dragon tile functionality (currently if there are no tiles left in the tile pile, we do nothing)
-		if (tilePile.size() != 0) {
-			player.addTile(tilePile.remove(tilePile.size() - 1));
-		}
 	}
 	
 	
 	// Getters and Setters
 	// Get a tile at an x, y position 
 	public Tile getTile(int x, int y) {
+		// Look for index-out-of-bounds errors 
+		if (x < 0 || y < 0 || x >= TILES_PER_ROW || y >= TILES_PER_ROW) {
+			return null; 
+		}
 		return tileLayout[y][x]; 
 	}
 }
