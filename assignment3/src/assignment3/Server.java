@@ -21,7 +21,10 @@ public class Server {
 	// GAME INIT FUNCTIONS // 
 	public void initializeGame(int numPlayers) {
 		generateTilePile(); 
+		currPlayers = new ArrayList<SPlayer>(); 
+		elimPlayers = new ArrayList<SPlayer>(); 
 		createPlayers(numPlayers);
+		board = new Board(); 
 	}
 	
 	public void createPlayers(int num){
@@ -81,7 +84,7 @@ public class Server {
 		return (player.hasTile(tile)) && (board.isValidMove(tile, player));
 	} 
 	
-	private void eliminatePlayer(SPlayer player, ArrayList<SPlayer>currentPlayers, ArrayList<SPlayer> eliminatedPlayers){
+	public void eliminatePlayer(SPlayer player, ArrayList<SPlayer>currentPlayers, ArrayList<SPlayer> eliminatedPlayers){
 		currentPlayers.remove(player);
 		eliminatedPlayers.add(player);
 		addEliminatedPlayerTiles(player);
@@ -145,6 +148,9 @@ public class Server {
 				}
 			}
 		}
+		else {
+			return false; 
+		}
 		
 		// Multiple players are still playing, but no one has any tiles, game is over 
 		return true; 
@@ -183,6 +189,24 @@ public class Server {
 	public void shuffleTiles(){
 		Random rand = new Random();
 		Collections.shuffle(tilePile, rand);
+	}
+	
+	
+	// Getters and Setters
+	public ArrayList<Tile> getTilePile() {
+		return tilePile; 
+	}
+	
+	public void setTilePile(ArrayList<Tile> newTilePile) {
+		tilePile = newTilePile; 
+	}
+	
+	public ArrayList<SPlayer> getCurrPlayers() {
+		return currPlayers; 
+	}
+	
+	public ArrayList<SPlayer> getElimPlayers() {
+		return elimPlayers; 
 	}
 }
 

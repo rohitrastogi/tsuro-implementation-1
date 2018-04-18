@@ -1,5 +1,7 @@
 package assignment3;
 
+import java.util.Arrays;
+
 public class Tile {
 	private Tuple[] paths;
 	// How many times this tile has been rotated
@@ -59,6 +61,13 @@ public class Tile {
 			translatedOutput -= NUM_POSITIONS; 
 		}
 		return translatedOutput;
+	}
+	
+	@Override 
+	public boolean equals(Object obj) {
+		Tile t = (Tile) obj; 
+		
+		return (Arrays.equals(t.paths, this.paths) && (t.rotation == this.rotation));
 	}
 	
 	// Getters and Setters 

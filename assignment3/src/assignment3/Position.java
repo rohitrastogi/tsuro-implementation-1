@@ -31,19 +31,20 @@ public class Position {
 		if (x == 0 && (tilePosn == 6 || tilePosn == 7)) {
 			return true; 
 		}
-		if (x == Board.TILES_PER_ROW && (tilePosn == 2 || tilePosn == 3)) {
+		if (x == (Board.TILES_PER_ROW - 1) && (tilePosn == 2 || tilePosn == 3)) {
 			return true; 
 		}
-		if (y == 0 && (tilePosn < 3)) {
+		if (y == 0 && (tilePosn < 2)) {
 			return true; 
 		}
-		if (y == Board.TILES_PER_ROW && (tilePosn == 4 || tilePosn == 5)) {
+		if (y == (Board.TILES_PER_ROW - 1) && (tilePosn == 4 || tilePosn == 5)) {
 			return true; 
 		}
 		return false; 
 	}
 	
 	public boolean arePosnsAdjacent(Position other){
+		// TODO: Refactor this to use getAdjacentPosition 
 		//this.arePosnsAdjacent(other)
 		int xDiff = other.x - this.x;
 		int yDiff = other.y - this.y;

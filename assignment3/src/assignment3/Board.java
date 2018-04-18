@@ -5,7 +5,7 @@ import java.util.*;
 public class Board {
 	
 	// The number of tiles that fit on a single row of the board 
-	public static final int TILES_PER_ROW = 5; 
+	public static final int TILES_PER_ROW = 6; 
 	
 	// The actual layout of tiles on the board, each location starts out as null. 
 	// Once a tile is placed in a location, that index will refer to the tile object 

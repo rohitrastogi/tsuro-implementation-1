@@ -40,6 +40,10 @@ public class SPlayer {
 		return myTiles; 
 	}
 	
+	public void setTiles(ArrayList<Tile> newHand) {
+		myTiles = newHand; 
+	}
+	
 	public Position getPosn(){
 		return posn;
 	}
