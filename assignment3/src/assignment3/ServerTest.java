@@ -17,10 +17,6 @@ public class ServerTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testIsLegalPlay() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	//tests edge move, moving several turns, and also playing a rotated tile
@@ -77,71 +73,6 @@ public class ServerTest {
 		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
 		
 	}
-		
-
-	@Test
-	public void testIsGameOver() {
-		setupTest(2); 
-		
-		assertFalse(testServer1.isGameOver()); 
-		
-		testServer1.setTilePile(new ArrayList<Tile>());
-		testServer1.getCurrPlayers().get(0).setTiles(new ArrayList<Tile>());
-		testServer1.getCurrPlayers().get(1).setTiles(new ArrayList<Tile>());
-		
-		assertTrue(testServer1.isGameOver());  // over because no one has any tiles 
-		
-		// add a tile to the tile pool 
-		ArrayList<Tile> newPile = new ArrayList<Tile>(); 
-		newPile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 3), new Tuple(4, 6), new Tuple(5, 7)})); 
-		testServer1.setTilePile(newPile);
-		
-		// tiles left and multiple players, game is not over 
-		assertFalse(testServer1.isGameOver()); 
-		
-		testServer1.eliminatePlayer(testServer1.getCurrPlayers().get(0), testServer1.getCurrPlayers(), testServer1.getElimPlayers());
-		
-		assertTrue(testServer1.isGameOver());  // over because only one player left 
-	}
-
-	@Test
-	public void testDrawTile() {
-		setupTest(1); 
-		assertEquals(32, testServer1.getTilePile().size()); 
-		
-		Tile toBeDrawn = testServer1.getTilePile().get(0);
-		List <Tile> firstPlayerTiles = testServer1.getCurrPlayers().get(0).getTiles();
-		
-		//something is wrong with tile distribution
-		assertFalse(firstPlayerTiles.contains(toBeDrawn));
-		
-		testServer1.drawTile(testServer1.getCurrPlayers().get(0));
-		firstPlayerTiles = testServer1.getCurrPlayers().get(0).getTiles();
-		assertTrue(firstPlayerTiles.contains(toBeDrawn));
-		
-		//check sizes 
-		assertEquals(31, testServer1.getTilePile().size()); 
-		assertEquals(4, testServer1.getCurrPlayers().get(0).getTiles().size()); 
-	}
-
-	@Test
-	public void testAddEliminatedPlayerTiles() {
-		setupTest(1); 
-		assertEquals(32, testServer1.getTilePile().size());
-		
-		List <Tile> elimTiles = testServer1.getCurrPlayers().get(0).getTiles();
-		addEliminatedPlayerTiles(testServer1.getCurrPlayers().get(0), testServer1.getTilePile());
-		assertEquals(35, testServer1.getTilePile().size());
-		
-		boolean test = true;
-		for (Tile t : elimTiles){
-			if (!testServer1.getTilePile().contains(t)){
-				test = false;
-			}
-		}
-		assertTrue(test);
-	}
-	
 	
 	public void setupTest(int numPlayers) {
 		testServer1 = new Server(numPlayers); 
@@ -153,8 +84,6 @@ public class ServerTest {
 				{null, null, null, null, null, null}};
 		Board board1 = new Board(testlayout1);
 		testServer2 = new Server(board1);
-		
-		
 	}
 
 }

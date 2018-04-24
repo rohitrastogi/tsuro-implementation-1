@@ -77,6 +77,7 @@ public class ServerUtils {
 		return (new BoardState(deck, cPlayers, ePlayers, currBoard, winningPlayers));
 	}
 	
+	//~~~~~~GAME HELPER FUNCTIONS (for tile functions)~~~~~~//
 	// returns true if the game either:
 	//   a. Has only one remaining player 
 	//   b. Has no remaining tiles to be placed 
@@ -102,8 +103,7 @@ public class ServerUtils {
 		return true; 
 	}
 
-		
-	//~~~~~~GAME HELPER FUNCTIONS (for tile functions)~~~~~~//
+
 	//removes a player from cPlayers list to ePlayers list, and shuffles eliminated player's tiles into deck
 	public static void eliminatePlayer(SPlayer player, ArrayList<SPlayer>cPlayers, ArrayList<SPlayer> ePlayers, ArrayList<Tile> deck){
 		cPlayers.remove(player);

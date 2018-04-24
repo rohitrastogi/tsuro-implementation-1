@@ -30,6 +30,12 @@ public class SPlayer {
 		return false;
 	}
 	
+	@Override 
+	public boolean equals(Object obj) {
+		SPlayer p = (SPlayer) obj; 
+		return (p.myTiles.equals(this.myTiles) && (p.color == this.color) && (p.posn.equals(this.posn)));
+	}
+	
 	// Checks whether a player is currently holding any tiles 
 	public boolean hasTiles() {
 		return (myTiles.size() > 0); 

@@ -11,6 +11,9 @@ public class TileTest {
 		Tile t1 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)});
 		Tile t2 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)});
 		assertTrue(t1.equals(t2));
+		
+		Tile t3 = new Tile(new Tuple[] {new Tuple(1, 3), new Tuple(2, 4), new Tuple(3, 5), new Tuple(6, 7)});
+		assertFalse(t1.equals(t3));
 	}
 
 	@Test
