@@ -23,7 +23,10 @@ public class BoardTest {
 
 	@Test
 	public void testIsValidMove() {
-		fail("Not yet implemented");
+		setupTest(); 
+		assertTrue(testBoard3.isValidMove(testPlayer.getTiles().get(0), testPlayer)); 
+		assertTrue(testBoard3.isValidMove(testPlayer.getTiles().get(1), testPlayer)); 
+		assertTrue(testBoard3.isValidMove(testPlayer.getTiles().get(2), testPlayer)); 
 	}
 
 	@Test
@@ -73,9 +76,17 @@ public class BoardTest {
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
+
+		Tile [][] testlayout3 = {{null, (new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null},
+				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null}};
 		
 		testBoard1 = new Board(testlayout1);
 		testBoard2 = new Board(testlayout2);
+		testBoard3 = new Board(testlayout3); 
 		
 		pTiles = new ArrayList<Tile>(); 
 		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)}));
