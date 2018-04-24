@@ -130,7 +130,7 @@ public class ServerTest {
 		assertEquals(32, testServer1.getTilePile().size());
 		
 		List <Tile> elimTiles = testServer1.getCurrPlayers().get(0).getTiles();
-		testServer1.addEliminatedPlayerTiles(testServer1.getCurrPlayers().get(0));
+		addEliminatedPlayerTiles(testServer1.getCurrPlayers().get(0), testServer1.getTilePile());
 		assertEquals(35, testServer1.getTilePile().size());
 		
 		boolean test = true;

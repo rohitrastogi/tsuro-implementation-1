@@ -22,6 +22,7 @@ public class Board {
 	}
 	
 	public Board(Tile[][] layout) {
+		//tbh not sure if this works (is clone necessary here)
 		tileLayout = layout.clone(); 
 	}
 	
