@@ -16,7 +16,7 @@ public class ServerUtilsTest {
 	}
 	
 	@Test
-	//tests edge move, moving several turns, and also playing a rotated tile
+	//tests edge move, moving several tiles, and also playing a rotated tile
 	public void testPlayATurn1() {
 		
 		//create board argument
@@ -70,8 +70,8 @@ public class ServerUtilsTest {
 		
 		ArrayList<Tile> newTilePile = new ArrayList<Tile>();
 		newTilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
-		Position newPlayer1Posn = new Position();
-		Position newPlayer2Posn = new Position(); 
+		Position newPlayer1Posn = new Position(4, 0, 2);
+		Position newPlayer2Posn = new Position(0, 2, 6); 
 		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>();
 		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
 		newCurrPlayers.add(new SPlayer(player1hand, Color.RED, newPlayer1Posn));
