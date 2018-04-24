@@ -74,12 +74,87 @@ public class ServerUtilsTest {
 		Position newPlayer2Posn = new Position(0, 2, 6); 
 		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>();
 		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
+		player1hand.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)})); 
 		newCurrPlayers.add(new SPlayer(player1hand, Color.RED, newPlayer1Posn));
 		
 		BoardState returnedBS = ServerUtils.playATurn(tilePile, currPlayers, new ArrayList<SPlayer>(), testBoard, toPlay); 
 		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, new ArrayList<SPlayer>(), newBoard, new ArrayList<SPlayer>());
 		
 		assertTrue(returnedBS.equals(compareBS));
+	}
+	
+	// Tests multiple players moving and multiple players being eliminated
+	@Test
+	public void testPlayATurn2() {
+		// Create original board 
+		Tile[][] testLayout = {{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 1
+							{new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, 
+							new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null}, // row 2
+							{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 3
+							{null, null, null, null, null, null},
+							{null, null, null, null, null, null},
+							{null, null, null, null, null, null}}; 
+		Board testBoard = new Board(testLayout); 
+		
+		// Tile to be placed on board in position (1, 1) 
+		Tile toPlay = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 5), new Tuple(3, 6), new Tuple(4, 7)}); 
+		
+		// generate players 
+		SPlayer p1 = new SPlayer(new ArrayList<Tile>(), Color.RED, new Position(0, 1, 2)); 
+		SPlayer p2 = new SPlayer(new ArrayList<Tile>(), Color.BLUE, new Position(1, 2, 0)); 
+		SPlayer p3 = new SPlayer(new ArrayList<Tile>(), Color.YELLOW, new Position(2, 1, 6)); 
+		SPlayer p4 = new SPlayer(new ArrayList<Tile>(), Color.ORANGE, new Position(1, 0, 5)); 
+		
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>(); 
+		currPlayers.add(p1); 
+		currPlayers.add(p2); 
+		currPlayers.add(p3); 
+		currPlayers.add(p4); 
+		
+		// generate tilePile
+		ArrayList<Tile> tilePile = new ArrayList<Tile>(); 
+		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)}));
+		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		
+		// Create board layout for after move 
+		Tile[][] newLayout = {{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 1
+							{new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), 
+							new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 5), new Tuple(3, 6), new Tuple(4, 7)}), 
+							new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null}, // row 2
+							{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 3
+							{null, null, null, null, null, null},
+							{null, null, null, null, null, null},
+							{null, null, null, null, null, null}}; 
+		Board newBoard = new Board(newLayout); 
+		
+		// Generate other results 
+		ArrayList<Tile> newTilePile = new ArrayList<Tile>(); 
+		newTilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		
+		// p1 picks up a tile during the turn 
+		ArrayList<Tile> p1Hand = new ArrayList<Tile>();
+		p1Hand.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)})); 
+		
+		// Make new players in the proper positions 
+		SPlayer newP1 = new SPlayer(p1Hand, Color.RED, new Position(1, 2, 4)); 
+		SPlayer newP2 = new SPlayer(new ArrayList<Tile>(), Color.BLUE, new Position(2, 1, 2)); 
+		SPlayer newP3 = new SPlayer(new ArrayList<Tile>(), Color.YELLOW, new Position(0, 1, 6)); 
+		SPlayer newP4 = new SPlayer(new ArrayList<Tile>(), Color.ORANGE, new Position(1, 0, 1)); 
+		
+		// Only p2 and p1 survived elimination
+		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>(); 
+		newCurrPlayers.add(newP2);  // because of turn order, p2 should be at the top of the list 
+		newCurrPlayers.add(newP1); 
+		
+		// p3 and p4 have been eliminated 
+		ArrayList<SPlayer> newElimPlayers = new ArrayList<SPlayer>(); 
+		newElimPlayers.add(newP3); 
+		newElimPlayers.add(newP4); 
+		
+		BoardState returnedBS = ServerUtils.playATurn(tilePile, currPlayers, new ArrayList<SPlayer>(), testBoard, toPlay); 
+		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, newElimPlayers, newBoard, new ArrayList<SPlayer>()); 
+		
+		assertTrue(returnedBS.equals(compareBS)); 
 	}
 
 	@Test
