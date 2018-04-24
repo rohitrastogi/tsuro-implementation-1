@@ -11,6 +11,7 @@ public class BoardTest {
 	private Board testBoard1;
 	private Board testBoard2;
 	private Board testBoard3;
+	private Board testBoard4;
 	ArrayList<Tile> pTiles;
 	SPlayer testPlayer;
 	Tile toPlay1;
@@ -70,6 +71,14 @@ public class BoardTest {
 		assertNull(testBoard1.getTile(-1, -1));
 	}
 	
+	@Test
+	public void testEquals(){
+		setupTest();
+		assertTrue(testBoard1.equals(testBoard4));
+		assertFalse(testBoard1.equals(testBoard2));
+		assertFalse(testBoard2.equals(testBoard3));
+	}
+	
 	
 	public void setupTest(){
 		//used to test if player will not be eliminated 
@@ -99,9 +108,17 @@ public class BoardTest {
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 		
+		Tile [][] testlayout4 = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), null, null, null, null},
+				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null}};
+		
 		testBoard1 = new Board(testlayout1);
 		testBoard2 = new Board(testlayout2);
 		testBoard3 = new Board(testlayout3); 
+		testBoard4 = new Board(testlayout4);
 		toPlay1 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 4), new Tuple(3, 6), new Tuple(5, 7)});
 		toPlay2 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 4), new Tuple(2, 5), new Tuple(6, 7)});
 		toPlay3 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 2), new Tuple(4, 5), new Tuple(6, 7)});

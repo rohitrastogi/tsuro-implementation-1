@@ -14,10 +14,72 @@ public class ServerUtilsTest {
 	public void testIsLegalPlay() {
 		fail("Not yet implemented");
 	}
-
+	
 	@Test
-	public void testPlayATurn() {
-		fail("Not yet implemented");
+	//tests edge move, moving several turns, and also playing a rotated tile
+	public void testPlayATurn1() {
+		
+		//create board argument
+		Tile [][] testLayout = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
+			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
+			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
+			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
+			null},
+				{null, null, null, null, null, null},
+				{(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 6), new Tuple(4, 5)})), null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null}};
+		Board testBoard = new Board(testLayout);
+		
+		//generate tile argument
+		Tile toPlay = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 3), new Tuple(6, 7)}, 1);
+		
+		//generate players for currPlayers argument
+		List<Tile> player1hand = new ArrayList();
+		List<Tile> player2hand = new ArrayList();
+		player1hand.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 3), new Tuple(2, 7), new Tuple(5, 6)}));
+		player2hand.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 7), new Tuple(2, 6), new Tuple(4, 5)}));
+		Position player1posn = new Position(0, 0, 7);
+		Position player2posn = new Position(0, 2, 6);
+		SPlayer player1 = new SPlayer(player1hand,Color.RED, player1posn);
+		SPlayer player2 = new SPlayer(player2hand, Color.BLACK, player2posn);
+		
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+		currPlayers.add(player1);
+		currPlayers.add(player2);
+		
+		//generate tilePile for deck argument
+		ArrayList<Tile> tilePile = new ArrayList<Tile>();
+		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)}));
+		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		
+		//generate new board layout after move
+		Tile [][] newLayout = {{(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 3), new Tuple(6, 7)}, 1)),
+				(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
+			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
+			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
+			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
+			null},
+				{null, null, null, null, null, null},
+				{(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 6), new Tuple(4, 5)})), null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null}};
+		Board newBoard = new Board(newLayout);
+		
+		ArrayList<Tile> newTilePile = new ArrayList<Tile>();
+		newTilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		Position newPlayer1Posn = new Position();
+		Position newPlayer2Posn = new Position(); 
+		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>();
+		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
+		newCurrPlayers.add(new SPlayer(player1hand, Color.RED, newPlayer1Posn));
+		
+		BoardState returnedBS = ServerUtils.playATurn(tilePile, currPlayers, new ArrayList<SPlayer>(), testBoard, toPlay); 
+		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, new ArrayList<SPlayer>(), newBoard, new ArrayList<SPlayer>());
+		
+		assertTrue(returnedBS.equals(compareBS));
 	}
 
 	@Test

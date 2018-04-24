@@ -7,6 +7,7 @@ public class BoardState {
 	ArrayList<SPlayer> currPlayers;
 	ArrayList<SPlayer> elimPlayers;
 	Board board;
+	
 	//empty list is treated as false
 	ArrayList<SPlayer> winners;
 	
@@ -17,5 +18,13 @@ public class BoardState {
 		this.elimPlayers = elimPlayers;
 		this.board = board;
 		this.winners = winners;
+	}
+	
+	public boolean equals(Object obj) {
+		BoardState bs = (BoardState) obj; 
+		
+		return (this.tilePile.equals(bs.tilePile) && this.currPlayers.equals(bs.currPlayers) && 
+				this.elimPlayers.equals(bs.elimPlayers) && this.board.equals(bs.board) &&
+				this.winners.equals(bs.winners));
 	}
 }

@@ -26,6 +26,37 @@ public class Board {
 		tileLayout = layout.clone(); 
 	}
 	
+	public boolean equals(Object obj) {
+		Board b = (Board) obj; 
+		boolean length_equal = (b.tileLayout.length == this.tileLayout.length) ;
+		if (!length_equal){
+			return false;
+		}
+
+		for (int i = 0; i < b.tileLayout.length; i++){
+			length_equal = (b.tileLayout[i].length == this.tileLayout[i].length);
+			if (!length_equal){
+				return false;
+			}
+			for (int j=0; j< b.tileLayout[i].length; j++){
+				if ((b.tileLayout[i][j] == null) && (this.tileLayout[i][j] == null)){ //both are null return, continue
+					continue;
+				}
+				else if (b.tileLayout[i][j] == null || this.tileLayout[i][j] == null){ //if one is null, return false
+					return false;
+				}
+				// neither are null
+				else if (b.tileLayout[i][j].equals(this.tileLayout[i][j])){ //equal tile internals
+					continue;
+					}
+				else {
+					return false; //unequal tile internals
+				}
+			}
+		}
+		return true; 
+	}
+	
 	public Tile[][] getLayout(){
 		return tileLayout;
 	}
