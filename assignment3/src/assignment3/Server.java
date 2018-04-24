@@ -105,7 +105,7 @@ public class Server {
 	public BoardState playATurn(ArrayList<Tile> tilePile, ArrayList<SPlayer> cPlayers, ArrayList<SPlayer> ePlayers,
 			Board currBoard, Tile toPlay){
 		
-		Board newBoard = new Board(currBoard.getLayout());
+		Board newBoard = new Board(currBoard.getLayout()); 
 		
 		//~~~~~STEP 1~~~~~
 		SPlayer actingPlayer = cPlayers.get(0);
@@ -130,12 +130,12 @@ public class Server {
 			finalPosition = currBoard.getFinalPosition(toPlay, p.getPosn());
 			p.setPosn(finalPosition);
 			if (finalPosition.isEdgePosition()){
-				eliminatePlayer(p, cPlayers, ePlayers);
+				eliminatePlayer(p, cPlayers, ePlayers); //should not mutate 
 			}
 		}
 		
 		//~~~~~STEP 3~~~~~
-		drawTile(actingPlayer);
+		drawTile(actingPlayer); //should not mutate 
 		
 		
 		//~~~~~STEP 4~~~~~
@@ -147,7 +147,7 @@ public class Server {
 		}
 		
 		//~~~~~STEP 5~~~~~
-		advanceTurn();
+		advanceTurn(); //should not mutate
 		
 		// Generate a new board state and return
 		return (new BoardState(tilePile, currPlayers, elimPlayers, newBoard, winningPlayers));
@@ -234,6 +234,14 @@ public class Server {
 	
 	public ArrayList<SPlayer> getElimPlayers() {
 		return elimPlayers; 
+	}
+	
+	public void setCurrPlayers(ArrayList<SPlayer> currPlayers){
+		this.currPlayers = currPlayers;
+	}
+	
+	public void setElimPlayers(ArrayList<SPlayer> elimPlayers){
+		this.elimPlayers = elimPlayers;
 	}
 	
 }

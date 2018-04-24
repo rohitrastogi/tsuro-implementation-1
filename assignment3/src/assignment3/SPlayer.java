@@ -8,11 +8,11 @@ enum Color
 }
 
 public class SPlayer {
-	private ArrayList<Tile> myTiles;
+	private List<Tile> myTiles;
 	private Color color;
 	private Position posn;
 	
-	public SPlayer(ArrayList<Tile> myTiles, Color color, Position posn){
+	public SPlayer(List<Tile> myTiles, Color color, Position posn){
 		this.myTiles = myTiles;
 		this.color = color;
 		this.posn = posn;
@@ -36,7 +36,7 @@ public class SPlayer {
 	}
 	
 	// Getters and Setters 
-	public ArrayList<Tile> getTiles() {
+	public List<Tile> getTiles() {
 		return myTiles; 
 	}
 	
