@@ -42,10 +42,9 @@ public class Board {
 		}
 		// Otherwise, check all other possible moves of the player (including rotations)
 		// If they are ALL elimination moves, return true, otherwise return false 
-		// TODO 
 		for (Tile t : player.getTiles()){
 			for (int i=0; i<Tile.NUM_SIDES; i++){
-				t.setRotation(i);
+				t = t.rotate(i);
 				if (!isEliminationMove(t, player)){
 					return false;
 				}

@@ -22,8 +22,8 @@ public class Tile {
 		this.rotation = 0;
 	}
 	
-	public void setRotation(int r){
-		rotation = r;
+	public Tile rotate(int r){
+		return new Tile(this.paths, r);
 	}
 	
 	// Gets the output point of a Tile, given an input point 
