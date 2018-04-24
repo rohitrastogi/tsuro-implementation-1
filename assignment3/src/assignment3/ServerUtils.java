@@ -134,10 +134,21 @@ public class ServerUtils {
 	}
 	
 	//
-	public static void drawTile(SPlayer player, ArrayList<Tile> deck){
-		// TODO: Add dragon tile functionality (currently if there are no tiles left in the tile pile, we do nothing)
+	public static void drawTile(SPlayer player, ArrayList<Tile> deck, SPlayer currPlayers){
 		if (deck.size() != 0) {
 			player.addTile(deck.remove(0));
+		}
+		else {
+			// no tiles left in deck, check whether any other players have the dragon tile 
+			for (SPlayer p : currPlayers) {
+				if p.hasDragonTile() {
+					// someone already has the dragon tile, no cards can be drawn 
+					return; 
+				}
+			}
+			
+			// no tiles left and no player has taken the dragon tile: give the tile to this player 
+			player.takeDragonTile(); 
 		}
 	}
 	
@@ -145,6 +156,9 @@ public class ServerUtils {
 	public static void addEliminatedPlayerTiles(SPlayer player, ArrayList<Tile> deck){
 		deck.addAll(player.getTiles());
 		shuffleTiles(deck);
+		
+		// TODO: Check if any player has the dragon tile. If so, start with them drawing tiles until every remaining player has three
+		// If tiles run out before everyone has three, it shouldn't cause an issue due to the way drawTile handles everything. 
 	}
 	
 	//shuffles tiles

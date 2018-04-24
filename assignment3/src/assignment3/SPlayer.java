@@ -11,11 +11,13 @@ public class SPlayer {
 	private List<Tile> myTiles;
 	private Color color;
 	private Position posn;
+	private boolean hasDragonTile; 
 	
 	public SPlayer(List<Tile> myTiles, Color color, Position posn){
 		this.myTiles = myTiles;
 		this.color = color;
 		this.posn = posn;
+		this.hasDragonTile = false; 
 	}
 	
 	// Checks whether a player has a certain tile in their possession 
@@ -33,7 +35,7 @@ public class SPlayer {
 	@Override 
 	public boolean equals(Object obj) {
 		SPlayer p = (SPlayer) obj; 
-		return (p.myTiles.equals(this.myTiles) && (p.color == this.color) && (p.posn.equals(this.posn)));
+		return (p.myTiles.equals(this.myTiles) && (p.color == this.color) && (p.posn.equals(this.posn)) && p.hasDragonTile == this.hasDragonTile);
 	}
 	
 	// Checks whether a player is currently holding any tiles 
@@ -60,5 +62,17 @@ public class SPlayer {
 	
 	public void addTile(Tile t){
 		myTiles.add(t);
+	}
+	
+	public void takeDragonTile() {
+		this.hasDragonTile = true; 
+	}
+	
+	public void loseDragonTile() {
+		this.hasDragonTile = false; 
+	}
+	
+	public void hasDragonTile() {
+		return this.hasDragonTile; 
 	}
 }

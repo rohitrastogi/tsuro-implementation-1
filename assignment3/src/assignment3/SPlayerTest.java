@@ -54,6 +54,10 @@ public class SPlayerTest {
 		
 		SPlayer test5 = new SPlayer(pTiles1, Color.GREEN, new Position(1, 1, 1));
 		assertFalse(test5.equals(test1));
+		
+		// Dragon tile
+		test1.takeDragonTile();
+		assertFalse(test1.equals(test2)); 
 	}
 
 }
