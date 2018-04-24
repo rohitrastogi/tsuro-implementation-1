@@ -37,15 +37,26 @@ public class Board {
 	// a. Not an elimination move 
 	// b. The player only has elimination moves available 
 	public boolean isValidMove(Tile tile, SPlayer player) {
+		//check if tile with rotation specified given is valid move
 		if (!isEliminationMove(tile, player)) {
 			return true; 
 		}
-		// Otherwise, check all other possible moves of the player (including rotations)
-		// If they are ALL elimination moves, return true, otherwise return false 
+		//state: current move you are trying to make will eliminate you
+		// check if other rotations of current tile won't eliminate you
+		// if there is one rotation that does not eliminate you, it is not a valid move
+		for (int i=0; i< Tile.NUM_SIDES; i++){
+			Tile rotated = tile.rotate(i);
+			if(!isEliminationMove(rotated, player)){
+				return false;
+			}
+		}
+		// state: all rotations of argument tile will eliminate player
+		// check all other possible moves of the player (including rotations)
+		// if they are ALL elimination moves, return true, otherwise return false 
 		for (Tile t : player.getTiles()){
 			for (int i=0; i<Tile.NUM_SIDES; i++){
-				t = t.rotate(i);
-				if (!isEliminationMove(t, player)){
+				Tile rotated = t.rotate(i);
+				if (!isEliminationMove(rotated, player)){
 					return false;
 				}
 			}

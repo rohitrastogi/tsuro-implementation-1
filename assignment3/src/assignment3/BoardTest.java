@@ -10,8 +10,13 @@ public class BoardTest {
 	
 	private Board testBoard1;
 	private Board testBoard2;
+	private Board testBoard3;
 	ArrayList<Tile> pTiles;
 	SPlayer testPlayer;
+	Tile toPlay1;
+	Tile toPlay2;
+	Tile toPlay3;
+	Tile toPlay4;
 
 	@Test
 	public void testPlaceTile() {
@@ -24,17 +29,25 @@ public class BoardTest {
 	@Test
 	public void testIsValidMove() {
 		setupTest(); 
-		assertTrue(testBoard3.isValidMove(testPlayer.getTiles().get(0), testPlayer)); 
-		assertTrue(testBoard3.isValidMove(testPlayer.getTiles().get(1), testPlayer)); 
-		assertTrue(testBoard3.isValidMove(testPlayer.getTiles().get(2), testPlayer)); 
+		
+		//case 1: toPlay is a valid move (true)
+		assertTrue(testBoard1.isValidMove(toPlay2, testPlayer));
+		
+		//case 2: toPlay in current rotation is invalid, but after rotation is valid move (false)
+		assertFalse(testBoard1.isValidMove(toPlay3, testPlayer));
+		
+		//case 3: toPlay and all hand tiles are invalid moves after all possible rotations (true)
+		assertTrue(testBoard3.isValidMove(toPlay1, testPlayer));
+	
+		//case 4: toPlay in all rotations is invalid, but there is one rotation of a hand tile that is valid (false)
+		assertFalse(testBoard1.isValidMove(toPlay4, testPlayer));
 	}
 
 	@Test
 	public void testIsEliminationMove() {
 		setupTest();
-		Tile newTile = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 4), new Tuple(2, 5), new Tuple(6, 7)});
-		boolean test = testBoard2.isEliminationMove(newTile, testPlayer);
-		assertTrue(testBoard2.isEliminationMove(newTile, testPlayer));
+		assertTrue(testBoard2.isEliminationMove(toPlay2, testPlayer));
+		assertFalse(testBoard1.isEliminationMove(toPlay2, testPlayer));
 	}
 
 	@Test
@@ -59,6 +72,7 @@ public class BoardTest {
 	
 	
 	public void setupTest(){
+		//used to test if player will not be eliminated 
 		Tile [][] testlayout1 = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), null, null, null, null},
 				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -66,6 +80,7 @@ public class BoardTest {
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 		
+		//used to test if player will be eliminated
 		Tile [][] testlayout2 = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
 			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
 			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
@@ -87,11 +102,14 @@ public class BoardTest {
 		testBoard1 = new Board(testlayout1);
 		testBoard2 = new Board(testlayout2);
 		testBoard3 = new Board(testlayout3); 
+		toPlay1 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 4), new Tuple(3, 6), new Tuple(5, 7)});
+		toPlay2 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 4), new Tuple(2, 5), new Tuple(6, 7)});
+		toPlay3 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 2), new Tuple(4, 5), new Tuple(6, 7)});
+		toPlay4 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)});
 		
 		pTiles = new ArrayList<Tile>(); 
-		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)}));
-		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 4), new Tuple(3, 6), new Tuple(5, 7)}));
-		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 6), new Tuple(1, 5), new Tuple(2, 4), new Tuple(3, 7)}));
+		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)}, 1));
+		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 6), new Tuple(1, 5), new Tuple(2, 4), new Tuple(3, 7)})); 
 		
 		testPlayer = new SPlayer(pTiles, Color.GREEN, new Position(0, 0, 5));
 	}
