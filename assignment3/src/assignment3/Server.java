@@ -149,6 +149,7 @@ public class Server {
 			}
 		}
 		else {
+			// Tiles still left in tile pile, game is not over 
 			return false; 
 		}
 		
@@ -176,7 +177,7 @@ public class Server {
 	public void drawTile(SPlayer player){
 		// TODO: Add dragon tile functionality (currently if there are no tiles left in the tile pile, we do nothing)
 		if (tilePile.size() != 0) {
-			player.addTile(tilePile.remove(tilePile.size() - 1));
+			player.addTile(tilePile.remove(0));
 		}
 	}
 	
