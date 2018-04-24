@@ -18,6 +18,11 @@ public class Server {
 		initializeGame(numPlayers); 
 	}
 	
+	//constructor for tests only 
+	public Server(Board testBoard){
+		board =  testBoard;
+	}
+	
 	// GAME INIT FUNCTIONS // 
 	public void initializeGame(int numPlayers) {
 		generateTilePile(); 
@@ -89,12 +94,20 @@ public class Server {
 		eliminatedPlayers.add(player);
 		addEliminatedPlayerTiles(player);
 	}
-	
+	/**Turn is in 5 phases:
+	 * 1. Place tile, and move curr player accordingly (check for eliminations)
+	 * 2. Move players on adjacent tiles accordingly (check for eliminations)
+	 * 3. Curr player draws a tile
+	 * 4. Check if game is over 
+	 * 5. Bookkeep to prepare next turn
+	**/
 	
 	public BoardState playATurn(ArrayList<Tile> tilePile, ArrayList<SPlayer> cPlayers, ArrayList<SPlayer> ePlayers,
 			Board currBoard, Tile toPlay){
 		
 		Board newBoard = new Board(currBoard.getLayout());
+		
+		//~~~~~STEP 1~~~~~
 		SPlayer actingPlayer = cPlayers.get(0);
 		//moved acting player to tile being placed
 		actingPlayer.setPosn(actingPlayer.getPosn().getAdjacentPosition());
@@ -108,25 +121,33 @@ public class Server {
 			eliminatePlayer(actingPlayer, cPlayers, ePlayers);
 		}
 		
+		//~~~~~STEP 2~~~~~
 		List<SPlayer> adjacentPlayers = getAdjacentPlayers(actingPlayer);
-		//move adjacent players to tile being placed 
-		for (SPlayer adPlayer : adjacentPlayers){
-			adPlayer.setPosn(adPlayer.getPosn().getAdjacentPosition());
-			finalPosition = currBoard.getFinalPosition(toPlay, adPlayer.getPosn());
-			adPlayer.setPosn(finalPosition);
+		
+		//move adjacent players to tile being placed and set final position
+		for (SPlayer p : adjacentPlayers){
+			p.setPosn(p.getPosn().getAdjacentPosition());
+			finalPosition = currBoard.getFinalPosition(toPlay, p.getPosn());
+			p.setPosn(finalPosition);
 			if (finalPosition.isEdgePosition()){
-				eliminatePlayer(adPlayer, cPlayers, ePlayers);
+				eliminatePlayer(p, cPlayers, ePlayers);
 			}
 		}
 		
+		//~~~~~STEP 3~~~~~
 		drawTile(actingPlayer);
 		
+		
+		//~~~~~STEP 4~~~~~
 		// See if the game is over 
 		ArrayList<SPlayer> winningPlayers = new ArrayList<SPlayer>(); 
 		if (isGameOver()) {
 			// if the game is over, generate a list of winning players 
 			winningPlayers = currPlayers; 
 		}
+		
+		//~~~~~STEP 5~~~~~
+		advanceTurn();
 		
 		// Generate a new board state and return
 		return (new BoardState(tilePile, currPlayers, elimPlayers, newBoard, winningPlayers));
@@ -155,6 +176,11 @@ public class Server {
 		
 		// Multiple players are still playing, but no one has any tiles, game is over 
 		return true; 
+	}
+	
+	public void advanceTurn(){
+		SPlayer currPlayer = currPlayers.remove(0);
+		currPlayers.add(currPlayer);
 	}
 	
 	public List<SPlayer> getAdjacentPlayers(SPlayer player){
@@ -209,5 +235,6 @@ public class Server {
 	public ArrayList<SPlayer> getElimPlayers() {
 		return elimPlayers; 
 	}
+	
 }
 

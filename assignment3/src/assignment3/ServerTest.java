@@ -89,6 +89,7 @@ public class ServerTest {
 		assertTrue(test);
 	}
 	
+	
 	public void setupTest(int numPlayers) {
 		testServer = new Server(numPlayers); 
 	}

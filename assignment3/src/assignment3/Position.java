@@ -45,7 +45,7 @@ public class Position {
 	
 	public boolean arePosnsAdjacent(Position other){
 		// TODO: Refactor this to use getAdjacentPosition 
-		//this.arePosnsAdjacent(other)
+		//call only in this way (evil): this.arePosnsAdjacent(other)
 		int xDiff = other.x - this.x;
 		int yDiff = other.y - this.y;
 		if (xDiff == 1 && yDiff == 0){
