@@ -22,7 +22,7 @@ public class BoardTest {
 	@Test
 	public void testPlaceTile() {
 		setupTest();
-		Tile toPlace = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)});
+		Tile toPlace = new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)});
 		testBoard1.placeTile(toPlace, 5, 5);
 		assertTrue(testBoard1.getTile(5, 5).equals(toPlace));
 	}
@@ -54,7 +54,7 @@ public class BoardTest {
 	@Test
 	public void testGetFinalPosition() {
 		setupTest();
-		Tile newTile = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 4), new Tuple(2, 5), new Tuple(6, 7)});
+		Tile newTile = new Tile(new Path[] {new Path(0, 3), new Path(1, 4), new Path(2, 5), new Path(6, 7)});
 		Position finalposn = testBoard1.getFinalPosition(newTile, new Position(0, 0, 5));
 		assertTrue(finalposn.equals(new Position(1, 0, 2)));
 		
@@ -65,7 +65,7 @@ public class BoardTest {
 	@Test
 	public void testGetTile() {
 		setupTest();
-		assertTrue(testBoard1.getTile(1, 0).equals(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})));
+		assertTrue(testBoard1.getTile(1, 0).equals(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})));
 		assertNull(testBoard1.getTile(3, 3));
 		assertNull(testBoard1.getTile(6, 6));
 		assertNull(testBoard1.getTile(-1, -1));
@@ -82,34 +82,34 @@ public class BoardTest {
 	
 	public void setupTest(){
 		//used to test if player will not be eliminated 
-		Tile [][] testlayout1 = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), null, null, null, null},
-				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+		Tile [][] testlayout1 = {{null, (new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 		
 		//used to test if player will be eliminated
-		Tile [][] testlayout2 = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}))},
-				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+		Tile [][] testlayout2 = {{null, (new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})),
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})),
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}))},
+				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 
-		Tile [][] testlayout3 = {{null, (new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null},
-				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+		Tile [][] testlayout3 = {{null, (new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 		
-		Tile [][] testlayout4 = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), null, null, null, null},
-				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+		Tile [][] testlayout4 = {{null, (new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -119,14 +119,14 @@ public class BoardTest {
 		testBoard2 = new Board(testlayout2);
 		testBoard3 = new Board(testlayout3); 
 		testBoard4 = new Board(testlayout4);
-		toPlay1 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 4), new Tuple(3, 6), new Tuple(5, 7)});
-		toPlay2 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 4), new Tuple(2, 5), new Tuple(6, 7)});
-		toPlay3 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 2), new Tuple(4, 5), new Tuple(6, 7)});
-		toPlay4 = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 3), new Tuple(4, 5), new Tuple(6, 7)});
+		toPlay1 = new Tile(new Path[] {new Path(0, 1), new Path(2, 4), new Path(3, 6), new Path(5, 7)});
+		toPlay2 = new Tile(new Path[] {new Path(0, 3), new Path(1, 4), new Path(2, 5), new Path(6, 7)});
+		toPlay3 = new Tile(new Path[] {new Path(0, 3), new Path(1, 2), new Path(4, 5), new Path(6, 7)});
+		toPlay4 = new Tile(new Path[] {new Path(0, 1), new Path(2, 3), new Path(4, 5), new Path(6, 7)});
 		
 		pTiles = new ArrayList<Tile>(); 
-		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)}, 1));
-		pTiles.add(new Tile(new Tuple[] {new Tuple(0, 6), new Tuple(1, 5), new Tuple(2, 4), new Tuple(3, 7)})); 
+		pTiles.add(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)}, 1));
+		pTiles.add(new Tile(new Path[] {new Path(0, 6), new Path(1, 5), new Path(2, 4), new Path(3, 7)})); 
 		
 		testPlayer = new SPlayer(pTiles, Color.GREEN, new Position(0, 0, 5));
 	}

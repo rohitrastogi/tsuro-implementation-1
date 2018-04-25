@@ -3,7 +3,7 @@ package assignment3;
 import java.util.Arrays;
 
 public class Tile {
-	private Tuple[] paths;
+	private Path[] paths;
 	// How many times this tile has been rotated
 	// Rotations are always clockwise, and go to a maximum of 3 
 	private int rotation;
@@ -12,12 +12,12 @@ public class Tile {
 	private static final int NUM_POSITIONS = 8; 
 	public static final int NUM_SIDES = 4;
 	
-	public Tile(Tuple[] paths, int rotation){
+	public Tile(Path[] paths, int rotation){
 		this.paths = paths;
 		this.rotation = rotation;
 	}
 	
-	public Tile(Tuple[] paths){
+	public Tile(Path[] paths){
 		this.paths = paths;
 		this.rotation = 0;
 	}
@@ -47,9 +47,9 @@ public class Tile {
 		
 		// Now that we've translated our coordinates, find the endpoint of the corresponding path
 		int output = -1; 
-		for (Tuple path : paths){
+		for (Path path : paths){
 			if (path.contains(translatedInput)){
-				output = path.getOther(translatedInput);
+				output = path.getEndpoint(translatedInput);
 			}
 		}
 		// If output is still -1, something went wrong 
@@ -71,7 +71,7 @@ public class Tile {
 	}
 	
 	// Getters and Setters 
-	public Tuple[] getPaths() {
+	public Path[] getPaths() {
 		return paths; 
 	}
 }

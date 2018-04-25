@@ -20,26 +20,26 @@ public class ServerUtilsTest {
 	public void testPlayATurn1() {
 		
 		//create board argument
-		Tile [][] testLayout = {{null, (new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
+		Tile [][] testLayout = {{null, (new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})),
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})),
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
 			null},
 				{null, null, null, null, null, null},
-				{(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 6), new Tuple(4, 5)})), null, null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 1), new Path(2, 7), new Path(3, 6), new Path(4, 5)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 		Board testBoard = new Board(testLayout);
 		
 		//generate tile argument
-		Tile toPlay = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 3), new Tuple(6, 7)}, 1);
+		Tile toPlay = new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 3), new Path(6, 7)}, 1);
 		
 		//generate players for currPlayers argument
 		List<Tile> player1hand = new ArrayList();
 		List<Tile> player2hand = new ArrayList();
-		player1hand.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 3), new Tuple(2, 7), new Tuple(5, 6)}));
-		player2hand.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 7), new Tuple(2, 6), new Tuple(4, 5)}));
+		player1hand.add(new Tile(new Path[] {new Path(0, 4), new Path(1, 3), new Path(2, 7), new Path(5, 6)}));
+		player2hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 7), new Path(2, 6), new Path(4, 5)}));
 		Position player1posn = new Position(-1, 0, 2); //lmao
 		Position player2posn = new Position(0, 2, 3);
 		SPlayer player1 = new SPlayer(player1hand,Color.RED, player1posn);
@@ -51,30 +51,30 @@ public class ServerUtilsTest {
 		
 		//generate tilePile for deck argument
 		ArrayList<Tile> tilePile = new ArrayList<Tile>();
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		tilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)}));
+		tilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
 		
 		//generate new board layout after move
-		Tile [][] newLayout = {{(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 3), new Tuple(6, 7)}, 1)),
-				(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})),
-			(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)})), 
+		Tile [][] newLayout = {{(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 3), new Path(6, 7)}, 1)),
+				(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})),
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})),
+			(new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
 			null},
 				{null, null, null, null, null, null},
-				{(new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 7), new Tuple(3, 6), new Tuple(4, 5)})), null, null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 1), new Path(2, 7), new Path(3, 6), new Path(4, 5)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null}};
 		Board newBoard = new Board(newLayout);
 		
 		ArrayList<Tile> newTilePile = new ArrayList<Tile>();
-		newTilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		newTilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
 		Position newPlayer1Posn = new Position(4, 0, 2);
 		Position newPlayer2Posn = new Position(0, 2, 3); 
 		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>();
 		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
-		player1hand.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)})); 
+		player1hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)})); 
 		newCurrPlayers.add(new SPlayer(player1hand, Color.RED, newPlayer1Posn));
 		
 		BoardState returnedBS = ServerUtils.playATurn(tilePile, currPlayers, new ArrayList<SPlayer>(), testBoard, toPlay); 
@@ -87,17 +87,17 @@ public class ServerUtilsTest {
 	@Test
 	public void testPlayATurn2() {
 		// Create original board 
-		Tile[][] testLayout = {{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 1
-							{new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, 
-							new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null}, // row 2
-							{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 3
+		Tile[][] testLayout = {{null, new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, null, null, null}, // row 1
+							{new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, 
+							new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, null, null}, // row 2
+							{null, new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, null, null, null}, // row 3
 							{null, null, null, null, null, null},
 							{null, null, null, null, null, null},
 							{null, null, null, null, null, null}}; 
 		Board testBoard = new Board(testLayout); 
 		
 		// Tile to be placed on board in position (1, 1) 
-		Tile toPlay = new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 5), new Tuple(3, 6), new Tuple(4, 7)}); 
+		Tile toPlay = new Tile(new Path[] {new Path(0, 1), new Path(2, 5), new Path(3, 6), new Path(4, 7)}); 
 		
 		// generate players 
 		SPlayer p1 = new SPlayer(new ArrayList<Tile>(), Color.RED, new Position(0, 1, 2)); 
@@ -113,15 +113,15 @@ public class ServerUtilsTest {
 		
 		// generate tilePile
 		ArrayList<Tile> tilePile = new ArrayList<Tile>(); 
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)}));
-		tilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		tilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)}));
+		tilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
 		
 		// Create board layout for after move 
-		Tile[][] newLayout = {{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 1
-							{new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), 
-							new Tile(new Tuple[] {new Tuple(0, 1), new Tuple(2, 5), new Tuple(3, 6), new Tuple(4, 7)}), 
-							new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null}, // row 2
-							{null, new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 4), new Tuple(2, 7), new Tuple(3, 6)}), null, null, null, null}, // row 3
+		Tile[][] newLayout = {{null, new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, null, null, null}, // row 1
+							{new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), 
+							new Tile(new Path[] {new Path(0, 1), new Path(2, 5), new Path(3, 6), new Path(4, 7)}), 
+							new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, null, null}, // row 2
+							{null, new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)}), null, null, null, null}, // row 3
 							{null, null, null, null, null, null},
 							{null, null, null, null, null, null},
 							{null, null, null, null, null, null}}; 
@@ -129,11 +129,11 @@ public class ServerUtilsTest {
 		
 		// Generate other results 
 		ArrayList<Tile> newTilePile = new ArrayList<Tile>(); 
-		newTilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
+		newTilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
 		
 		// p1 picks up a tile during the turn 
 		ArrayList<Tile> p1Hand = new ArrayList<Tile>();
-		p1Hand.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)})); 
+		p1Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)})); 
 		
 		// Make new players in the proper positions 
 		SPlayer newP1 = new SPlayer(p1Hand, Color.RED, new Position(1, 2, 4)); 
@@ -171,7 +171,7 @@ public class ServerUtilsTest {
 		
 		// add a tile to the tile pool 
 		ArrayList<Tile> newPile = new ArrayList<Tile>(); 
-		newPile.add(new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 3), new Tuple(4, 6), new Tuple(5, 7)})); 
+		newPile.add(new Tile(new Path[] {new Path(0, 2), new Path(1, 3), new Path(4, 6), new Path(5, 7)})); 
 		testServer1.setTilePile(newPile);
 		
 		// tiles left and multiple players, game is not over 
@@ -247,8 +247,8 @@ public class ServerUtilsTest {
 	
 	public void setupTest(int numPlayers){
 		testServer1 = new Server(numPlayers); 
-		Tile [][] testlayout1 = {{null, (new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null},
-				{(new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)})), null, null, null, null, null},
+		Tile [][] testlayout1 = {{null, (new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -275,12 +275,12 @@ public class ServerUtilsTest {
 	@Test
 	public void testDrawLoop() {
 		ArrayList<Tile> tilePile = new ArrayList<Tile>();
-		Tile tile1 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 2), new Tuple(4, 6), new Tuple(5, 7)});
-		Tile tile2 = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)});
-		Tile tile3 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 5), new Tuple(2, 6), new Tuple(4, 7)});
-		Tile tile4 = new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)});
-		Tile tile5 = new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 3), new Tuple(4, 6), new Tuple(5, 7)});
-		Tile tile6 = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)});
+		Tile tile1 = new Tile(new Path[] {new Path(0, 3), new Path(1, 2), new Path(4, 6), new Path(5, 7)});
+		Tile tile2 = new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)});
+		Tile tile3 = new Tile(new Path[] {new Path(0, 3), new Path(1, 5), new Path(2, 6), new Path(4, 7)});
+		Tile tile4 = new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)});
+		Tile tile5 = new Tile(new Path[] {new Path(0, 2), new Path(1, 3), new Path(4, 6), new Path(5, 7)});
+		Tile tile6 = new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)});
 		
 		tilePile.add(tile1);
 		tilePile.add(tile2);
