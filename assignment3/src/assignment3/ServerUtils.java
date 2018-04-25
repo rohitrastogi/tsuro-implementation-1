@@ -154,18 +154,47 @@ public class ServerUtils {
 	}
 	
 	//returns eliminated player's tiles to the deck
-	public static void addEliminatedPlayerTiles(SPlayer player, ArrayList<Tile> deck){
+	public static void addEliminatedPlayerTiles(SPlayer player, ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers){
 		deck.addAll(player.getTiles());
 		shuffleTiles(deck);
 		
 		// TODO: Check if any player has the dragon tile. If so, start with them drawing tiles until every remaining player has three
 		// If tiles run out before everyone has three, it shouldn't cause an issue due to the way drawTile handles everything. 
+		if (getDragTilePlayerIndex(currPlayers) != -1) {
+			// Someone has the dragon tile 
+			drawLoop(deck, currPlayers); 
+		}
 	}
 	
 	//shuffles tiles
 	public static void shuffleTiles(ArrayList<Tile> deck){
 		Random rand = new Random();
 		Collections.shuffle(deck, rand);
+	}
+	
+	// Get the index of the current player holding the dragon tile 
+	private static int getDragTilePlayerIndex(ArrayList<SPlayer> players) {
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).hasDragonTile()) {
+				return i; 
+			}
+		}
+		
+		// -1 means no one has the dragon tile 
+		return -1; 
+	}
+	
+	// Draw from pile until everyone has three tiles or there are no tiles left in the deck 
+	// TODO maybe put this stuff in a Deck Class
+	public static void drawLoop(ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers) {
+		int offset = getDragTilePlayerIndex(currPlayers); 
+		
+		for(int i = 0; i < (currPlayers.size() * 3); i++) {
+			SPlayer drawPlayer = currPlayers.get((i + offset) % currPlayers.size()); 
+			if (drawPlayer.getTiles().size() < 3) {
+				drawTile(drawPlayer, deck, currPlayers); 
+			}
+		}
 	}
 
 }
