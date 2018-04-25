@@ -39,9 +39,8 @@ public class ServerUtils {
 		// place the tile there in the board representation 
 		currBoard.placeTile(toPlay, actingPlayer.getPosn().getX(), actingPlayer.getPosn().getY());
 		
-		Position finalPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosn());
-		actingPlayer.setPosn(finalPosition);
-		if (finalPosition.isEdgePosition()){
+		Position finalActingPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosn());
+		if (finalActingPosition.isEdgePosition()){
 			eliminatePlayer(actingPlayer, cPlayers, ePlayers, deck);
 		}
 		
@@ -51,15 +50,17 @@ public class ServerUtils {
 		//move adjacent players to tile being placed and set final position
 		for (SPlayer p : adjacentPlayers){
 			p.setPosn(p.getPosn().getAdjacentPosition());
-			finalPosition = currBoard.getFinalPosition(toPlay, p.getPosn());
+			Position finalPosition = currBoard.getFinalPosition(toPlay, p.getPosn());
 			p.setPosn(finalPosition);
 			if (finalPosition.isEdgePosition()){
 				eliminatePlayer(p, cPlayers, ePlayers, deck); //should not mutate 
 			}
 		}
 		
+		actingPlayer.setPosn(finalActingPosition);
+		
 		//~~~~~STEP 3~~~~~
-		drawTile(actingPlayer, deck); 
+		drawTile(actingPlayer, deck, cPlayers); 
 		
 		
 		//~~~~~STEP 4~~~~~
@@ -134,14 +135,14 @@ public class ServerUtils {
 	}
 	
 	//
-	public static void drawTile(SPlayer player, ArrayList<Tile> deck, SPlayer currPlayers){
+	public static void drawTile(SPlayer player, ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers){
 		if (deck.size() != 0) {
 			player.addTile(deck.remove(0));
 		}
 		else {
 			// no tiles left in deck, check whether any other players have the dragon tile 
 			for (SPlayer p : currPlayers) {
-				if p.hasDragonTile() {
+				if (p.hasDragonTile()) {
 					// someone already has the dragon tile, no cards can be drawn 
 					return; 
 				}

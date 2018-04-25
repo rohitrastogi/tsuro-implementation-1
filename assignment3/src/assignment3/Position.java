@@ -62,7 +62,7 @@ public class Position {
 	
 		}
 		else if (xDiff == 0 && yDiff == -1){
-			if (other.tilePosn == 4 || other.tilePosn == 6) {
+			if (other.tilePosn == 4 || other.tilePosn == 5) {
 				return true;
 			}
 			return false;

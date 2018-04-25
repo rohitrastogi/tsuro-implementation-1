@@ -72,7 +72,7 @@ public class SPlayer {
 		this.hasDragonTile = false; 
 	}
 	
-	public void hasDragonTile() {
+	public boolean hasDragonTile() {
 		return this.hasDragonTile; 
 	}
 }

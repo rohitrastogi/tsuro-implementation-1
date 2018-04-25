@@ -28,6 +28,11 @@ public class PositionTest {
 		assertTrue(posn2.arePosnsAdjacent(posn1)); 
 		assertFalse(posn1.arePosnsAdjacent(posn3));
 		assertFalse(posn1.arePosnsAdjacent(posn4)); 
+		
+		Position posn6 = new Position(1, 1, 7); 
+		Position posn7 = new Position(1, 0, 5); 
+		
+		assertTrue(posn6.arePosnsAdjacent(posn7)); 
 	}
 
 	@Test

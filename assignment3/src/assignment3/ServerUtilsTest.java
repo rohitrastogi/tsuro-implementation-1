@@ -40,8 +40,8 @@ public class ServerUtilsTest {
 		List<Tile> player2hand = new ArrayList();
 		player1hand.add(new Tile(new Tuple[] {new Tuple(0, 4), new Tuple(1, 3), new Tuple(2, 7), new Tuple(5, 6)}));
 		player2hand.add(new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 7), new Tuple(2, 6), new Tuple(4, 5)}));
-		Position player1posn = new Position(0, 0, 7);
-		Position player2posn = new Position(0, 2, 6);
+		Position player1posn = new Position(-1, 0, 2); //lmao
+		Position player2posn = new Position(0, 2, 3);
 		SPlayer player1 = new SPlayer(player1hand,Color.RED, player1posn);
 		SPlayer player2 = new SPlayer(player2hand, Color.BLACK, player2posn);
 		
@@ -71,7 +71,7 @@ public class ServerUtilsTest {
 		ArrayList<Tile> newTilePile = new ArrayList<Tile>();
 		newTilePile.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)}));
 		Position newPlayer1Posn = new Position(4, 0, 2);
-		Position newPlayer2Posn = new Position(0, 2, 6); 
+		Position newPlayer2Posn = new Position(0, 2, 3); 
 		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>();
 		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
 		player1hand.add(new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)})); 
@@ -213,7 +213,7 @@ public class ServerUtilsTest {
 		//something is wrong with tile distribution
 		assertFalse(firstPlayerTiles.contains(toBeDrawn));
 		
-		ServerUtils.drawTile(testServer1.getCurrPlayers().get(0),testServer1.getTilePile());
+		ServerUtils.drawTile(testServer1.getCurrPlayers().get(0),testServer1.getTilePile(), testServer1.getCurrPlayers());
 		firstPlayerTiles = testServer1.getCurrPlayers().get(0).getTiles();
 		assertTrue(firstPlayerTiles.contains(toBeDrawn));
 		
