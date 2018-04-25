@@ -228,7 +228,7 @@ public class ServerUtilsTest {
 		assertEquals(32, testServer1.getTilePile().size());
 		
 		List <Tile> elimTiles = testServer1.getCurrPlayers().get(0).getTiles();
-		ServerUtils.addEliminatedPlayerTiles(testServer1.getCurrPlayers().get(0), testServer1.getTilePile());
+		ServerUtils.addEliminatedPlayerTiles(testServer1.getCurrPlayers().get(0), testServer1.getTilePile(), testServer1.getCurrPlayers());
 		assertEquals(35, testServer1.getTilePile().size());
 		
 		boolean test = true;
@@ -256,4 +256,67 @@ public class ServerUtilsTest {
 		Board board1 = new Board(testlayout1);
 	}
 
+	@Test
+	public void testGetDragTilePlayerIndex() {
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+		SPlayer player1 = new SPlayer(new ArrayList<Tile>(), Color.BLACK, new Position(1, 2, 3));
+		currPlayers.add(player1);
+		SPlayer player2 = new SPlayer(new ArrayList<Tile>(), Color.GREEN, new Position(2, 4, 6));
+		currPlayers.add(player2);
+		player2.takeDragonTile();
+		SPlayer player3 = new SPlayer(new ArrayList<Tile>(), Color.RED, new Position(5, 4, 3));
+		currPlayers.add(player3);
+		assertEquals(1, ServerUtils.getDragTilePlayerIndex(currPlayers));
+		
+		player2.loseDragonTile();
+		assertEquals(-1, ServerUtils.getDragTilePlayerIndex(currPlayers));
+	}
+	
+	@Test
+	public void testDrawLoop() {
+		ArrayList<Tile> tilePile = new ArrayList<Tile>();
+		Tile tile1 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 2), new Tuple(4, 6), new Tuple(5, 7)});
+		Tile tile2 = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 3), new Tuple(2, 6), new Tuple(4, 7)});
+		Tile tile3 = new Tile(new Tuple[] {new Tuple(0, 3), new Tuple(1, 5), new Tuple(2, 6), new Tuple(4, 7)});
+		Tile tile4 = new Tile(new Tuple[] {new Tuple(0, 7), new Tuple(1, 6), new Tuple(2, 5), new Tuple(3, 4)});
+		Tile tile5 = new Tile(new Tuple[] {new Tuple(0, 2), new Tuple(1, 3), new Tuple(4, 6), new Tuple(5, 7)});
+		Tile tile6 = new Tile(new Tuple[] {new Tuple(0, 5), new Tuple(1, 6), new Tuple(2, 7), new Tuple(3, 4)});
+		
+		tilePile.add(tile1);
+		tilePile.add(tile2);
+		tilePile.add(tile3);
+		tilePile.add(tile4);
+		tilePile.add(tile5);
+		tilePile.add(tile6);
+		
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+		SPlayer player1 = new SPlayer(new ArrayList<Tile>(), Color.BLACK, new Position(1, 2, 3));
+		currPlayers.add(player1);
+		SPlayer player2 = new SPlayer(new ArrayList<Tile>(), Color.GREEN, new Position(2, 4, 6));
+		player2.takeDragonTile();
+		currPlayers.add(player2);
+		SPlayer player3 = new SPlayer(new ArrayList<Tile>(), Color.RED, new Position(5, 4, 3));
+		currPlayers.add(player3);
+		
+		ServerUtils.drawLoop(tilePile, currPlayers);
+		
+		ArrayList<Tile> player1hand = new ArrayList<Tile>();
+		player1hand.add(tile3);
+		player1hand.add(tile6);
+		
+		ArrayList<Tile> player2hand = new ArrayList<Tile>();
+		player2hand.add(tile1);
+		player2hand.add(tile4);
+		
+		ArrayList<Tile> player3hand = new ArrayList<Tile>();
+		player3hand.add(tile2);
+		player3hand.add(tile5);
+		
+		assertTrue(currPlayers.get(0).getTiles().equals(player1hand));
+		assertFalse(currPlayers.get(0).hasDragonTile());
+		assertTrue(currPlayers.get(1).getTiles().equals(player2hand));
+		assertFalse(currPlayers.get(1).hasDragonTile());
+		assertTrue(currPlayers.get(2).getTiles().equals(player3hand));
+		assertFalse(currPlayers.get(2).hasDragonTile());
+	}
 }

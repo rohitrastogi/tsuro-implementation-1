@@ -107,9 +107,10 @@ public class ServerUtils {
 
 	//removes a player from cPlayers list to ePlayers list, and shuffles eliminated player's tiles into deck
 	public static void eliminatePlayer(SPlayer player, ArrayList<SPlayer>cPlayers, ArrayList<SPlayer> ePlayers, ArrayList<Tile> deck){
+		player.loseDragonTile();
 		cPlayers.remove(player);
 		ePlayers.add(player);
-		addEliminatedPlayerTiles(player, deck);
+		addEliminatedPlayerTiles(player, deck, cPlayers);
 	}
 	
 	//returns a list of all players that can be moved as a result of a new tile being placed
@@ -173,23 +174,26 @@ public class ServerUtils {
 	}
 	
 	// Get the index of the current player holding the dragon tile 
-	private static int getDragTilePlayerIndex(ArrayList<SPlayer> players) {
+	public static int getDragTilePlayerIndex(ArrayList<SPlayer> players) {
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i).hasDragonTile()) {
 				return i; 
 			}
 		}
-		
 		// -1 means no one has the dragon tile 
 		return -1; 
 	}
 	
-	// Draw from pile until everyone has three tiles or there are no tiles left in the deck 
+	// Draw from pile until everyone has three tiles
 	// TODO maybe put this stuff in a Deck Class
 	public static void drawLoop(ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers) {
 		int offset = getDragTilePlayerIndex(currPlayers); 
-		
+		currPlayers.get(offset).loseDragonTile();
 		for(int i = 0; i < (currPlayers.size() * 3); i++) {
+			if (deck.size() == 0){
+				break; //don't want to draw dragon tile 
+			}
+			//System.out.println((i+offset) % currPlayers.size());
 			SPlayer drawPlayer = currPlayers.get((i + offset) % currPlayers.size()); 
 			if (drawPlayer.getTiles().size() < 3) {
 				drawTile(drawPlayer, deck, currPlayers); 
