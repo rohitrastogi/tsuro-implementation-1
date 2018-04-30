@@ -16,8 +16,8 @@ public class ServerUtilsTest {
 	}
 	
 	@Test
-	//tests edge move, moving several tiles, and also playing a rotated tile
-	public void testPlayATurn1() {
+	//tests moving from an edge, moving across several tiles, and also playing a rotated tile
+	public void testPlayATurn1() throws ContractException {
 		
 		//create board argument
 		Tile [][] testLayout = {{null, (new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
@@ -76,6 +76,11 @@ public class ServerUtilsTest {
 		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
 		player1hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)})); 
 		newCurrPlayers.add(new SPlayer(player1hand, Color.RED, newPlayer1Posn));
+		
+		//check whether dragon tile wasn't added erroneously
+		for (SPlayer player : newCurrPlayers){
+			assertFalse(player.hasDragonTile());
+		}
 		
 		BoardState returnedBS = ServerUtils.playATurn(tilePile, currPlayers, new ArrayList<SPlayer>(), testBoard, toPlay); 
 		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, new ArrayList<SPlayer>(), newBoard, new ArrayList<SPlayer>());
@@ -155,6 +160,67 @@ public class ServerUtilsTest {
 		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, newElimPlayers, newBoard, new ArrayList<SPlayer>()); 
 		
 		assertTrue(returnedBS.equals(compareBS)); 
+	}
+	@Test 
+	//non-dragon tile player is eliminated 
+	public void testDragonTile1(){
+		ArrayList<Tile> p1Hand = new ArrayList<Tile>();
+		ArrayList<Tile> p2Hand = new ArrayList<Tile>();
+		ArrayList<Tile> p3Hand = new ArrayList<Tile>();
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+		ArrayList<Tile> deck = new ArrayList<Tile>();
+		
+		p1Hand.add(new Tile(new Path[] {new Path(0, 2), new Path(1, 3), new Path(4, 6), new Path(5, 7)}));
+		p2Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 2), new Path(4, 6), new Path(5, 7)}));
+		p2Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 5), new Path(2, 6), new Path(4, 7)}));
+		p2Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)}));
+		p3Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
+		
+		SPlayer p1 = new SPlayer(p1Hand, Color.RED, new Position(0, 1, 2)); 
+		p1.takeDragonTile();
+		currPlayers.add(p1);
+		SPlayer p2 = new SPlayer(p2Hand, Color.BLUE, new Position(1, 2, 0));
+		currPlayers.add(p2);
+		SPlayer p3 = new SPlayer(p3Hand, Color.YELLOW, new Position(2, 1, 6)); 
+		currPlayers.add(p3);
+		
+		ServerUtils.addEliminatedPlayerTiles(p2, deck, currPlayers);
+		
+		assertEquals(3, p1Hand.size());
+		assertEquals(2, p3Hand.size());
+		assertEquals(0, deck.size());		
+	}
+	
+	@Test
+	//dragon tile player is eliminated 
+	public void testDragonTile2(){
+		ArrayList<Tile> p1Hand = new ArrayList<Tile>();
+		ArrayList<Tile> p2Hand = new ArrayList<Tile>();
+		ArrayList<Tile> p3Hand = new ArrayList<Tile>();
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+		ArrayList<SPlayer> elimPlayers = new ArrayList<SPlayer>();
+		ArrayList<Tile> deck = new ArrayList<Tile>();
+		
+		p1Hand.add(new Tile(new Path[] {new Path(0, 2), new Path(1, 3), new Path(4, 6), new Path(5, 7)}));
+		p1Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 2), new Path(4, 6), new Path(5, 7)}));
+		p1Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 5), new Path(2, 6), new Path(4, 7)}));
+		p2Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)}));
+		p3Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
+		
+		SPlayer p1 = new SPlayer(p1Hand, Color.RED, new Position(0, 1, 2)); 
+		p1.takeDragonTile();
+		currPlayers.add(p1);
+		SPlayer p2 = new SPlayer(p2Hand, Color.BLUE, new Position(1, 2, 0));
+		currPlayers.add(p2);
+		SPlayer p3 = new SPlayer(p3Hand, Color.YELLOW, new Position(2, 1, 6)); 
+		currPlayers.add(p3);
+		
+		ServerUtils.eliminatePlayer(p1, currPlayers, elimPlayers, deck);
+		
+		assertTrue(elimPlayers.contains(p1));
+		assertFalse(p1.hasDragonTile());
+		assertEquals(3, deck.size());	
+		
 	}
 
 	@Test
@@ -245,16 +311,6 @@ public class ServerUtilsTest {
 		fail("Not yet implemented");
 	}
 	
-	public void setupTest(int numPlayers){
-		testServer1 = new Server(numPlayers); 
-		Tile [][] testlayout1 = {{null, (new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null},
-				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null}};
-		Board board1 = new Board(testlayout1);
-	}
 
 	@Test
 	public void testGetDragTilePlayerIndex() {
@@ -318,5 +374,16 @@ public class ServerUtilsTest {
 		assertFalse(currPlayers.get(1).hasDragonTile());
 		assertTrue(currPlayers.get(2).getTiles().equals(player3hand));
 		assertFalse(currPlayers.get(2).hasDragonTile());
+	}
+	
+	public void setupTest(int numPlayers){
+		testServer1 = new Server(numPlayers); 
+		Tile [][] testlayout1 = {{null, (new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null},
+				{(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)})), null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null}};
+		Board board1 = new Board(testlayout1);
 	}
 }

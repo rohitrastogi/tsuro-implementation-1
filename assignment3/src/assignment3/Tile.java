@@ -13,13 +13,29 @@ public class Tile {
 	public static final int NUM_SIDES = 4;
 	
 	public Tile(Path[] paths, int rotation){
+		//TODO where do we catch the illegalArgumentException?
+		//check path length (must have 4 input/output pairs)
+		if (paths.length != 4){
+			throw new IllegalArgumentException("Tile does not have 4 Paths!");
+		}
+		//checks if each input/output point is in the set [0-7] and appears only once
+		for (int i = 0; i< NUM_POSITIONS; i++){
+			boolean seen = false;
+			for (Path path: paths){
+				if (path.contains(i)){
+					seen = true;
+				}
+			}
+			if (!seen){
+				throw new IllegalArgumentException("Tile has invalid input/output paths!");
+			}
+		}
 		this.paths = paths;
 		this.rotation = rotation;
 	}
 	
 	public Tile(Path[] paths){
-		this.paths = paths;
-		this.rotation = 0;
+		this(paths, 0);
 	}
 	
 	public Tile rotate(int r){

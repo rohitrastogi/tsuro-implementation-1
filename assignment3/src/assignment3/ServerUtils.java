@@ -53,7 +53,7 @@ public class ServerUtils {
 			Position finalPosition = currBoard.getFinalPosition(toPlay, p.getPosn());
 			p.setPosn(finalPosition);
 			if (finalPosition.isEdgePosition()){
-				eliminatePlayer(p, cPlayers, ePlayers, deck); //should not mutate 
+				eliminatePlayer(p, cPlayers, ePlayers, deck);  
 			}
 		}
 		
@@ -144,7 +144,7 @@ public class ServerUtils {
 			// no tiles left in deck, check whether any other players have the dragon tile 
 			for (SPlayer p : currPlayers) {
 				if (p.hasDragonTile()) {
-					// someone already has the dragon tile, no cards can be drawn 
+					// someone already has the dragon tile, no tiles can be drawn 
 					return; 
 				}
 			}
@@ -158,9 +158,7 @@ public class ServerUtils {
 	public static void addEliminatedPlayerTiles(SPlayer player, ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers){
 		deck.addAll(player.getTiles());
 		shuffleTiles(deck);
-		
-		// TODO: Check if any player has the dragon tile. If so, start with them drawing tiles until every remaining player has three
-		// If tiles run out before everyone has three, it shouldn't cause an issue due to the way drawTile handles everything. 
+		 
 		if (getDragTilePlayerIndex(currPlayers) != -1) {
 			// Someone has the dragon tile 
 			drawLoop(deck, currPlayers); 
