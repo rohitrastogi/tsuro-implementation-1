@@ -22,7 +22,7 @@ public class Board {
 	}
 	
 	public Board(Tile[][] layout) {
-		//tbh not sure if this works (is clone necessary here)
+		// TODO tbh not sure if this works (is clone necessary here)
 		tileLayout = layout.clone(); 
 	}
 	
@@ -147,28 +147,9 @@ public class Board {
 		}
 		Position nextPosn = intermediatePosn.getAdjacentPosition();
 		
-		/* TODO: Do this check in a way that does not require passing currPlayers or having a list of players present in every Board
-		// Error null position (error code) to signify that this move would cause a double elimination
-		if (arePosnsSame(nextPosn)){
-			return null;
-		}
-		*/
-		
 		// Move onto the next tile and get the final position from there 
 		return getFinalPosition(nextTile, nextPosn); 
 	}
-	
-	/* TODO: Do this check in a way that does not require passing currPlayers or having a list of players present in every Board
-	// Check whether other players are at the same position as the input position
-	public boolean arePosnsSame(Position intermediatePosn){
-		for (SPlayer p : currPlayers){
-			if (p.getPosn().equals(intermediatePosn)){
-					return true;
-			}
-		}
-		return false;
-	}
-	*/ 
 	
 	
 	// Getters and Setters

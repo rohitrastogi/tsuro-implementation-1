@@ -12,7 +12,7 @@ public class TileTest {
 		Tile t2 = new Tile(new Path[] {new Path(0, 1), new Path(2, 3), new Path(4, 5), new Path(6, 7)});
 		assertTrue(t1.equals(t2));
 		
-		Tile t3 = new Tile(new Path[] {new Path(1, 3), new Path(2, 4), new Path(3, 5), new Path(6, 7)});
+		Tile t3 = new Tile(new Path[] {new Path(1, 3), new Path(2, 4), new Path(0, 5), new Path(6, 7)});
 		assertFalse(t1.equals(t3));
 	}
 

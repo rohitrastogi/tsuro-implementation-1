@@ -1,5 +1,6 @@
 package assignment3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Tile {
@@ -84,6 +85,25 @@ public class Tile {
 		Tile t = (Tile) obj; 
 		
 		return (Arrays.equals(t.paths, this.paths) && (t.rotation == this.rotation));
+	}
+	
+	// returns how many functionally different rotations this tile has
+	public int getSymmetry() {
+		// go through each rotation, check its out position and see if it changes 
+		int numRotations = 0; 
+		ArrayList<Integer> previousRotations = new ArrayList<Integer>(); 
+		for (int i = 0; i < NUM_SIDES; i++) {
+			this.rotation = (this.rotation + 1) % NUM_SIDES; 
+			int output = getOutPath(0);  // just get the out path for the first position 
+			
+			if (!previousRotations.contains(output)) {
+				// This is an unseen rotation 
+				numRotations++; 
+				previousRotations.add(output);  
+			}
+		}
+		
+		return numRotations; 
 	}
 	
 	// Getters and Setters 

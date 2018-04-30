@@ -17,7 +17,7 @@ public class ServerUtilsTest {
 	
 	@Test
 	//tests moving from an edge, moving across several tiles, and also playing a rotated tile
-	public void testPlayATurn1() throws ContractException {
+	public void testPlayATurn1() {
 		
 		//create board argument
 		Tile [][] testLayout = {{null, (new Tile(new Path[] {new Path(0, 5), new Path(1, 4), new Path(2, 7), new Path(3, 6)})), 
@@ -40,10 +40,10 @@ public class ServerUtilsTest {
 		List<Tile> player2hand = new ArrayList();
 		player1hand.add(new Tile(new Path[] {new Path(0, 4), new Path(1, 3), new Path(2, 7), new Path(5, 6)}));
 		player2hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 7), new Path(2, 6), new Path(4, 5)}));
-		Position player1posn = new Position(-1, 0, 2); //lmao
+		Position player1posn = new Position(-1, 0, 2); // Caution about -1 
 		Position player2posn = new Position(0, 2, 3);
 		SPlayer player1 = new SPlayer(player1hand,Color.RED, player1posn);
-		SPlayer player2 = new SPlayer(player2hand, Color.BLACK, player2posn);
+		SPlayer player2 = new SPlayer(player2hand, Color.SIENNA, player2posn);
 		
 		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
 		currPlayers.add(player1);
@@ -73,7 +73,7 @@ public class ServerUtilsTest {
 		Position newPlayer1Posn = new Position(4, 0, 2);
 		Position newPlayer2Posn = new Position(0, 2, 3); 
 		ArrayList<SPlayer> newCurrPlayers = new ArrayList<SPlayer>();
-		newCurrPlayers.add(new SPlayer(player2hand, Color.BLACK, newPlayer2Posn)); 
+		newCurrPlayers.add(new SPlayer(player2hand, Color.SIENNA, newPlayer2Posn)); 
 		player1hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)})); 
 		newCurrPlayers.add(new SPlayer(player1hand, Color.RED, newPlayer1Posn));
 		
@@ -107,7 +107,7 @@ public class ServerUtilsTest {
 		// generate players 
 		SPlayer p1 = new SPlayer(new ArrayList<Tile>(), Color.RED, new Position(0, 1, 2)); 
 		SPlayer p2 = new SPlayer(new ArrayList<Tile>(), Color.BLUE, new Position(1, 2, 0)); 
-		SPlayer p3 = new SPlayer(new ArrayList<Tile>(), Color.YELLOW, new Position(2, 1, 6)); 
+		SPlayer p3 = new SPlayer(new ArrayList<Tile>(), Color.GREEN, new Position(2, 1, 6)); 
 		SPlayer p4 = new SPlayer(new ArrayList<Tile>(), Color.ORANGE, new Position(1, 0, 5)); 
 		
 		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>(); 
@@ -143,7 +143,7 @@ public class ServerUtilsTest {
 		// Make new players in the proper positions 
 		SPlayer newP1 = new SPlayer(p1Hand, Color.RED, new Position(1, 2, 4)); 
 		SPlayer newP2 = new SPlayer(new ArrayList<Tile>(), Color.BLUE, new Position(2, 1, 2)); 
-		SPlayer newP3 = new SPlayer(new ArrayList<Tile>(), Color.YELLOW, new Position(0, 1, 6)); 
+		SPlayer newP3 = new SPlayer(new ArrayList<Tile>(), Color.GREEN, new Position(0, 1, 6)); 
 		SPlayer newP4 = new SPlayer(new ArrayList<Tile>(), Color.ORANGE, new Position(1, 0, 1)); 
 		
 		// Only p2 and p1 survived elimination
@@ -181,7 +181,7 @@ public class ServerUtilsTest {
 		currPlayers.add(p1);
 		SPlayer p2 = new SPlayer(p2Hand, Color.BLUE, new Position(1, 2, 0));
 		currPlayers.add(p2);
-		SPlayer p3 = new SPlayer(p3Hand, Color.YELLOW, new Position(2, 1, 6)); 
+		SPlayer p3 = new SPlayer(p3Hand, Color.GREEN, new Position(2, 1, 6)); 
 		currPlayers.add(p3);
 		
 		ServerUtils.addEliminatedPlayerTiles(p2, deck, currPlayers);
@@ -212,7 +212,7 @@ public class ServerUtilsTest {
 		currPlayers.add(p1);
 		SPlayer p2 = new SPlayer(p2Hand, Color.BLUE, new Position(1, 2, 0));
 		currPlayers.add(p2);
-		SPlayer p3 = new SPlayer(p3Hand, Color.YELLOW, new Position(2, 1, 6)); 
+		SPlayer p3 = new SPlayer(p3Hand, Color.GREEN, new Position(2, 1, 6)); 
 		currPlayers.add(p3);
 		
 		ServerUtils.eliminatePlayer(p1, currPlayers, elimPlayers, deck);
@@ -315,7 +315,7 @@ public class ServerUtilsTest {
 	@Test
 	public void testGetDragTilePlayerIndex() {
 		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
-		SPlayer player1 = new SPlayer(new ArrayList<Tile>(), Color.BLACK, new Position(1, 2, 3));
+		SPlayer player1 = new SPlayer(new ArrayList<Tile>(), Color.SIENNA, new Position(1, 2, 3));
 		currPlayers.add(player1);
 		SPlayer player2 = new SPlayer(new ArrayList<Tile>(), Color.GREEN, new Position(2, 4, 6));
 		currPlayers.add(player2);
@@ -346,7 +346,7 @@ public class ServerUtilsTest {
 		tilePile.add(tile6);
 		
 		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
-		SPlayer player1 = new SPlayer(new ArrayList<Tile>(), Color.BLACK, new Position(1, 2, 3));
+		SPlayer player1 = new SPlayer(new ArrayList<Tile>(), Color.SIENNA, new Position(1, 2, 3));
 		currPlayers.add(player1);
 		SPlayer player2 = new SPlayer(new ArrayList<Tile>(), Color.GREEN, new Position(2, 4, 6));
 		player2.takeDragonTile();

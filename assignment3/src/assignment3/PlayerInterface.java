@@ -1,3 +1,7 @@
+package assignment3;
+
+import java.util.*;
+
 interface PlayerInterface {
   // Returns the player's name 
   public String getName();

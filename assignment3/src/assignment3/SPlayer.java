@@ -2,12 +2,8 @@ package assignment3;
 
 import java.util.*;
 
-enum Color
-{
-	BLUE, RED, YELLOW, ORANGE, GREEN, PINK, PURPLE, BLACK;	
-}
-
 public class SPlayer {
+	private PlayerInterface player;
 	private List<Tile> myTiles;
 	private Color color;
 	private Position posn;

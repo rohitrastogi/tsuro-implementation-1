@@ -49,7 +49,7 @@ public class SPlayerTest {
 		SPlayer test3 = new SPlayer(pTiles3, Color.GREEN, new Position(0, 0, 0));
 		assertFalse(test3.equals(test1));
 		
-		SPlayer test4 = new SPlayer(pTiles1, Color.BLACK, new Position(0, 0, 0));
+		SPlayer test4 = new SPlayer(pTiles1, Color.SIENNA, new Position(0, 0, 0));
 		assertFalse(test4.equals(test1));
 		
 		SPlayer test5 = new SPlayer(pTiles1, Color.GREEN, new Position(1, 1, 1));
