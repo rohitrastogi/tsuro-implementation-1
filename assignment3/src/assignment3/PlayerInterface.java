@@ -10,7 +10,7 @@ interface PlayerInterface {
   // The first argument is the player's color
   // and the second is all of the players'
   // colors, in the order that the game will be played.
-  public void initialize(Color c, ArrayList<Color> playerColors); 
+  public void initialize(Color c, List<Color> playerColors); 
   
   // Called at the first step in a game; indicates where
   // the player wishes to place their pawn. The pawn must
@@ -22,9 +22,9 @@ interface PlayerInterface {
   // count of tiles that are not yet handed out to players.
   // The result is the tile the player should place,
   // suitably rotated.
-  public Tile playTurn(Board b, ArrayList<Tile> hand, int tilesRemaining); 
+  public Tile playTurn(Board b, List<Tile> hand, int tilesRemaining); 
   
   // Called to inform the player of the final board
   // state and which players won the game.
-  public void endGame(Board b, ArrayList<Color> winners);
+  public void endGame(Board b, List<Color> winners);
 }

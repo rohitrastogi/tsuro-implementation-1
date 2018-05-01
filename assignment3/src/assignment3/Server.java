@@ -14,6 +14,57 @@ public class Server {
 	Position[] posns = {new Position(0, 0, 5), new Position(0, 3, 6), new Position(0, 5, 5), new Position(5, 0, 3), new Position(5, 3, 3),
 			new Position(5, 5, 5), new Position(0, 3, 1), new Position(0, 5, 1)};
 	
+	
+	private Server() {};
+	
+	public static Server server = new Server();
+	
+	// GAME INIT FUNCTIONS // 
+	public void registerPlayer(PlayerInterface p){
+		currPlayers.add(new SPlayer(p));
+	}
+	
+	public void initializeServer(){
+		generateTilePile();
+		elimPlayers = new ArrayList<SPlayer>();
+		initializePlayers();
+		board = new Board(); 
+	}
+	
+	public void initializePlayers(){
+		ServerUtils.shuffleTiles(tilePile);
+		for (int i=0; i<currPlayers.size(); i++){
+			PlayerInterface player = currPlayers.get(i).getPlayer();
+			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
+			for (int j=0; j<TILES_PER_PLAYER; j++){
+				tilePile.remove(0);
+			}
+			currPlayers.get(i).setTiles(myTiles);
+			currPlayers.get(i).setPosn(player.placePawn(board));
+		}
+			
+	}
+	
+	public ArrayList<PlayerInterface> playGame(){ //maybe this should return an ArrayList of SPlayers?
+		BoardState state;
+		initializeServer();
+		while(!ServerUtils.isGameOver(currPlayers, tilePile)){
+			SPlayer currPlayer = currPlayers.get(0);
+			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
+			Tile toPlay = currPlayerInterface.playTurn(board, currPlayer.getTiles(), 0);//why is tiles remaining important?
+			state = ServerUtils.playATurn(tilePile, currPlayers, elimPlayers, board, toPlay); //mutates
+		}
+		ArrayList<SPlayer> winners = state.getWinners();
+		for (int i = 0; i< winners.size(); i++){
+			PlayerInterface p = winners.get(i).getPlayer();
+			p.endGame(board, winners); //issue with arraylist vs list here
+		}
+		return winners;
+	}
+	
+	//~~~~~~~FOR TESTS ONLY~~~~~~~~~
+	
+	//constructor for tests only
 	public Server(int numPlayers) {
 		initializeGame(numPlayers); 
 	}
@@ -22,8 +73,6 @@ public class Server {
 	public Server(Board testBoard){
 		board =  testBoard;
 	}
-	
-	// GAME INIT FUNCTIONS // 
 	public void initializeGame(int numPlayers) {
 		generateTilePile(); 
 		currPlayers = new ArrayList<SPlayer>(); 

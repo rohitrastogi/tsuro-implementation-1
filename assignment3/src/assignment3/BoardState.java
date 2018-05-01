@@ -22,29 +22,12 @@ public class BoardState {
 	
 	public boolean equals(Object obj) {
 		BoardState bs = (BoardState) obj; 
-//		if (!this.tilePile.equals(bs.tilePile) && this.currPlayers.equals(bs.currPlayers)){
-//			System.out.println("tilepiles not equal");
-//		}
-//		
-//		if (!this.currPlayers.equals(bs.currPlayers)){
-//			System.out.println("currplayers not equal");
-//		}
-//		
-//		if (!this.elimPlayers.equals(bs.elimPlayers)){
-//			System.out.println("elimplayers not equal");
-//		}
-//		
-//		if (!this.board.equals(bs.board)){
-//			System.out.println("boards not equal");
-//		}
-//		
-//		if (!this.winners.equals(bs.winners)){
-//			System.out.println("winners not equal");
-//		}
-//		
-		
 		return (this.tilePile.equals(bs.tilePile) && this.currPlayers.equals(bs.currPlayers) && 
 				this.elimPlayers.equals(bs.elimPlayers) && this.board.equals(bs.board) &&
 				this.winners.equals(bs.winners));
+	}
+	
+	public ArrayList<SPlayer> getWinners(){
+		return winners;
 	}
 }

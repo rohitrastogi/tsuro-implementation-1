@@ -9,11 +9,17 @@ public class SPlayer {
 	private Position posn;
 	private boolean hasDragonTile; 
 	
+	//for testing only
 	public SPlayer(List<Tile> myTiles, Color color, Position posn){
 		this.myTiles = myTiles;
 		this.color = color;
 		this.posn = posn;
 		this.hasDragonTile = false; 
+	}
+	
+	//used for actual game play
+	public SPlayer(PlayerInterface player){
+		this.player = player;
 	}
 	
 	// Checks whether a player has a certain tile in their possession 
@@ -50,6 +56,10 @@ public class SPlayer {
 	
 	public Position getPosn(){
 		return posn;
+	}
+	
+	public PlayerInterface getPlayer(){
+		return player;
 	}
 	
 	public void setPosn(Position p){
