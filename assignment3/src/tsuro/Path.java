@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 public class Path {
 	int val1;

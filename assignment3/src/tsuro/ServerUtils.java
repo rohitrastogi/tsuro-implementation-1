@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,12 +34,12 @@ public class ServerUtils {
 		//~~~~~STEP 1~~~~~
 		SPlayer actingPlayer = cPlayers.get(0);
 		//moved acting player to tile being placed
-		actingPlayer.setPosn(actingPlayer.getPosn().getAdjacentPosition());
+		actingPlayer.setPosition(actingPlayer.getPosition().getAdjacentPosition());
 		
 		// place the tile there in the board representation 
-		currBoard.placeTile(toPlay, actingPlayer.getPosn().getX(), actingPlayer.getPosn().getY());
+		currBoard.placeTile(toPlay, actingPlayer.getPosition().getX(), actingPlayer.getPosition().getY());
 		
-		Position finalActingPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosn());
+		Position finalActingPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosition());
 		if (finalActingPosition.isEdgePosition()){
 			eliminatePlayer(actingPlayer, cPlayers, ePlayers, deck);
 		}
@@ -49,15 +49,15 @@ public class ServerUtils {
 		
 		//move adjacent players to tile being placed and set final position
 		for (SPlayer p : adjacentPlayers){
-			p.setPosn(p.getPosn().getAdjacentPosition());
-			Position finalPosition = currBoard.getFinalPosition(toPlay, p.getPosn());
-			p.setPosn(finalPosition);
+			p.setPosition(p.getPosition().getAdjacentPosition());
+			Position finalPosition = currBoard.getFinalPosition(toPlay, p.getPosition());
+			p.setPosition(finalPosition);
 			if (finalPosition.isEdgePosition()){
 				eliminatePlayer(p, cPlayers, ePlayers, deck);  
 			}
 		}
 		
-		actingPlayer.setPosn(finalActingPosition);
+		actingPlayer.setPosition(finalActingPosition);
 		
 		//~~~~~STEP 3~~~~~
 		drawTile(actingPlayer, deck, cPlayers); 
@@ -121,7 +121,7 @@ public class ServerUtils {
 				continue;
 			}
 			else {
-				if (player.getPosn().arePosnsAdjacent(other.getPosn())){
+				if (player.getPosition().arePosnsAdjacent(other.getPosition())){
 					adjacentPlayers.add(other);
 				}
 			}
@@ -197,6 +197,11 @@ public class ServerUtils {
 				drawTile(drawPlayer, deck, currPlayers); 
 			}
 		}
+	}
+	
+	// Gets the SPlayer associated with a given Player 
+	public static SPlayer getSPlayer(PlayerInterface player) {
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 import java.util.*;
 
@@ -6,11 +6,13 @@ interface PlayerInterface {
   // Returns the player's name 
   public String getName();
   
+  public Token getToken();
+  
   // Called to indicate a game is starting.
   // The first argument is the player's color
   // and the second is all of the players'
   // colors, in the order that the game will be played.
-  public void initialize(Color c, List<Color> playerColors); 
+  public void initialize(Color c, Color[] playerColors); 
   
   // Called at the first step in a game; indicates where
   // the player wishes to place their pawn. The pawn must

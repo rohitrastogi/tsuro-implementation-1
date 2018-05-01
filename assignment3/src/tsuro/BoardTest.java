@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 import static org.junit.Assert.*;
 
@@ -128,6 +128,6 @@ public class BoardTest {
 		pTiles.add(new Tile(new Path[] {new Path(0, 7), new Path(1, 6), new Path(2, 5), new Path(3, 4)}, 1));
 		pTiles.add(new Tile(new Path[] {new Path(0, 6), new Path(1, 5), new Path(2, 4), new Path(3, 7)})); 
 		
-		testPlayer = new SPlayer(pTiles, Color.GREEN, new Position(0, 0, 5));
+		testPlayer = new SPlayer(pTiles, new Position(0, 0, 5));
 	}
 }

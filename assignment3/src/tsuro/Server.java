@@ -1,4 +1,4 @@
-package assignment3; 
+package tsuro; 
 
 import java.util.*; 
 
@@ -35,63 +35,89 @@ public class Server {
 		ServerUtils.shuffleTiles(tilePile);
 		for (int i=0; i<currPlayers.size(); i++){
 			PlayerInterface player = currPlayers.get(i).getPlayer();
+			//TODO clean up call to initialize if possible?
+			player.initialize(currPlayers.get(i).getColor(), Color.values());
 			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
 			for (int j=0; j<TILES_PER_PLAYER; j++){
 				tilePile.remove(0);
 			}
 			currPlayers.get(i).setTiles(myTiles);
-			currPlayers.get(i).setPosn(player.placePawn(board));
+			currPlayers.get(i).setPosition(player.placePawn(board));
 		}
-			
 	}
 	
-	public ArrayList<PlayerInterface> playGame(){ //maybe this should return an ArrayList of SPlayers?
-		BoardState state;
+	public ArrayList<SPlayer> playGame(){ 
+		BoardState state = null;
+		//setup server state
 		initializeServer();
+		
+		//main game loop
 		while(!ServerUtils.isGameOver(currPlayers, tilePile)){
 			SPlayer currPlayer = currPlayers.get(0);
 			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
 			Tile toPlay = currPlayerInterface.playTurn(board, currPlayer.getTiles(), 0);//why is tiles remaining important?
 			state = ServerUtils.playATurn(tilePile, currPlayers, elimPlayers, board, toPlay); //mutates
 		}
+		//when game is over extract winners from boardState
 		ArrayList<SPlayer> winners = state.getWinners();
-		for (int i = 0; i< winners.size(); i++){
-			PlayerInterface p = winners.get(i).getPlayer();
-			p.endGame(board, winners); //issue with arraylist vs list here
+		
+		//extract winner colors from winners list
+		ArrayList<Color> winnerColors = new ArrayList<Color>();
+		for (int i=0; i< winners.size(); i++){
+			winnerColors.add(winners.get(i).getColor());
+		}
+		
+		//call endgame on all players and pass in winner colors
+		for (int i = 0; i< currPlayers.size(); i++){ 
+			PlayerInterface p = currPlayers.get(i).getPlayer();
+			p.endGame(board, winnerColors); 
+		}
+		
+		for (int i=0; i<elimPlayers.size(); i++){
+			PlayerInterface p = elimPlayers.get(i).getPlayer();
+			p.endGame(board, winnerColors); 
 		}
 		return winners;
 	}
 	
-	//~~~~~~~FOR TESTS ONLY~~~~~~~~~
-	
-	//constructor for tests only
-	public Server(int numPlayers) {
-		initializeGame(numPlayers); 
+	// Getters and Setters
+	public ArrayList<Tile> getTilePile() {
+		return tilePile; 
 	}
 	
-	//constructor for tests only 
-	public Server(Board testBoard){
-		board =  testBoard;
-	}
-	public void initializeGame(int numPlayers) {
-		generateTilePile(); 
-		currPlayers = new ArrayList<SPlayer>(); 
-		elimPlayers = new ArrayList<SPlayer>(); 
-		createPlayers(numPlayers);
-		board = new Board(); 
+	public void setTilePile(ArrayList<Tile> newTilePile) {
+		tilePile = newTilePile; 
 	}
 	
-	public void createPlayers(int num){
-		ServerUtils.shuffleTiles(tilePile);
-		for(int i=0; i<num; i++){
-			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
-			for (int j=0; j<TILES_PER_PLAYER; j++){
-				tilePile.remove(0);
+	public ArrayList<SPlayer> getCurrPlayers() {
+		return currPlayers; 
+	}
+	
+	public ArrayList<SPlayer> getElimPlayers() {
+		return elimPlayers; 
+	}
+	
+	public void setCurrPlayers(ArrayList<SPlayer> currPlayers){
+		this.currPlayers = currPlayers;
+	}
+	
+	public void setElimPlayers(ArrayList<SPlayer> elimPlayers){
+		this.elimPlayers = elimPlayers;
+	}
+	
+	// Gets the SPlayer associated with a given Player 
+	public SPlayer getSPlayer(PlayerInterface player) {
+		for (SPlayer sp : currPlayers) {
+			if (sp.getColor() == player.getToken().getColor()) {
+				return sp; 
 			}
-			currPlayers.add(new SPlayer(myTiles, Color.values()[i], posns[i]));		
 		}
+		
+		// TODO throw an exception somewhere 
+		return null; 
 	}
 	
+	// Other helpers
 	// Makes 35 unique Tiles and adds each one to the tile pile 
 	public void generateTilePile(){
 		tilePile.add(new Tile(new Path[] {new Path(0, 1), new Path(2, 3), new Path(4, 5), new Path(6, 7)}));
@@ -131,31 +157,34 @@ public class Server {
 		tilePile.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
 	}
 	
+	//~~~~~~~FOR TESTS ONLY~~~~~~~~~
 	
-	// Getters and Setters
-	public ArrayList<Tile> getTilePile() {
-		return tilePile; 
+	//constructor for tests only
+	public Server(int numPlayers) {
+		initializeGame(numPlayers); 
 	}
 	
-	public void setTilePile(ArrayList<Tile> newTilePile) {
-		tilePile = newTilePile; 
+	//constructor for tests only 
+	public Server(Board testBoard){
+		board =  testBoard;
+	}
+	public void initializeGame(int numPlayers) {
+		generateTilePile(); 
+		currPlayers = new ArrayList<SPlayer>(); 
+		elimPlayers = new ArrayList<SPlayer>(); 
+		createPlayers(numPlayers);
+		board = new Board(); 
 	}
 	
-	public ArrayList<SPlayer> getCurrPlayers() {
-		return currPlayers; 
+	public void createPlayers(int num){
+		ServerUtils.shuffleTiles(tilePile);
+		for(int i=0; i<num; i++){
+			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
+			for (int j=0; j<TILES_PER_PLAYER; j++){
+				tilePile.remove(0);
+			}
+			currPlayers.add(new SPlayer(myTiles, posns[i]));		
+		}
 	}
-	
-	public ArrayList<SPlayer> getElimPlayers() {
-		return elimPlayers; 
-	}
-	
-	public void setCurrPlayers(ArrayList<SPlayer> currPlayers){
-		this.currPlayers = currPlayers;
-	}
-	
-	public void setElimPlayers(ArrayList<SPlayer> elimPlayers){
-		this.elimPlayers = elimPlayers;
-	}
-	
 }
 

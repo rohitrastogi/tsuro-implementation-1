@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 import java.util.*;
 import static org.junit.Assert.*;

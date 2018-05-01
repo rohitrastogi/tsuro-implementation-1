@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 import java.util.*;
 
@@ -10,6 +10,8 @@ public class Board {
 	// The actual layout of tiles on the board, each location starts out as null. 
 	// Once a tile is placed in a location, that index will refer to the tile object 
 	private Tile[][] tileLayout; 
+	
+	private ArrayList<Token> tokens;
 	
 	/*
 	// TODO: Remember to toggle this to false once it's possible to take multiple turns 
@@ -98,7 +100,7 @@ public class Board {
 	
 	// Returns true if a move is going to eliminate the player making the move 
 	public boolean isEliminationMove(Tile t, SPlayer p) {
-		Position playerPosn = p.getPosn();
+		Position playerPosn = p.getPosition();
 		Position finalPosn = getFinalPosition(t, playerPosn);
 		if (finalPosn == null){
 			return true;

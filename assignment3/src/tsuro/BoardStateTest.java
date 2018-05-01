@@ -1,4 +1,4 @@
-package assignment3;
+package tsuro;
 
 import static org.junit.Assert.*;
 
@@ -42,9 +42,9 @@ public class BoardStateTest {
 		Position player1posn = new Position(0, 0, 7);
 		Position player2posn = new Position(0, 2, 6);
 		Position player3posn = new Position(5, 0, 3); //eliminated position
-		SPlayer player1 = new SPlayer(player1hand, Color.BLUE, player1posn);
-		SPlayer player2 = new SPlayer(player2hand, Color.RED, player2posn);
-		SPlayer player3 = new SPlayer(player3hand, Color.SIENNA, player3posn);
+		SPlayer player1 = new SPlayer(player1hand, player1posn);
+		SPlayer player2 = new SPlayer(player2hand, player2posn);
+		SPlayer player3 = new SPlayer(player3hand, player3posn);
 		
 		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
 		currPlayers.add(player1);

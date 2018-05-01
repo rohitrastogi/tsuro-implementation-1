@@ -1,18 +1,16 @@
-package assignment3;
+package tsuro;
 
 import java.util.*;
 
 public class SPlayer {
 	private PlayerInterface player;
 	private List<Tile> myTiles;
-	private Color color;
 	private Position posn;
 	private boolean hasDragonTile; 
 	
 	//for testing only
-	public SPlayer(List<Tile> myTiles, Color color, Position posn){
+	public SPlayer(List<Tile> myTiles, Position posn){
 		this.myTiles = myTiles;
-		this.color = color;
 		this.posn = posn;
 		this.hasDragonTile = false; 
 	}
@@ -37,7 +35,7 @@ public class SPlayer {
 	@Override 
 	public boolean equals(Object obj) {
 		SPlayer p = (SPlayer) obj; 
-		return (p.myTiles.equals(this.myTiles) && (p.color == this.color) && (p.posn.equals(this.posn)) && p.hasDragonTile == this.hasDragonTile);
+		return (p.myTiles.equals(this.myTiles) && (p.posn.equals(this.posn)) && p.hasDragonTile == this.hasDragonTile);
 	}
 	
 	// Checks whether a player is currently holding any tiles 
@@ -54,16 +52,23 @@ public class SPlayer {
 		myTiles = newHand; 
 	}
 	
-	public Position getPosn(){
-		return posn;
+	public Position getPosition(){
+		Token t = player.getToken();
+		return t.getPosition();
 	}
 	
 	public PlayerInterface getPlayer(){
 		return player;
 	}
 	
-	public void setPosn(Position p){
-		posn = p;
+	public void setPosition(Position p){
+		Token t = player.getToken();
+		t.setPosition(p);
+	}
+	
+	public Color getColor(){
+		Token t = player.getToken();
+		return t.getColor();
 	}
 	
 	public void addTile(Tile t){
