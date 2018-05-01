@@ -1,6 +1,5 @@
 package tsuro;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -19,7 +18,7 @@ public class MostSymmetricPlayer extends Player {
 			queue.add(t); 
 		}
 		
-		// TODO go through queue and try rotations until one is legal 
+		// go through queue and try rotations until one is legal 
 		Tile toPlay; 
 		while(queue.peek() != null) {
 			toPlay = queue.poll(); 
@@ -35,10 +34,6 @@ public class MostSymmetricPlayer extends Player {
 		// Hypothetically by this point no hand should ever have an unplayable tile 
 		// Since isLegalPlay checks other possible moves 
 		throw new RuntimeException("Somehow playTurn for player " + this.getName() + " has a hand with no playable tile."); 
-	}
-
-	public void endGame(Board b, List<Color> winners) {
-		// TODO does this need to do anything? 
 	}
 }
 

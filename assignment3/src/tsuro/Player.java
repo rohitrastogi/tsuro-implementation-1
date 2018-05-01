@@ -25,8 +25,9 @@ public abstract class Player implements PlayerInterface{
 		// choose a random position 
 		// check board to see if position is occupied
 		// if not, return position, else try again 
+		Random randGen = new Random(); 
 		while(true) {
-			Position nextPosn = createRandomPhantomPosn(new Random()); 
+			Position nextPosn = createRandomPhantomPosn(randGen); 
 			
 			if (!b.isPositionTaken(nextPosn)) {
 				// position isn't taken, so we're good 
@@ -41,7 +42,14 @@ public abstract class Player implements PlayerInterface{
 	
 	public abstract Tile playTurn(Board b, List<Tile> hand, int tilesRemaining); 
 	
-	public abstract void endGame(Board b, List<Color> winners);
+	public void endGame(Board b, List<Color> winners) {
+		if (winners.contains(this.getToken().getColor())) {
+			System.out.println("" + this.getToken().getColor().toString() + " player won the game!");
+		}
+		else {
+			System.out.println("" + this.getToken().getColor().toString() + " player lost the game.");
+		}
+	}
 	
 	private Position createRandomPhantomPosn(Random r) {
 		// Get a random number from 1 to 48
