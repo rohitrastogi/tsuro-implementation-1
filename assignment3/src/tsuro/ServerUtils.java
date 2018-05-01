@@ -60,7 +60,10 @@ public class ServerUtils {
 		actingPlayer.setPosition(finalActingPosition);
 		
 		//~~~~~STEP 3~~~~~
-		drawTile(actingPlayer, deck, cPlayers); 
+		//only draw a tile if you haven't been eliminated 
+		if (!ePlayers.contains(actingPlayer)){
+			drawTile(actingPlayer, deck, cPlayers); 
+		}
 		
 		
 		//~~~~~STEP 4~~~~~
@@ -197,11 +200,6 @@ public class ServerUtils {
 				drawTile(drawPlayer, deck, currPlayers); 
 			}
 		}
-	}
-	
-	// Gets the SPlayer associated with a given Player 
-	public static SPlayer getSPlayer(PlayerInterface player) {
-		
 	}
 
 }

@@ -10,9 +10,7 @@ public class Server {
 	
 	// The number of tiles a player can hold in their hand at one time 
 	public static final int TILES_PER_PLAYER = 3;
-	
-	Position[] posns = {new Position(0, 0, 5), new Position(0, 3, 6), new Position(0, 5, 5), new Position(5, 0, 3), new Position(5, 3, 3),
-			new Position(5, 5, 5), new Position(0, 3, 1), new Position(0, 5, 1)};
+
 	
 	
 	private Server() {};
@@ -177,13 +175,16 @@ public class Server {
 	}
 	
 	public void createPlayers(int num){
+		Position[] testPosns= {new Position(0, 0, 5), new Position(0, 3, 6), new Position(0, 5, 5), new Position(5, 0, 3), new Position(5, 3, 3),
+				new Position(5, 5, 5), new Position(0, 3, 1), new Position(0, 5, 1)};
+		String[] testNames= new String[] {"rohit", "chris", "robby", "christos", "rastogi", "serpico", "findler", "dimoulas"};
 		ServerUtils.shuffleTiles(tilePile);
 		for(int i=0; i<num; i++){
 			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
 			for (int j=0; j<TILES_PER_PLAYER; j++){
 				tilePile.remove(0);
 			}
-			currPlayers.add(new SPlayer(myTiles, posns[i]));		
+			currPlayers.add(new SPlayer(myTiles, testPosns[i], testNames[i], Color.values()[i]));		
 		}
 	}
 }

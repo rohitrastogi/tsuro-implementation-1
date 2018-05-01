@@ -5,14 +5,17 @@ import java.util.*;
 public class SPlayer {
 	private PlayerInterface player;
 	private List<Tile> myTiles;
-	private Position posn;
 	private boolean hasDragonTile; 
 	
 	//for testing only
-	public SPlayer(List<Tile> myTiles, Position posn){
+	public SPlayer(List<Tile> myTiles, Position posn, String name, Color color){
 		this.myTiles = myTiles;
-		this.posn = posn;
 		this.hasDragonTile = false; 
+		
+		Token testPlayerToken = new Token(color);
+		PlayerInterface testPlayer = new TestPlayer(name, testPlayerToken);
+		this.player = testPlayer;
+		this.setPosition(posn);
 	}
 	
 	//used for actual game play
@@ -35,7 +38,9 @@ public class SPlayer {
 	@Override 
 	public boolean equals(Object obj) {
 		SPlayer p = (SPlayer) obj; 
-		return (p.myTiles.equals(this.myTiles) && (p.posn.equals(this.posn)) && p.hasDragonTile == this.hasDragonTile);
+		return (p.myTiles.equals(this.myTiles) && (p.getPosition().equals(this.getPosition())) 
+				&& p.hasDragonTile == this.hasDragonTile) && (p.getColor() == this.getColor())
+				&& p.getPlayer().getName().equals(this.getPlayer().getName());
 	}
 	
 	// Checks whether a player is currently holding any tiles 

@@ -15,7 +15,7 @@ public class SPlayerTest {
 		pTiles.add(new Tile(new Path[] {new Path(0, 1), new Path(2, 4), new Path(3, 6), new Path(5, 7)}));
 		pTiles.add(new Tile(new Path[] {new Path(0, 6), new Path(1, 5), new Path(2, 4), new Path(3, 7)}));
 		
-		SPlayer test1 = new SPlayer(pTiles, new Position(0, 0, 0)); 
+		SPlayer test1 = new SPlayer(pTiles, new Position(0, 0, 0), "rohit", Color.BLUE); 
 		
 		Tile testTile = pTiles.get(1); 
 		Tile testTile2 = new Tile(new Path[] {new Path(0, 7), new Path(1, 2), new Path(3, 4), new Path(5, 6)});
@@ -31,14 +31,15 @@ public class SPlayerTest {
 		pTiles1.add(new Tile(new Path[] {new Path(0, 1), new Path(2, 4), new Path(3, 6), new Path(5, 7)}));
 		pTiles1.add(new Tile(new Path[] {new Path(0, 6), new Path(1, 5), new Path(2, 4), new Path(3, 7)}));
 		
-		SPlayer test1 = new SPlayer(pTiles1, new Position(0, 0, 0));
+		SPlayer test1 = new SPlayer(pTiles1, new Position(0, 0, 0), "rohit", Color.BLUE);
 		
 		ArrayList<Tile> pTiles2 = new ArrayList<Tile>(); 
 		pTiles2.add(new Tile(new Path[] {new Path(0, 1), new Path(2, 3), new Path(4, 5), new Path(6, 7)}));
 		pTiles2.add(new Tile(new Path[] {new Path(0, 1), new Path(2, 4), new Path(3, 6), new Path(5, 7)}));
 		pTiles2.add(new Tile(new Path[] {new Path(0, 6), new Path(1, 5), new Path(2, 4), new Path(3, 7)}));
 		
-		SPlayer test2 = new SPlayer(pTiles2, new Position(0, 0, 0));
+		SPlayer test2 = new SPlayer(pTiles2, new Position(0, 0, 0), "rohit", Color.BLUE);
+		//test equality
 		assertTrue(test1.equals(test2));
 		
 		ArrayList<Tile> pTiles3 = new ArrayList<Tile>(); 
@@ -46,14 +47,21 @@ public class SPlayerTest {
 		pTiles3.add(new Tile(new Path[] {new Path(0, 1), new Path(2, 4), new Path(3, 6), new Path(5, 7)}));
 		pTiles3.add(new Tile(new Path[] {new Path(0, 6), new Path(1, 5), new Path(2, 4), new Path(3, 7)}));
 		
-		SPlayer test3 = new SPlayer(pTiles3, new Position(0, 0, 0));
+		//test inequality (different tiles)
+		SPlayer test3 = new SPlayer(pTiles3, new Position(0, 0, 0), "rohit", Color.BLUE);
 		assertFalse(test3.equals(test1));
 		
-		SPlayer test4 = new SPlayer(pTiles1, new Position(0, 0, 0));
+		//test inequality (different colors)
+		SPlayer test4 = new SPlayer(pTiles1, new Position(0, 0, 0), "rohit", Color.DARKGREEN);
 		assertFalse(test4.equals(test1));
 		
-		SPlayer test5 = new SPlayer(pTiles1, new Position(1, 1, 1));
+		//test inequality (different positions)
+		SPlayer test5 = new SPlayer(pTiles1, new Position(1, 1, 1), "rohit", Color.BLUE);
 		assertFalse(test5.equals(test1));
+		
+		//test inequality (different names)
+		SPlayer test6 = new SPlayer(pTiles1, new Position(0, 0, 0), "chris", Color.BLUE);
+		assertFalse(test6.equals(test1));
 		
 		// Dragon tile
 		test1.takeDragonTile();
