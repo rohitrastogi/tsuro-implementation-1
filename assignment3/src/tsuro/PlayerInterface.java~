@@ -6,8 +6,7 @@ interface PlayerInterface {
   // Returns the player's name 
   public String getName();
   
-  // we can't have this as part of the interface, as it isn't specified in the assignment 
-  // public Token getToken();
+  public Token getToken();
   
   // Called to indicate a game is starting.
   // The first argument is the player's color

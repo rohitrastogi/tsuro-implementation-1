@@ -22,11 +22,8 @@ public class RandomPlayer extends Player{
 		while(availibleMoves.size() > 0) {
 			Tile next = availibleMoves.get(r.nextInt(availibleMoves.size())); 
 			
-			if (ServerUtils.isLegalPlay(Server.server.getSPlayer(this), b, next)) {
+			if (ServerUtils.isLegalPlay(Server.server.getSPlayer(this), b, next) {
 				return next; 
-			}
-			else {
-				availibleMoves.remove(next); 
 			}
 		}
 		
