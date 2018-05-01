@@ -28,6 +28,17 @@ public class Board {
 		tileLayout = layout.clone(); 
 	}
 	
+	public boolean isPositionTaken(Position posn) {
+		// loop through arraylist of tokens, check to see if they are already occupying posn 
+		for (Token t : tokens) {
+			if (t.getPosition().equals(posn)) {
+				return true; 
+			}
+		}
+		
+		return false; 
+	}
+	
 	public boolean equals(Object obj) {
 		Board b = (Board) obj; 
 		boolean length_equal = (b.tileLayout.length == this.tileLayout.length) ;
@@ -162,5 +173,9 @@ public class Board {
 			return null; 
 		}
 		return tileLayout[y][x]; 
+	}
+	
+	public void addToken(Token t) {
+		tokens.add(t); 
 	}
 }

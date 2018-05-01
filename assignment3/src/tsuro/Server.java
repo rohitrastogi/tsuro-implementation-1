@@ -25,8 +25,8 @@ public class Server {
 	public void initializeServer(){
 		generateTilePile();
 		elimPlayers = new ArrayList<SPlayer>();
-		initializePlayers();
 		board = new Board(); 
+		initializePlayers();
 	}
 	
 	public void initializePlayers(){
@@ -35,6 +35,7 @@ public class Server {
 			PlayerInterface player = currPlayers.get(i).getPlayer();
 			//TODO clean up call to initialize if possible?
 			player.initialize(currPlayers.get(i).getColor(), Color.values());
+			board.addToken(player.getToken());
 			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
 			for (int j=0; j<TILES_PER_PLAYER; j++){
 				tilePile.remove(0);
