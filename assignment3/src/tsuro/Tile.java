@@ -1,7 +1,6 @@
 package tsuro;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Tile {
 	private Path[] paths;
@@ -89,21 +88,16 @@ public class Tile {
 	
 	// returns how many functionally different rotations this tile has
 	public int getSymmetry() {
-		// go through each rotation, check its out position and see if it changes 
-		int numRotations = 0; 
-		ArrayList<Integer> previousRotations = new ArrayList<Integer>(); 
+		// go through each rotation, check its first position and see if it changes 
+		Set<String> symmetry = new HashSet<String>(); 
 		for (int i = 0; i < NUM_SIDES; i++) {
-			this.rotation = (this.rotation + 1) % NUM_SIDES; 
-			int output = getOutPath(0);  // just get the out path for the first position 
-			
-			if (!previousRotations.contains(output)) {
-				// This is an unseen rotation 
-				numRotations++; 
-				previousRotations.add(output);  
-			}
+			Tile rotated = this.rotate(i);
+			int output1 = rotated.getOutPath(0);  // just get the out path for the first position 
+			int output2 = rotated.getOutPath(1);
+			String output = Integer.toString(output1) + Integer.toString(output2);
+			symmetry.add(output);
 		}
-		
-		return numRotations; 
+		return symmetry.size(); 
 	}
 	
 	// Getters and Setters 

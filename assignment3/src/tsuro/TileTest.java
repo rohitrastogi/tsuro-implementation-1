@@ -24,4 +24,14 @@ public class TileTest {
 		Tile test2 = new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}, 3);
 		assertEquals(7, test2.getOutPath(1));
 	}
+	
+	@Test
+	public void testGetSymmetry(){
+		Tile noSymmetry = new Tile(new Path[] {new Path(0, 5), new Path(1, 2), new Path(3, 6), new Path(4, 7)});
+		Tile oneAxis = new Tile(new Path[] {new Path(0, 1), new Path(2, 7), new Path(3, 6), new Path(4, 5)});
+		Tile twoAxes = new Tile(new Path[] {new Path(0, 1), new Path(2, 3), new Path(4, 5), new Path(6, 7)});
+		assertEquals(4, noSymmetry.getSymmetry());
+		assertEquals(2, oneAxis.getSymmetry());
+		assertEquals(1, twoAxes.getSymmetry());
+	}
 }
