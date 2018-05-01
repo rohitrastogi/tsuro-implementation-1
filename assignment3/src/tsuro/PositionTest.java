@@ -56,4 +56,29 @@ public class PositionTest {
 		assertTrue(posn1.equals(posn2));
 		assertFalse(posn1.equals(posn3));
 	}
+	
+	@Test
+	public void testIsValidPosition(){
+		assertTrue(Position.isValidPosition(0, 0, 0));
+		assertTrue(Position.isValidPosition(3, 3, 3));
+		assertFalse(Position.isValidPosition(-1, 0, 0));
+		assertFalse(Position.isValidPosition(7, 0, 0));
+		assertFalse(Position.isValidPosition(0, -1, 0));
+		assertFalse(Position.isValidPosition(0, 7, 0));
+		assertFalse(Position.isValidPosition(0, 0, -1));
+		assertFalse(Position.isValidPosition(0, 0, 8));
+	}
+	
+	@Test
+	public void testIsValidPhantomPosition(){
+		assertTrue(Position.isValidPhantomPosition(-1, 3, 7));
+		assertTrue(Position.isValidPhantomPosition(6, 3, 3));
+		assertTrue(Position.isValidPhantomPosition(3, -1, 0));
+		assertTrue(Position.isValidPhantomPosition(3, 6, 5));
+		
+		//could check every else branch here, but I think it works
+		assertFalse(Position.isValidPhantomPosition(3, 3, 4));
+		assertFalse(Position.isValidPhantomPosition(6, 3, 5));
+		assertFalse(Position.isValidPhantomPosition(-1, 3, 0));
+	}
 }

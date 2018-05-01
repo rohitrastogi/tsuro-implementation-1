@@ -7,6 +7,7 @@ public class Position {
 	private int x;
 	private int y;
 	private int tilePosn;
+	private boolean isPhantom = false;
 	
 	// Mapping between the positions on the edges of two adjacent tiles 
 	public static Map<Integer, Integer> edgeMapping = new HashMap<Integer, Integer>() {{
@@ -20,10 +21,52 @@ public class Position {
 			put (7, 2); 
 	}};
 	
+	public Position(int x, int y, int tilePosn, boolean isPhantomTile){
+		if (isPhantomTile){
+			if (Position.isValidPhantomPosition(x, y, tilePosn)){
+				this.x = x;
+				this.y = y;
+				this.tilePosn = tilePosn;
+				this.isPhantom = isPhantomTile;
+			}
+			else{
+				throw new IllegalArgumentException();
+			}
+		}
+		else{
+			if (Position.isValidPosition(x, y, tilePosn)) {
+				this.x = x;
+				this.y = y;
+				this.tilePosn = tilePosn;
+			}
+			else{
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+	
 	public Position(int x, int y, int tilePosn){
-		this.x = x;
-		this.y = y;
-		this.tilePosn = tilePosn;
+		this(x, y, tilePosn, false);
+	}
+		
+	public static boolean isValidPhantomPosition(int x, int y, int tilePosn){
+		if (x == -1 && (y < Board.TILES_PER_ROW && y >=0) && (tilePosn == 6 || tilePosn == 7)) {
+			return true; 
+		}
+		if (x == (Board.TILES_PER_ROW) && (y < Board.TILES_PER_ROW && y >=0) && (tilePosn == 2 || tilePosn == 3)) {
+			return true; 
+		}
+		if (y == -1 && (x < Board.TILES_PER_ROW && x >=0) && (tilePosn < 2)) {
+			return true; 
+		}
+		if (y == (Board.TILES_PER_ROW) && (x < Board.TILES_PER_ROW && x >=0) && (tilePosn == 4 || tilePosn == 5)) {
+			return true; 
+		}
+		return false; 
+	}
+	
+	public static boolean isValidPosition(int x, int y, int tilePosn){
+		return (x < Board.TILES_PER_ROW && x >=0 && y < Board.TILES_PER_ROW && y>=0 && tilePosn <= 7 && tilePosn >=0);
 	}
 	
 	// Returns whether this is a reference to a position on the edge of a board 
