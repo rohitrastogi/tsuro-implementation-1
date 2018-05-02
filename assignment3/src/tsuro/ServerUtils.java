@@ -43,9 +43,9 @@ public class ServerUtils {
 		currBoard.placeTile(toPlay, actingPlayer.getPosition().getX(), actingPlayer.getPosition().getY());
 		
 		Position finalActingPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosition());
-		System.out.print(actingPlayer.getPlayer().getName() + " moves to " + finalActingPosition);
+		System.out.println(actingPlayer.getPlayer().getName() + " moves to " + finalActingPosition);
 		if (finalActingPosition.isEdgePosition()){
-			System.out.print(" " + actingPlayer.getPlayer().getName() + " has eliminated themself!");
+			System.out.println(actingPlayer.getPlayer().getName() + " has eliminated themself!");
 			eliminatePlayer(actingPlayer, cPlayers, ePlayers, deck);
 		}
 		
@@ -155,7 +155,7 @@ public class ServerUtils {
 			player.addTile(deck.remove(0));
 		}
 		else {
-			System.out.print("\n" + player.getPlayer().getName() + " attempts to draw the Dragon Tile... ");
+			System.out.println(player.getPlayer().getName() + " attempts to draw the Dragon Tile... ");
 			// no tiles left in deck, check whether any other players have the dragon tile 
 			for (SPlayer p : currPlayers) {
 				if (p.hasDragonTile()) {
@@ -210,9 +210,9 @@ public class ServerUtils {
 		System.out.println(currPlayers.get(offset).getPlayer().getName() + " gives up dragon tile!");
 		for(int i = 0; i < (currPlayers.size() * 3); i++) {
 			//DO WRAPAROUND AND GET DRAGON TILE WHEN NO TILES ARE LEFT IN TILEPILE
-//			if (deck.size() == 0){
-//				break; //don't want to draw dragon tile 
-//			}
+			if (deck.size() == 0 && getDragTilePlayerIndex(currPlayers) != -1){
+				break; //no need to keep looping
+			}
 			SPlayer drawPlayer = currPlayers.get((i + offset) % currPlayers.size()); 
 			if (drawPlayer.getTiles().size() < 3) {
 				drawTile(drawPlayer, deck, currPlayers); 

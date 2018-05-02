@@ -55,8 +55,8 @@ public class Server {
 		//main game loop
 		System.out.println("Beginning game loop.");
 		while(!ServerUtils.isGameOver(currPlayers, tilePile)){
-			System.out.println("Remaining players: " + currPlayers);
 			System.out.println("Size of tilepile: " + tilePile.size());
+			System.out.println("Remaining players: " + currPlayers);
 			SPlayer currPlayer = currPlayers.get(0);
 			System.out.println("Acting SPlayer: " + currPlayer);
 			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
