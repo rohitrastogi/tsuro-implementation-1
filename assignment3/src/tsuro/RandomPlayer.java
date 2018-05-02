@@ -7,9 +7,7 @@ import java.util.Random;
 public class RandomPlayer extends Player{
 
 	public RandomPlayer(String n) {
-		super(n);
-		// TODO Auto-generated constructor stub
-	}
+		super(n);	}
 	
 	@Override 
 	public Tile playTurn(Board b, List<Tile> hand, int tilesRemaining) {

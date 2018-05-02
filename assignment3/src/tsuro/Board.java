@@ -12,12 +12,7 @@ public class Board {
 	private Tile[][] tileLayout; 
 	
 	private ArrayList<Token> tokens = new ArrayList<Token>();
-	
-	/*
-	// TODO: Remember to toggle this to false once it's possible to take multiple turns 
-	// Should be toggled after every player has gone once 
-	private boolean isFirstTurn = true; 
-	*/ 
+ 
 
 	public Board(){
 		tileLayout = new Tile[TILES_PER_ROW][TILES_PER_ROW];

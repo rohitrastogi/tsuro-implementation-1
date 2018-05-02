@@ -8,7 +8,6 @@ public class LeastSymmetricPlayer extends Player {
 	
 	public LeastSymmetricPlayer(String n) {
 		super(n);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override 

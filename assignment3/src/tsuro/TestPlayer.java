@@ -9,13 +9,12 @@ public class TestPlayer extends Player{
 	}
 
 	public Tile playTurn(Board b, List<Tile> hand, int tilesRemaining) {
-		// TODO Auto-generated method stub
+		// don nothing
 		return null;
 	}
 
 	public void endGame(Board b, List<Color> winners) {
-		// TODO Auto-generated method stub
-		
+		// do nothing
 	}
 	
 }

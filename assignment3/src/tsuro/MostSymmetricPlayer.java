@@ -8,7 +8,6 @@ public class MostSymmetricPlayer extends Player {
 
 	public MostSymmetricPlayer(String n) {
 		super(n);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Tile playTurn(Board b, List<Tile> hand, int tilesRemaining) {

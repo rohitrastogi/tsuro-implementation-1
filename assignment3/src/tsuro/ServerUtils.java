@@ -28,6 +28,7 @@ public class ServerUtils {
 	 * 4. Check if game is over 
 	 * 5. Bookkeep to prepare next turn
 	**/
+	//TODO pass dragon tile if player with dragon tile is eliminated [causing exception]
 	public static BoardState playATurn(ArrayList<Tile> deck, ArrayList<SPlayer> cPlayers, ArrayList<SPlayer> ePlayers,
 			Board currBoard, Tile toPlay){
 	
@@ -80,8 +81,9 @@ public class ServerUtils {
 			// if the game is over, generate a list of winning players 
 			winningPlayers = cPlayers; 
 		}
-		else {
-			//~~~~~STEP 5~~~~~
+		//~~~~~STEP 5~~~~~
+		// only advance player if acting player is not eliminated - avoids double popping from currList
+		else if (!ePlayers.contains(actingPlayer)){
 			advanceTurn(cPlayers); 
 		}
 		
@@ -105,14 +107,13 @@ public class ServerUtils {
 					return false; 
 				}
 			}
+			//nobody has any tiles left
+			return true;
 		}
 		else {
 			// Tiles still left in tile pile, game is not over 
 			return false; 
 		}
-		
-		// Multiple players are still playing, but no one has any tiles, game is over 
-		return true; 
 	}
 
 

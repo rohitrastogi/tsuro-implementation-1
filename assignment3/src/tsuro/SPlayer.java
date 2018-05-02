@@ -118,8 +118,8 @@ public class SPlayer {
 	
 	@Override
 	public String toString(){
-		return "\nName: " + this.getPlayer().getName() + " Color: " + 
-				this.getColor() + " Position: " + this.getPosition() + "\n" + 
+		return "\nName: " + this.getPlayer().getName() + ", Color: " + 
+				this.getColor() + ", Position: " + this.getPosition() + "\n" + 
 				"Tiles: " + myTiles;
 	}
 }
