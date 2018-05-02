@@ -371,7 +371,7 @@ public class ServerUtilsTest {
 		assertTrue(currPlayers.get(0).getTiles().equals(player1hand));
 		assertFalse(currPlayers.get(0).hasDragonTile());
 		assertTrue(currPlayers.get(1).getTiles().equals(player2hand));
-		assertFalse(currPlayers.get(1).hasDragonTile());
+		assertTrue(currPlayers.get(1).hasDragonTile()); //wrap around and get dragon tile
 		assertTrue(currPlayers.get(2).getTiles().equals(player3hand));
 		assertFalse(currPlayers.get(2).hasDragonTile());
 	}

@@ -62,6 +62,7 @@ public class Server {
 			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
 			System.out.println("Acting Player: " + currPlayerInterface);
 			Tile toPlay = currPlayerInterface.playTurn(board, currPlayer.getTiles(), 0);//why is tiles remaining important?
+			currPlayer.removeTileFromHand(toPlay);
 			state = ServerUtils.playATurn(tilePile, currPlayers, elimPlayers, board, toPlay); //mutates
 		}
 		//when game is over extract winners from boardState
@@ -73,7 +74,7 @@ public class Server {
 			winnerColors.add(winners.get(i).getColor());
 		}
 		
-		//call endgame on all players and pass in winner colors
+		//call end game on all players and pass in winner colors
 		for (int i = 0; i< currPlayers.size(); i++){ 
 			PlayerInterface p = currPlayers.get(i).getPlayer();
 			p.endGame(board, winnerColors); 

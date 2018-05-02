@@ -41,7 +41,6 @@ public class ServerUtils {
 		// place the tile 
 		System.out.println(actingPlayer.getPlayer().getName() + " places their tile."); 
 		currBoard.placeTile(toPlay, actingPlayer.getPosition().getX(), actingPlayer.getPosition().getY());
-		actingPlayer.removeTileFromHand(toPlay);
 		
 		Position finalActingPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosition());
 		System.out.print(actingPlayer.getPlayer().getName() + " moves to " + finalActingPosition);
@@ -122,7 +121,9 @@ public class ServerUtils {
 		player.loseDragonTile();
 		cPlayers.remove(player);
 		ePlayers.add(player);
-		addEliminatedPlayerTiles(player, deck, cPlayers);
+		if (player.getTiles().size() != 0){
+			addEliminatedPlayerTiles(player, deck, cPlayers);
+		}
 	}
 	
 	//returns a list of all players that can be moved as a result of a new tile being placed
@@ -144,13 +145,13 @@ public class ServerUtils {
 	//updates cPlayers list to maintain turn order
 	public static void advanceTurn(ArrayList<SPlayer> cPlayers){
 		SPlayer currPlayer = cPlayers.remove(0);
-		System.out.println("The turn advances to " + cPlayers.get(0).getPlayer().getName() + ".");
+		System.out.println("The turn advances to " + cPlayers.get(0).getPlayer().getName() + ".\n");
 		cPlayers.add(currPlayer);
 	}
 	
 	public static void drawTile(SPlayer player, ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers){
 		if (deck.size() != 0) {
-			System.out.println("\n" + player.getPlayer().getName() + " draws " + deck.get(0)); 
+			System.out.println(player.getPlayer().getName() + " draws: " + deck.get(0)); 
 			player.addTile(deck.remove(0));
 		}
 		else {
@@ -175,7 +176,7 @@ public class ServerUtils {
 		deck.addAll(player.getTiles());
 		System.out.println(" After " + player.getPlayer().getName() + " was eliminated, " + 
 				player.getTiles().size() + " tiles were added to the deck.");
-		shuffleTiles(deck);
+				shuffleTiles(deck);
 		 
 		if (getDragTilePlayerIndex(currPlayers) != -1) {
 			// Someone has the dragon tile 
@@ -203,15 +204,15 @@ public class ServerUtils {
 	// Draw from pile until everyone has three tiles
 	// TODO maybe put this stuff in a Deck Class
 	public static void drawLoop(ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers) {
-		System.out.println("\nStarting Draw Loop...");
+		System.out.println("Starting Draw Loop...");
 		int offset = getDragTilePlayerIndex(currPlayers); 
 		currPlayers.get(offset).loseDragonTile();
 		System.out.println(currPlayers.get(offset).getPlayer().getName() + " gives up dragon tile!");
 		for(int i = 0; i < (currPlayers.size() * 3); i++) {
-			if (deck.size() == 0){
-				break; //don't want to draw dragon tile 
-			}
-			//System.out.println((i+offset) % currPlayers.size());
+			//DO WRAPAROUND AND GET DRAGON TILE WHEN NO TILES ARE LEFT IN TILEPILE
+//			if (deck.size() == 0){
+//				break; //don't want to draw dragon tile 
+//			}
 			SPlayer drawPlayer = currPlayers.get((i + offset) % currPlayers.size()); 
 			if (drawPlayer.getTiles().size() < 3) {
 				drawTile(drawPlayer, deck, currPlayers); 
