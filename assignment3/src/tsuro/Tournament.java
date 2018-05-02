@@ -7,17 +7,16 @@ public class Tournament {
 		PlayerInterface pl;
 		Token t;
 		for (int i = 0; i<players.length; i++){
-			t = new Token(Color.values()[i]);
 			if (i%3 == 0){
-				pl = new RandomPlayer(players[i], t);
+				pl = new RandomPlayer(players[i]);
 			}
 			else if (i%3 == 1){
-				pl = new MostSymmetricPlayer(players[i], t);
+				pl = new MostSymmetricPlayer(players[i]);
 			}
 			else {
-				pl = new LeastSymmetricPlayer(players[i], t);
+				pl = new LeastSymmetricPlayer(players[i]);
 			}
-			s.registerPlayer(pl);
+			s.registerPlayer(pl, Color.values()[i]);
 		}
 		s.playGame();
 	}

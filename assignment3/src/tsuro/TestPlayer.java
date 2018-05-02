@@ -4,8 +4,8 @@ import java.util.List;
 
 public class TestPlayer extends Player{
 
-	public TestPlayer(String n, Token t) {
-		super(n, t);
+	public TestPlayer(String n) {
+		super(n);
 	}
 
 	public Tile playTurn(Board b, List<Tile> hand, int tilesRemaining) {

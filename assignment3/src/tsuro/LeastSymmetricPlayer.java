@@ -6,8 +6,8 @@ import java.util.PriorityQueue;
 
 public class LeastSymmetricPlayer extends Player {
 	
-	public LeastSymmetricPlayer(String n, Token t) {
-		super(n, t);
+	public LeastSymmetricPlayer(String n) {
+		super(n);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,6 +27,7 @@ public class LeastSymmetricPlayer extends Player {
 			for (int i = 0; i < Tile.NUM_SIDES; i++) {
 				toPlay = toPlay.rotate(i); 
 				if (ServerUtils.isLegalPlay(Server.server.getSPlayer(this), b, toPlay)) {
+					System.out.println(this.getName() + " has selected tile: " + toPlay.toString());
 					return toPlay; 
 				}
 			}
@@ -38,6 +39,7 @@ public class LeastSymmetricPlayer extends Player {
 	}
 }
 
+// TODO make sure this is working properly 
 class LeastSymmetricalComparison implements Comparator<Tile> {
 
 	@Override

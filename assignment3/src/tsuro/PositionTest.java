@@ -71,10 +71,10 @@ public class PositionTest {
 	
 	@Test
 	public void testIsValidPhantomPosition(){
-		assertTrue(Position.isValidPhantomPosition(-1, 3, 7));
-		assertTrue(Position.isValidPhantomPosition(6, 3, 3));
-		assertTrue(Position.isValidPhantomPosition(3, -1, 0));
-		assertTrue(Position.isValidPhantomPosition(3, 6, 5));
+		assertTrue(Position.isValidPhantomPosition(-1, 3, 3));
+		assertTrue(Position.isValidPhantomPosition(6, 3, 7));
+		assertTrue(Position.isValidPhantomPosition(3, -1, 4));
+		assertTrue(Position.isValidPhantomPosition(3, 6, 1));
 		
 		//could check every else branch here, but I think it works
 		assertFalse(Position.isValidPhantomPosition(3, 3, 4));

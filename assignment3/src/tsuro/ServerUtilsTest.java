@@ -40,7 +40,7 @@ public class ServerUtilsTest {
 		List<Tile> player2hand = new ArrayList();
 		player1hand.add(new Tile(new Path[] {new Path(0, 4), new Path(1, 3), new Path(2, 7), new Path(5, 6)}));
 		player2hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 7), new Path(2, 6), new Path(4, 5)}));
-		Position player1posn = new Position(-1, 0, 2); // Caution about -1 
+		Position player1posn = new Position(-1, 0, 2, true); // Caution about -1 
 		Position player2posn = new Position(0, 2, 3);
 		SPlayer player1 = new SPlayer(player1hand, player1posn, "rohit", Color.BLUE);
 		SPlayer player2 = new SPlayer(player2hand, player2posn, "chris", Color.DARKGREEN);

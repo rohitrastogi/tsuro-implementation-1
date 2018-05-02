@@ -6,6 +6,7 @@ public class SPlayer {
 	private PlayerInterface player;
 	private List<Tile> myTiles;
 	private boolean hasDragonTile; 
+	private Token token;
 	
 	//for testing only
 	public SPlayer(List<Tile> myTiles, Position posn, String name, Color color){
@@ -13,14 +14,17 @@ public class SPlayer {
 		this.hasDragonTile = false; 
 		
 		Token testPlayerToken = new Token(color);
-		PlayerInterface testPlayer = new TestPlayer(name, testPlayerToken);
+		this.token = testPlayerToken;
+		PlayerInterface testPlayer = new TestPlayer(name);
 		this.player = testPlayer;
 		this.setPosition(posn);
 	}
 	
 	//used for actual game play
-	public SPlayer(PlayerInterface player){
+	public SPlayer(PlayerInterface player, Color c){
 		this.player = player;
+		Token token = new Token(c);
+		this.token = token;
 	}
 	
 	// Checks whether a player has a certain tile in their possession 
@@ -58,22 +62,26 @@ public class SPlayer {
 	}
 	
 	public Position getPosition(){
-		Token t = player.getToken();
-		return t.getPosition();
+//		Token t = player.getToken();
+		return token.getPosition();
 	}
 	
 	public PlayerInterface getPlayer(){
 		return player;
 	}
 	
+	public Token getToken(){
+		return token;
+	}
+	
 	public void setPosition(Position p){
-		Token t = player.getToken();
-		t.setPosition(p);
+//		Token t = player.getToken();
+		token.setPosition(p);
 	}
 	
 	public Color getColor(){
-		Token t = player.getToken();
-		return t.getColor();
+//		Token t = player.getToken();
+		return token.getColor();
 	}
 	
 	public void addTile(Tile t){
@@ -84,11 +92,34 @@ public class SPlayer {
 		this.hasDragonTile = true; 
 	}
 	
+	public void removeTileFromHand(Tile toRemove){
+		Tile removed = null;
+		for (Tile t: myTiles){
+			Tile rotated = t.rotate(0);
+			if (rotated.equals(toRemove.rotate(0))){
+				removed = t;
+			}
+		}
+		if (removed != null){
+			myTiles.remove(removed);
+		}
+		else{
+			throw new IllegalArgumentException("Trying to delete a tile not currently held!");
+		}
+	}
+	
 	public void loseDragonTile() {
 		this.hasDragonTile = false; 
 	}
 	
 	public boolean hasDragonTile() {
 		return this.hasDragonTile; 
+	}
+	
+	@Override
+	public String toString(){
+		return "\nName: " + this.getPlayer().getName() + " Color: " + 
+				this.getColor() + " Position: " + this.getPosition() + "\n" + 
+				"Tiles: " + myTiles;
 	}
 }

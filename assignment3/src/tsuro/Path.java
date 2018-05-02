@@ -37,4 +37,9 @@ public class Path {
 		
 		return ((t.val1 == this.val1) && (t.val2 == this.val2));
 	}
+	
+	@Override
+	public String toString(){
+		return "(" + this.val1 + ", " + this.val2 + ")";
+	}
 }

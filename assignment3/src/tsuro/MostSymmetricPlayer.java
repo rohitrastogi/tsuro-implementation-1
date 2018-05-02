@@ -6,8 +6,8 @@ import java.util.PriorityQueue;
 
 public class MostSymmetricPlayer extends Player {
 
-	public MostSymmetricPlayer(String n, Token t) {
-		super(n, t);
+	public MostSymmetricPlayer(String n) {
+		super(n);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -26,6 +26,7 @@ public class MostSymmetricPlayer extends Player {
 			for (int i = 0; i < Tile.NUM_SIDES; i++) {
 				toPlay = toPlay.rotate(i); 
 				if (ServerUtils.isLegalPlay(Server.server.getSPlayer(this), b, toPlay)) {
+					System.out.println(this.getName() + " has selected tile: " + toPlay.toString());
 					return toPlay; 
 				}
 			}
@@ -37,6 +38,7 @@ public class MostSymmetricPlayer extends Player {
 	}
 }
 
+// TODO make sure this is working properly 
 class MostSymmetricalComparison implements Comparator<Tile> {
 
 	@Override

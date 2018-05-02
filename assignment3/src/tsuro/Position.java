@@ -30,7 +30,7 @@ public class Position {
 				this.isPhantom = isPhantomTile;
 			}
 			else{
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Not a valid phantom position!");
 			}
 		}
 		else{
@@ -40,7 +40,7 @@ public class Position {
 				this.tilePosn = tilePosn;
 			}
 			else{
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Not a valid position!");
 			}
 		}
 	}
@@ -50,16 +50,16 @@ public class Position {
 	}
 		
 	public static boolean isValidPhantomPosition(int x, int y, int tilePosn){
-		if (x == -1 && (y < Board.TILES_PER_ROW && y >=0) && (tilePosn == 6 || tilePosn == 7)) {
+		if (x == -1 && (y < Board.TILES_PER_ROW && y >=0) && (tilePosn == 2 || tilePosn == 3)) {
 			return true; 
 		}
-		if (x == (Board.TILES_PER_ROW) && (y < Board.TILES_PER_ROW && y >=0) && (tilePosn == 2 || tilePosn == 3)) {
+		if (x == (Board.TILES_PER_ROW) && (y < Board.TILES_PER_ROW && y >=0) && (tilePosn == 6 || tilePosn == 7)) {
 			return true; 
 		}
-		if (y == -1 && (x < Board.TILES_PER_ROW && x >=0) && (tilePosn < 2)) {
+		if (y == -1 && (x < Board.TILES_PER_ROW && x >=0) && (tilePosn == 4 || tilePosn == 5)) {
 			return true; 
 		}
-		if (y == (Board.TILES_PER_ROW) && (x < Board.TILES_PER_ROW && x >=0) && (tilePosn == 4 || tilePosn == 5)) {
+		if (y == (Board.TILES_PER_ROW) && (x < Board.TILES_PER_ROW && x >=0) && (tilePosn == 0 || tilePosn == 1)) {
 			return true; 
 		}
 		return false; 
@@ -156,5 +156,10 @@ public class Position {
 		Position p = (Position) obj; 
 		
 		return ((p.x == this.x) && (p.y == this.y) && (p.tilePosn == this.tilePosn));
+	}
+	
+	@Override
+	public String toString(){
+		return "(" + this.x + ", " + this.y + ", " + this.tilePosn + ").";
 	}
 }

@@ -6,9 +6,6 @@ interface PlayerInterface {
   // Returns the player's name 
   public String getName();
   
-  // TODO remove this and refactor based on Robby's Piazza answer
-  public Token getToken();
-  
   // Called to indicate a game is starting.
   // The first argument is the player's color
   // and the second is all of the players'

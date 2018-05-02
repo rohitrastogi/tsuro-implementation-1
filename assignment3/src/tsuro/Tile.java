@@ -86,6 +86,12 @@ public class Tile {
 		return (Arrays.equals(t.paths, this.paths) && (t.rotation == this.rotation));
 	}
 	
+	@Override
+	public String toString(){
+		return "Rotation: " + this.rotation + ", " + "Paths: " + paths[0].toString() + ", " + paths[1].toString() + ", " 
+				+ paths[2].toString() + ", " + paths[3].toString();
+	}
+	
 	// returns how many functionally different rotations this tile has
 	public int getSymmetry() {
 		// go through each rotation, check its first position and see if it changes 

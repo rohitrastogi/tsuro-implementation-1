@@ -11,7 +11,7 @@ public class Board {
 	// Once a tile is placed in a location, that index will refer to the tile object 
 	private Tile[][] tileLayout; 
 	
-	private ArrayList<Token> tokens;
+	private ArrayList<Token> tokens = new ArrayList<Token>();
 	
 	/*
 	// TODO: Remember to toggle this to false once it's possible to take multiple turns 
@@ -112,7 +112,7 @@ public class Board {
 	// Returns true if a move is going to eliminate the player making the move 
 	public boolean isEliminationMove(Tile t, SPlayer p) {
 		Position playerPosn = p.getPosition();
-		Position finalPosn = getFinalPosition(t, playerPosn);
+		Position finalPosn = getFinalPosition(t, playerPosn.getAdjacentPosition());
 		if (finalPosn == null){
 			return true;
 		}

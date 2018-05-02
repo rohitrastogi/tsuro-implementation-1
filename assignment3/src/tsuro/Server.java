@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Server {
 	private Board board; 
-	private ArrayList<SPlayer> currPlayers;
-	private ArrayList<SPlayer> elimPlayers;
+	private ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+	private ArrayList<SPlayer> elimPlayers = new ArrayList<SPlayer>();
 	private ArrayList<Tile> tilePile = new ArrayList<Tile>();
 	
 	// The number of tiles a player can hold in their hand at one time 
@@ -13,13 +13,13 @@ public class Server {
 
 	
 	
-	private Server() {};
+	private Server() {}; 
 	
 	public static Server server = new Server();
 	
 	// GAME INIT FUNCTIONS // 
-	public void registerPlayer(PlayerInterface p){
-		currPlayers.add(new SPlayer(p));
+	public void registerPlayer(PlayerInterface p, Color c){
+		currPlayers.add(new SPlayer(p, c));
 	}
 	
 	public void initializeServer(){
@@ -35,25 +35,32 @@ public class Server {
 			PlayerInterface player = currPlayers.get(i).getPlayer();
 			//TODO clean up call to initialize if possible?
 			player.initialize(currPlayers.get(i).getColor(), Color.values());
-			board.addToken(player.getToken());
 			ArrayList<Tile> myTiles = new ArrayList<Tile>(tilePile.subList(0, TILES_PER_PLAYER));
 			for (int j=0; j<TILES_PER_PLAYER; j++){
 				tilePile.remove(0);
 			}
 			currPlayers.get(i).setTiles(myTiles);
 			currPlayers.get(i).setPosition(player.placePawn(board));
+			board.addToken(currPlayers.get(i).getToken());
 		}
 	}
 	
 	public ArrayList<SPlayer> playGame(){ 
 		BoardState state = null;
+		System.out.println("Initializing server..."); 
 		//setup server state
 		initializeServer();
+		System.out.println("Server initialized.");
 		
 		//main game loop
+		System.out.println("Beginning game loop.");
 		while(!ServerUtils.isGameOver(currPlayers, tilePile)){
+			System.out.println("Remaining players: " + currPlayers);
+			System.out.println("Size of tilepile: " + tilePile.size());
 			SPlayer currPlayer = currPlayers.get(0);
+			System.out.println("Acting SPlayer: " + currPlayer);
 			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
+			System.out.println("Acting Player: " + currPlayerInterface);
 			Tile toPlay = currPlayerInterface.playTurn(board, currPlayer.getTiles(), 0);//why is tiles remaining important?
 			state = ServerUtils.playATurn(tilePile, currPlayers, elimPlayers, board, toPlay); //mutates
 		}
@@ -107,11 +114,15 @@ public class Server {
 	// Gets the SPlayer associated with a given Player 
 	public SPlayer getSPlayer(PlayerInterface player) {
 		for (SPlayer sp : currPlayers) {
-			if (sp.getColor() == player.getToken().getColor()) {
+			if (sp.getPlayer() == player){
+				return sp;
+			}
+		}
+		for (SPlayer sp : elimPlayers) {
+			if (sp.getPlayer() == player) {
 				return sp; 
 			}
 		}
-		
 		// TODO throw an exception somewhere 
 		return null; 
 	}
@@ -169,8 +180,10 @@ public class Server {
 	}
 	public void initializeGame(int numPlayers) {
 		generateTilePile(); 
+		/*
 		currPlayers = new ArrayList<SPlayer>(); 
 		elimPlayers = new ArrayList<SPlayer>(); 
+		*/ 
 		createPlayers(numPlayers);
 		board = new Board(); 
 	}

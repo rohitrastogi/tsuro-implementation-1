@@ -5,20 +5,14 @@ import java.util.Random;
 
 public abstract class Player implements PlayerInterface{
 	private String name; 
-	private Token token; 
 	
 	// Constructor 
-	public Player(String name, Token token) {
+	public Player(String name) {
 		this.name = name; 
-		this.token = token;
 	}
 	
 	public String getName() {
 		return name; 
-	}
-	
-	public Token getToken(){
-		return token;
 	}
 	
 	public Position placePawn(Board b) {
@@ -31,6 +25,7 @@ public abstract class Player implements PlayerInterface{
 			
 			if (!b.isPositionTaken(nextPosn)) {
 				// position isn't taken, so we're good 
+				System.out.println(this.name+ " is starting at " + nextPosn.toString());
 				return nextPosn; 
 			}
 		}
@@ -43,11 +38,12 @@ public abstract class Player implements PlayerInterface{
 	public abstract Tile playTurn(Board b, List<Tile> hand, int tilesRemaining); 
 	
 	public void endGame(Board b, List<Color> winners) {
-		if (winners.contains(this.getToken().getColor())) {
-			System.out.println("" + this.getToken().getColor().toString() + " player won the game!");
+		SPlayer mySPlayer = Server.server.getSPlayer(this);
+		if (winners.contains(mySPlayer.getToken().getColor())) {
+			System.out.println(mySPlayer.getPlayer().getName() + ", the " + mySPlayer.getToken().getColor().toString() + " player, won the game!");
 		}
 		else {
-			System.out.println("" + this.getToken().getColor().toString() + " player lost the game.");
+			System.out.println(mySPlayer.getPlayer().getName() + ", the " + mySPlayer.getToken().getColor().toString() + " player, lost the game.");
 		}
 	}
 	
@@ -59,22 +55,22 @@ public abstract class Player implements PlayerInterface{
 		if (rand <= 12) {
 			x = -1; 
 			y = rand % 6; 
-			tp = rand % 2 + 6; // 6 or 7 
+			tp = rand % 2 + 2; // 2 or 3
 		}
 		else if (rand <= 24) {
 			x = 6; 
 			y = rand % 6; 
-			tp = rand % 2 + 2; // 2 or 3
+			tp = rand % 2 + 6; // 6 or 7 
 		}
 		else if (rand <= 36) {
 			y = -1; 
 			x = rand % 6; 
-			tp = rand % 2; // 0 or 1
+			tp = rand % 2 + 4; // 4 or 5 
 		}
 		else {
 			y = 6; 
 			x = rand % 6; 
-			tp = rand % 2 + 4; // 4 or 5 
+			tp = rand % 2; // 0 or 1
 		}
 		
 		return new Position(x, y, tp, true); 
