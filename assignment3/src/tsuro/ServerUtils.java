@@ -123,13 +123,16 @@ public class ServerUtils {
 		cPlayers.remove(player);
 		ePlayers.add(player);
 		
-		//if player being eliminated has dragon tile, pass it clockwise to first player with < 3 tiles
+		//if player being eliminated has dragon tile, pass it clockwise to first player after it with < 3 tiles
 		if (player.hasDragonTile()){
 			player.loseDragonTile();
+			int playerIndex = cPlayers.indexOf(player);
 			for (int i = 0; i<cPlayers.size(); i++){
-				SPlayer currPlayer = cPlayers.get(i);
+				int startIndex = i + playerIndex + 1;
+				SPlayer currPlayer = cPlayers.get(startIndex % cPlayers.size());
 				if (currPlayer.getTiles().size() < 3){
 					currPlayer.takeDragonTile();
+					System.out.println("Dragon Tile is passed to " + currPlayer.toString() + ".");
 					break;
 				}
 			}
@@ -190,7 +193,7 @@ public class ServerUtils {
 				shuffleTiles(deck);
 		 
 		if (getDragTilePlayerIndex(currPlayers) != -1) {
-			// Someone has the dragon tile 
+			// Someone has the dragon tile and player with dragon tile was just not immediately eliminated 
 			drawLoop(deck, currPlayers); 
 		}
 	}

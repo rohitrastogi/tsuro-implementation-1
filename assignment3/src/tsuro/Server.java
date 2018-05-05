@@ -60,7 +60,7 @@ public class Server {
 			SPlayer currPlayer = currPlayers.get(0);
 			System.out.println("Acting SPlayer: " + currPlayer);
 			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
-			System.out.println("Acting Player: " + currPlayerInterface);
+			System.out.println("Type: " + currPlayerInterface);
 			Tile toPlay = currPlayerInterface.playTurn(board, currPlayer.getTiles(), 0);//why is tiles remaining important?
 			currPlayer.removeTileFromHand(toPlay);
 			state = ServerUtils.playATurn(tilePile, currPlayers, elimPlayers, board, toPlay); //mutates

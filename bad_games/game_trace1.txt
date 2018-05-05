@@ -1,0 +1,970 @@
+Initializing server...
+rohit is starting at (1, 6, 1).
+chris is starting at (4, 6, 0).
+robby is starting at (4, -1, 4).
+christos is starting at (6, 3, 7).
+rastogi is starting at (-1, 2, 2).
+serpico is starting at (-1, 5, 3).
+findler is starting at (6, 5, 7).
+dimoulas is starting at (6, 0, 6).
+Server initialized.
+Beginning game loop.
+Size of tilepile: 11
+Remaining players: [
+Name: rohit, Color: BLUE, Position: (1, 6, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 7), (2, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: chris, Color: RED, Position: (4, 6, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 5), (1, 4), (2, 7), (3, 6), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, -1, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 7), (5, 6), Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (6, 3, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 4), (3, 5), (6, 7)], 
+Name: rastogi, Color: SIENNA, Position: (-1, 2, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)], 
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)]]
+Acting SPlayer: 
+Name: rohit, Color: BLUE, Position: (1, 6, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 7), (2, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)]
+Acting Player: tsuro.RandomPlayer@4e25154f
+rohit has selected tile: Rotation: 2, Paths: (0, 3), (1, 7), (2, 6), (4, 5)
+rohit is at (1, 6, 1). They have moved onto (1, 5, 4).
+rohit places their tile.
+rohit moves to (1, 5, 7).
+rohit draws: Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)
+The turn advances to chris.
+
+Size of tilepile: 10
+Remaining players: [
+Name: chris, Color: RED, Position: (4, 6, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 5), (1, 4), (2, 7), (3, 6), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, -1, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 7), (5, 6), Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (6, 3, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 4), (3, 5), (6, 7)], 
+Name: rastogi, Color: SIENNA, Position: (-1, 2, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)], 
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: rohit, Color: BLUE, Position: (1, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]]
+Acting SPlayer: 
+Name: chris, Color: RED, Position: (4, 6, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 5), (1, 4), (2, 7), (3, 6), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@70dea4e
+chris has selected tile: Rotation: 0, Paths: (0, 5), (1, 4), (2, 7), (3, 6)
+chris is at (4, 6, 0). They have moved onto (4, 5, 5).
+chris places their tile.
+chris moves to (4, 5, 0).
+chris draws: Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)
+The turn advances to robby.
+
+Size of tilepile: 9
+Remaining players: [
+Name: robby, Color: GREEN, Position: (4, -1, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 7), (5, 6), Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (6, 3, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 4), (3, 5), (6, 7)], 
+Name: rastogi, Color: SIENNA, Position: (-1, 2, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)], 
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: rohit, Color: BLUE, Position: (1, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)]]
+Acting SPlayer: 
+Name: robby, Color: GREEN, Position: (4, -1, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 7), (5, 6), Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4)]
+Acting Player: tsuro.LeastSymmetricPlayer@5c647e05
+robby has selected tile: Rotation: 0, Paths: (0, 2), (1, 4), (3, 7), (5, 6)
+robby is at (4, -1, 4). They have moved onto (4, 0, 1).
+robby places their tile.
+robby moves to (4, 0, 4).
+robby draws: Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)
+The turn advances to christos.
+
+Size of tilepile: 8
+Remaining players: [
+Name: christos, Color: ORANGE, Position: (6, 3, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 4), (3, 5), (6, 7)], 
+Name: rastogi, Color: SIENNA, Position: (-1, 2, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)], 
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: rohit, Color: BLUE, Position: (1, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)]]
+Acting SPlayer: 
+Name: christos, Color: ORANGE, Position: (6, 3, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 4), (3, 5), (6, 7)]
+Acting Player: tsuro.RandomPlayer@33909752
+christos has selected tile: Rotation: 3, Paths: (0, 1), (2, 4), (3, 5), (6, 7)
+christos is at (6, 3, 7). They have moved onto (5, 3, 2).
+christos places their tile.
+christos moves to (5, 3, 0).
+christos draws: Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)
+The turn advances to rastogi.
+
+Size of tilepile: 7
+Remaining players: [
+Name: rastogi, Color: SIENNA, Position: (-1, 2, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)], 
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: rohit, Color: BLUE, Position: (1, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)], 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)]]
+Acting SPlayer: 
+Name: rastogi, Color: SIENNA, Position: (-1, 2, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@55f96302
+rastogi has selected tile: Rotation: 0, Paths: (0, 4), (1, 3), (2, 6), (5, 7)
+rastogi is at (-1, 2, 2). They have moved onto (0, 2, 7).
+rastogi places their tile.
+rastogi moves to (0, 2, 5).
+rastogi draws: Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)
+The turn advances to serpico.
+
+Size of tilepile: 6
+Remaining players: [
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: rohit, Color: BLUE, Position: (1, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)], 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)]]
+Acting SPlayer: 
+Name: serpico, Color: HOTPINK, Position: (-1, 5, 3).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 3), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)]
+Acting Player: tsuro.LeastSymmetricPlayer@3d4eac69
+serpico has selected tile: Rotation: 1, Paths: (0, 2), (1, 3), (4, 6), (5, 7)
+serpico is at (-1, 5, 3). They have moved onto (0, 5, 6).
+serpico places their tile.
+serpico moves to (0, 5, 0).
+
+rohit moves to (0, 5, 4). This move eliminates them! After rohit was eliminated, 3 tiles were added to the deck.
+serpico draws: Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)
+The turn advances to findler.
+
+Size of tilepile: 8
+Remaining players: [
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)], 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]]
+Acting SPlayer: 
+Name: findler, Color: PURPLE, Position: (6, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 5), (2, 7), (3, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)]
+Acting Player: tsuro.RandomPlayer@42a57993
+findler has selected tile: Rotation: 1, Paths: (0, 4), (1, 5), (2, 7), (3, 6)
+findler is at (6, 5, 7). They have moved onto (5, 5, 2).
+findler places their tile.
+findler moves to (4, 5, 6).
+findler draws: Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)
+The turn advances to dimoulas.
+
+Size of tilepile: 7
+Remaining players: [
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)], 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)], 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)]]
+Acting SPlayer: 
+Name: dimoulas, Color: DARKGREEN, Position: (6, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@75b84c92
+dimoulas has selected tile: Rotation: 0, Paths: (0, 1), (2, 4), (3, 6), (5, 7)
+dimoulas is at (6, 0, 6). They have moved onto (5, 0, 3).
+dimoulas places their tile.
+dimoulas moves to (4, 0, 7).
+dimoulas draws: Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)
+The turn advances to chris.
+
+Size of tilepile: 6
+Remaining players: [
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)], 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)], 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)]]
+Acting SPlayer: 
+Name: chris, Color: RED, Position: (4, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7), Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@70dea4e
+chris has selected tile: Rotation: 0, Paths: (0, 3), (1, 2), (4, 6), (5, 7)
+chris is at (4, 5, 0). They have moved onto (4, 4, 5).
+chris places their tile.
+chris moves to (4, 4, 7).
+chris draws: Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)
+The turn advances to robby.
+
+Size of tilepile: 5
+Remaining players: [
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)], 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)]]
+Acting SPlayer: 
+Name: robby, Color: GREEN, Position: (4, 0, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)]
+Acting Player: tsuro.LeastSymmetricPlayer@5c647e05
+robby has selected tile: Rotation: 0, Paths: (0, 2), (1, 4), (3, 6), (5, 7)
+robby is at (4, 0, 4). They have moved onto (4, 1, 1).
+robby places their tile.
+robby moves to (4, 1, 4).
+robby draws: Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)
+The turn advances to christos.
+
+Size of tilepile: 4
+Remaining players: [
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)]]
+Acting SPlayer: 
+Name: christos, Color: ORANGE, Position: (5, 3, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 3), (2, 5), (4, 6), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6)]
+Acting Player: tsuro.RandomPlayer@33909752
+christos has selected tile: Rotation: 3, Paths: (0, 7), (1, 3), (2, 5), (4, 6)
+christos is at (5, 3, 0). They have moved onto (5, 2, 5).
+christos places their tile.
+christos moves to (5, 2, 6).
+christos draws: Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)
+The turn advances to rastogi.
+
+Size of tilepile: 3
+Remaining players: [
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (5, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]]
+Acting SPlayer: 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 5).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@55f96302
+rastogi has selected tile: Rotation: 0, Paths: (0, 1), (2, 3), (4, 5), (6, 7)
+rastogi is at (0, 2, 5). They have moved onto (0, 3, 0).
+rastogi places their tile.
+rastogi moves to (0, 2, 0).
+rastogi draws: Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)
+The turn advances to serpico.
+
+Size of tilepile: 2
+Remaining players: [
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (5, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)]]
+Acting SPlayer: 
+Name: serpico, Color: HOTPINK, Position: (0, 5, 0).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]
+Acting Player: tsuro.LeastSymmetricPlayer@3d4eac69
+serpico has selected tile: Rotation: 0, Paths: (0, 1), (2, 7), (3, 5), (4, 6)
+serpico is at (0, 5, 0). They have moved onto (0, 4, 5).
+serpico places their tile.
+serpico moves to (0, 4, 3).
+serpico draws: Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)
+The turn advances to findler.
+
+Size of tilepile: 1
+Remaining players: [
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (5, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)]]
+Acting SPlayer: 
+Name: findler, Color: PURPLE, Position: (4, 5, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 1), (2, 6), (3, 7), (4, 5)]
+Acting Player: tsuro.RandomPlayer@42a57993
+findler has selected tile: Rotation: 2, Paths: (0, 1), (2, 6), (3, 7), (4, 5)
+findler is at (4, 5, 6). They have moved onto (3, 5, 3).
+findler places their tile.
+findler moves to (3, 5, 7).
+findler draws: Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)
+The turn advances to dimoulas.
+
+Size of tilepile: 0
+Remaining players: [
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (5, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)]]
+Acting SPlayer: 
+Name: dimoulas, Color: DARKGREEN, Position: (4, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@75b84c92
+dimoulas has selected tile: Rotation: 0, Paths: (0, 4), (1, 5), (2, 6), (3, 7)
+dimoulas is at (4, 0, 7). They have moved onto (3, 0, 2).
+dimoulas places their tile.
+dimoulas moves to (3, 0, 6).
+dimoulas attempts to draw the Dragon Tile... 
+and succeeds!
+The turn advances to chris.
+
+Size of tilepile: 0
+Remaining players: [
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (5, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)], 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)]]
+Acting SPlayer: 
+Name: chris, Color: RED, Position: (4, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@70dea4e
+chris has selected tile: Rotation: 0, Paths: (0, 1), (2, 7), (3, 4), (5, 6)
+chris is at (4, 4, 7). They have moved onto (3, 4, 2).
+chris places their tile.
+chris moves to (3, 4, 7).
+chris attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to robby.
+
+Size of tilepile: 0
+Remaining players: [
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (5, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)], 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)]]
+Acting SPlayer: 
+Name: robby, Color: GREEN, Position: (4, 1, 4).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4), Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)]
+Acting Player: tsuro.LeastSymmetricPlayer@5c647e05
+robby has selected tile: Rotation: 0, Paths: (0, 7), (1, 6), (2, 5), (3, 4)
+robby is at (4, 1, 4). They have moved onto (4, 2, 1).
+robby places their tile.
+robby moves to (4, 2, 6).
+
+christos moves to (4, 2, 4).robby attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to christos.
+
+Size of tilepile: 0
+Remaining players: [
+Name: christos, Color: ORANGE, Position: (4, 2, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)], 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)]]
+Acting SPlayer: 
+Name: christos, Color: ORANGE, Position: (4, 2, 4).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 7), (1, 2), (3, 4), (5, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]
+Acting Player: tsuro.RandomPlayer@33909752
+christos has selected tile: Rotation: 2, Paths: (0, 7), (1, 2), (3, 4), (5, 6)
+christos is at (4, 2, 4). They have moved onto (4, 3, 1).
+christos places their tile.
+christos moves to (4, 4, 2).
+christos attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to rastogi.
+
+Size of tilepile: 0
+Remaining players: [
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)], 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]]
+Acting SPlayer: 
+Name: rastogi, Color: SIENNA, Position: (0, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6), Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@55f96302
+rastogi has selected tile: Rotation: 0, Paths: (0, 2), (1, 7), (3, 5), (4, 6)
+rastogi is at (0, 2, 0). They have moved onto (0, 1, 5).
+rastogi places their tile.
+rastogi moves to (0, 1, 3).
+rastogi attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to serpico.
+
+Size of tilepile: 0
+Remaining players: [
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)], 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)]]
+Acting SPlayer: 
+Name: serpico, Color: HOTPINK, Position: (0, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)]
+Acting Player: tsuro.LeastSymmetricPlayer@3d4eac69
+serpico has selected tile: Rotation: 0, Paths: (0, 1), (2, 5), (3, 6), (4, 7)
+serpico is at (0, 4, 3). They have moved onto (1, 4, 6).
+serpico places their tile.
+serpico moves to (1, 4, 3).
+serpico attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to findler.
+
+Size of tilepile: 0
+Remaining players: [
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)], 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (1, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)]]
+Acting SPlayer: 
+Name: findler, Color: PURPLE, Position: (3, 5, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5), Rotation: 0, Paths: (0, 7), (1, 5), (2, 6), (3, 4)]
+Acting Player: tsuro.RandomPlayer@42a57993
+findler has selected tile: Rotation: 3, Paths: (0, 7), (1, 5), (2, 6), (3, 4)
+findler is at (3, 5, 7). They have moved onto (2, 5, 2).
+findler places their tile.
+findler moves to (2, 5, 1).
+findler attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to dimoulas.
+
+Size of tilepile: 0
+Remaining players: [
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)], 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (1, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (2, 5, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)]]
+Acting SPlayer: 
+Name: dimoulas, Color: DARKGREEN, Position: (3, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@75b84c92
+dimoulas has selected tile: Rotation: 0, Paths: (0, 6), (1, 5), (2, 4), (3, 7)
+dimoulas is at (3, 0, 6). They have moved onto (2, 0, 3).
+dimoulas places their tile.
+dimoulas moves to (2, 0, 7).
+dimoulas attempts to draw the Dragon Tile... 
+but dimoulas already has it!
+The turn advances to chris.
+
+Size of tilepile: 0
+Remaining players: [
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)], 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: serpico, Color: HOTPINK, Position: (1, 4, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: findler, Color: PURPLE, Position: (2, 5, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6)]]
+Acting SPlayer: 
+Name: chris, Color: RED, Position: (3, 4, 7).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 3), (2, 7), (5, 6), Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@70dea4e
+chris has selected tile: Rotation: 2, Paths: (0, 4), (1, 3), (2, 7), (5, 6)
+chris is at (3, 4, 7). They have moved onto (2, 4, 2).
+chris places their tile.
+chris moves to (2, 4, 1).
+
+serpico moves to (4, 5, 4). This move eliminates them! After serpico was eliminated, 2 tiles were added to the deck.
+Starting Draw Loop...
+dimoulas gives up dragon tile!
+dimoulas draws: Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)
+chris draws: Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)
+robby attempts to draw the Dragon Tile... 
+and succeeds!
+Ending Draw Loop...
+
+findler moves to (2, 4, 0).chris attempts to draw the Dragon Tile... 
+but robby already has it!
+The turn advances to robby.
+
+Size of tilepile: 0
+Remaining players: [
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (2, 4, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (2, 4, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)]]
+Acting SPlayer: 
+Name: robby, Color: GREEN, Position: (4, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5), Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)]
+Acting Player: tsuro.LeastSymmetricPlayer@5c647e05
+robby has selected tile: Rotation: 0, Paths: (0, 1), (2, 7), (3, 6), (4, 5)
+robby is at (4, 2, 6). They have moved onto (3, 2, 3).
+robby places their tile.
+robby moves to (3, 2, 6).
+robby attempts to draw the Dragon Tile... 
+but robby already has it!
+The turn advances to christos.
+
+Size of tilepile: 0
+Remaining players: [
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (2, 4, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (2, 4, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)]]
+Acting SPlayer: 
+Name: christos, Color: ORANGE, Position: (4, 4, 2).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 6), (3, 7), (4, 5), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]
+Acting Player: tsuro.RandomPlayer@33909752
+christos has selected tile: Rotation: 1, Paths: (0, 2), (1, 6), (3, 7), (4, 5)
+christos is at (4, 4, 2). They have moved onto (5, 4, 7).
+christos places their tile.
+christos moves to (4, 3, 6).
+christos attempts to draw the Dragon Tile... 
+but robby already has it!
+The turn advances to rastogi.
+
+Size of tilepile: 0
+Remaining players: [
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (2, 4, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (2, 4, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 3, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]]
+Acting SPlayer: 
+Name: rastogi, Color: SIENNA, Position: (0, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7), Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@55f96302
+rastogi has selected tile: Rotation: 0, Paths: (0, 6), (1, 3), (2, 5), (4, 7)
+rastogi is at (0, 1, 3). They have moved onto (1, 1, 6).
+rastogi places their tile.
+rastogi moves to (1, 1, 0).
+rastogi attempts to draw the Dragon Tile... 
+but robby already has it!
+The turn advances to findler.
+
+Size of tilepile: 0
+Remaining players: [
+Name: findler, Color: PURPLE, Position: (2, 4, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (2, 4, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 3, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 1, 0).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)]]
+Acting SPlayer: 
+Name: findler, Color: PURPLE, Position: (2, 4, 0).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7), Rotation: 0, Paths: (0, 7), (1, 6), (2, 3), (4, 5)]
+Acting Player: tsuro.RandomPlayer@42a57993
+findler has selected tile: Rotation: 2, Paths: (0, 7), (1, 6), (2, 3), (4, 5)
+findler is at (2, 4, 0). They have moved onto (2, 3, 5).
+findler places their tile.
+findler moves to (2, 3, 2).
+
+chris moves to (2, 3, 3).findler attempts to draw the Dragon Tile... 
+but robby already has it!
+The turn advances to dimoulas.
+
+Size of tilepile: 0
+Remaining players: [
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: chris, Color: RED, Position: (2, 3, 3).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 3, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 1, 0).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (2, 3, 2).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7)]]
+Acting SPlayer: 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 0, 7).
+Tiles: [Rotation: 0, Paths: (0, 2), (1, 7), (3, 4), (5, 6), Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@75b84c92
+dimoulas has selected tile: Rotation: 1, Paths: (0, 2), (1, 7), (3, 4), (5, 6)
+dimoulas is at (2, 0, 7). They have moved onto (1, 0, 2).
+dimoulas places their tile.
+dimoulas moves to (1, 1, 3).
+
+rastogi moves to (1, 0, 6).dimoulas attempts to draw the Dragon Tile... 
+but robby already has it!
+The turn advances to chris.
+
+Size of tilepile: 0
+Remaining players: [
+Name: chris, Color: RED, Position: (2, 3, 3).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)], 
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)], 
+Name: christos, Color: ORANGE, Position: (4, 3, 6).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (2, 3, 2).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7)], 
+Name: dimoulas, Color: DARKGREEN, Position: (1, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]]
+Acting SPlayer: 
+Name: chris, Color: RED, Position: (2, 3, 3).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@70dea4e
+chris has selected tile: Rotation: 0, Paths: (0, 3), (1, 5), (2, 7), (4, 6)
+chris is at (2, 3, 3). They have moved onto (3, 3, 6).
+chris places their tile.
+chris moves to (5, 3, 2).
+chris has eliminated themself!
+ After chris was eliminated, 1 tiles were added to the deck.
+Starting Draw Loop...
+robby gives up dragon tile!
+robby draws: Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)
+christos attempts to draw the Dragon Tile... 
+and succeeds!
+Ending Draw Loop...
+
+christos moves to (4, 5, 5). This move eliminates them! After christos was eliminated, 1 tiles were added to the deck.
+Starting Draw Loop...
+robby gives up dragon tile! ??????????ERROR HERE ROBBY SHOULD NOT BE PASSED THE DRAGON TILE, SHOULD BE RASTOGI
+robby draws: Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)
+rastogi attempts to draw the Dragon Tile... 
+and succeeds!
+Ending Draw Loop...
+
+findler moves to (5, 2, 1).
+
+Size of tilepile: 0
+Remaining players: [
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (5, 2, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7)], 
+Name: dimoulas, Color: DARKGREEN, Position: (1, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]]
+Acting SPlayer: 
+Name: robby, Color: GREEN, Position: (3, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4), Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]
+Acting Player: tsuro.LeastSymmetricPlayer@5c647e05
+robby has selected tile: Rotation: 0, Paths: (0, 5), (1, 6), (2, 7), (3, 4)
+robby is at (3, 2, 6). They have moved onto (2, 2, 3).
+robby places their tile.
+robby moves to (2, 2, 0).
+robby attempts to draw the Dragon Tile... 
+but rastogi already has it!
+The turn advances to rastogi.
+
+Size of tilepile: 0
+Remaining players: [
+Name: rastogi, Color: SIENNA, Position: (1, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)], 
+Name: findler, Color: PURPLE, Position: (5, 2, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7)], 
+Name: dimoulas, Color: DARKGREEN, Position: (1, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: robby, Color: GREEN, Position: (2, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]]
+Acting SPlayer: 
+Name: rastogi, Color: SIENNA, Position: (1, 0, 6).
+Tiles: [Rotation: 0, Paths: (0, 5), (1, 3), (2, 6), (4, 7)]
+Acting Player: tsuro.MostSymmetricPlayer@55f96302
+rastogi has selected tile: Rotation: 1, Paths: (0, 5), (1, 3), (2, 6), (4, 7)
+rastogi is at (1, 0, 6). They have moved onto (0, 0, 3).
+rastogi places their tile.
+rastogi moves to (1, 1, 4).
+rastogi attempts to draw the Dragon Tile... 
+but rastogi already has it!
+The turn advances to findler.
+
+Size of tilepile: 0
+Remaining players: [
+Name: findler, Color: PURPLE, Position: (5, 2, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7)], 
+Name: dimoulas, Color: DARKGREEN, Position: (1, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: robby, Color: GREEN, Position: (2, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 1, 4).
+Tiles: []]
+Acting SPlayer: 
+Name: findler, Color: PURPLE, Position: (5, 2, 1).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 5), (2, 6), (4, 7)]
+Acting Player: tsuro.RandomPlayer@42a57993
+findler has selected tile: Rotation: 2, Paths: (0, 3), (1, 5), (2, 6), (4, 7)
+findler is at (5, 2, 1). They have moved onto (5, 1, 4).
+findler places their tile.
+findler moves to (2, 0, 4).
+findler attempts to draw the Dragon Tile... 
+but rastogi already has it!
+The turn advances to dimoulas.
+
+Size of tilepile: 0
+Remaining players: [
+Name: dimoulas, Color: DARKGREEN, Position: (1, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)], 
+Name: robby, Color: GREEN, Position: (2, 2, 0).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 1, 4).
+Tiles: [], 
+Name: findler, Color: PURPLE, Position: (2, 0, 4).
+Tiles: []]
+Acting SPlayer: 
+Name: dimoulas, Color: DARKGREEN, Position: (1, 1, 3).
+Tiles: [Rotation: 0, Paths: (0, 4), (1, 7), (2, 3), (5, 6)]
+Acting Player: tsuro.MostSymmetricPlayer@75b84c92
+dimoulas has selected tile: Rotation: 1, Paths: (0, 4), (1, 7), (2, 3), (5, 6)
+dimoulas is at (1, 1, 3). They have moved onto (2, 1, 6).
+dimoulas places their tile.
+dimoulas moves to (2, 1, 2).
+
+robby moves to (2, 2, 6).
+findler moves to (2, 1, 3).dimoulas attempts to draw the Dragon Tile... 
+but rastogi already has it!
+The turn advances to robby.
+
+Size of tilepile: 0
+Remaining players: [
+Name: robby, Color: GREEN, Position: (2, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)], 
+Name: rastogi, Color: SIENNA, Position: (1, 1, 4).
+Tiles: [], 
+Name: findler, Color: PURPLE, Position: (2, 1, 3).
+Tiles: [], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 1, 2).
+Tiles: []]
+Acting SPlayer: 
+Name: robby, Color: GREEN, Position: (2, 2, 6).
+Tiles: [Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6), Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]
+Acting Player: tsuro.LeastSymmetricPlayer@5c647e05
+robby has selected tile: Rotation: 0, Paths: (0, 7), (1, 5), (2, 3), (4, 6)
+robby is at (2, 2, 6). They have moved onto (1, 2, 3).
+robby places their tile.
+robby moves to (4, 1, 7).
+
+rastogi moves to (1, 2, 5).robby attempts to draw the Dragon Tile... 
+but rastogi already has it!
+The turn advances to rastogi.
+
+Size of tilepile: 0
+Remaining players: [
+Name: rastogi, Color: SIENNA, Position: (1, 2, 5).
+Tiles: [], 
+Name: findler, Color: PURPLE, Position: (2, 1, 3).
+Tiles: [], 
+Name: dimoulas, Color: DARKGREEN, Position: (2, 1, 2).
+Tiles: [], 
+Name: robby, Color: GREEN, Position: (4, 1, 7).
+Tiles: [Rotation: 0, Paths: (0, 3), (1, 6), (2, 5), (4, 7)]]
+Acting SPlayer: 
+Name: rastogi, Color: SIENNA, Position: (1, 2, 5).
+Tiles: []
+Acting Player: tsuro.MostSymmetricPlayer@55f96302
+Exception in thread "main" java.lang.RuntimeException: Somehow playTurn for player rastogi has a hand with no playable tile.
+	at tsuro.MostSymmetricPlayer.playTurn(MostSymmetricPlayer.java:36)
+	at tsuro.Server.playGame(Server.java:64)
+	at tsuro.Tournament.main(Tournament.java:21)
