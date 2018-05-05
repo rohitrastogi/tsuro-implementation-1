@@ -119,12 +119,22 @@ public class ServerUtils {
 
 	//removes a player from cPlayers list to ePlayers list, and shuffles eliminated player's tiles into deck
 	public static void eliminatePlayer(SPlayer player, ArrayList<SPlayer>cPlayers, ArrayList<SPlayer> ePlayers, ArrayList<Tile> deck){
-		player.loseDragonTile();
+		//remove player from current players list, and add to eliminated players list
 		cPlayers.remove(player);
 		ePlayers.add(player);
-		if (player.getTiles().size() != 0){
-			addEliminatedPlayerTiles(player, deck, cPlayers);
+		
+		//if player being eliminated has dragon tile, pass it clockwise to first player with < 3 tiles
+		if (player.hasDragonTile()){
+			player.loseDragonTile();
+			for (int i = 0; i<cPlayers.size(); i++){
+				SPlayer currPlayer = cPlayers.get(i);
+				if (currPlayer.getTiles().size() < 3){
+					currPlayer.takeDragonTile();
+					break;
+				}
+			}
 		}
+		addEliminatedPlayerTiles(player, deck, cPlayers);	
 	}
 	
 	//returns a list of all players that can be moved as a result of a new tile being placed

@@ -12,23 +12,23 @@ public class RandomPlayer extends Player{
 	@Override 
 	public Tile playTurn(Board b, List<Tile> hand, int tilesRemaining) {
 		// get a list of possible tiles 
-		List<Tile> availibleMoves = new ArrayList<Tile>(); 
+		List<Tile> availableMoves = new ArrayList<Tile>(); 
 		for (Tile t: hand) {
 			for (int i = 0; i < Tile.NUM_SIDES; i++) {
-				availibleMoves.add(t.rotate(i)); 
+				availableMoves.add(t.rotate(i)); 
 			}
 		}
 		
 		// go through list randomly until we find a tile to play
 		Random r = new Random(); 
-		while(availibleMoves.size() > 0) {
-			Tile next = availibleMoves.get(r.nextInt(availibleMoves.size())); 
+		while(availableMoves.size() > 0) {
+			Tile next = availableMoves.get(r.nextInt(availableMoves.size())); 
 			if (ServerUtils.isLegalPlay(Server.server.getSPlayer(this), b, next)) {
 				System.out.println(this.getName() + " has selected tile: " + next.toString());
 				return next; 
 			}
 			else {
-				availibleMoves.remove(next); 
+				availableMoves.remove(next); 
 			}
 		}
 		
