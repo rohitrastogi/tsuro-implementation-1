@@ -22,6 +22,9 @@ public class BoardState {
 	
 	public boolean equals(Object obj) {
 		BoardState bs = (BoardState) obj; 
+		if (!tilePile.equals(bs.tilePile)){
+			System.out.println("unequal tile piles");
+		}
 		return (this.tilePile.equals(bs.tilePile) && this.currPlayers.equals(bs.currPlayers) && 
 				this.elimPlayers.equals(bs.elimPlayers) && this.board.equals(bs.board) &&
 				this.winners.equals(bs.winners));

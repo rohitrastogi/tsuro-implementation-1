@@ -118,16 +118,12 @@ public class ServerUtils {
 
 
 	//removes a player from cPlayers list to ePlayers list, and shuffles eliminated player's tiles into deck
-	public static void eliminatePlayer(SPlayer player, ArrayList<SPlayer>cPlayers, ArrayList<SPlayer> ePlayers, ArrayList<Tile> deck){
-		//remove player from current players list, and add to eliminated players list
-		cPlayers.remove(player);
-		ePlayers.add(player);
-		
+	public static void eliminatePlayer(SPlayer player, ArrayList<SPlayer>cPlayers, ArrayList<SPlayer> ePlayers, ArrayList<Tile> deck){		
 		//if player being eliminated has dragon tile, pass it clockwise to first player after it with < 3 tiles
 		if (player.hasDragonTile()){
 			player.loseDragonTile();
 			int playerIndex = cPlayers.indexOf(player);
-			for (int i = 0; i<cPlayers.size(); i++){
+			for (int i = 0; i<cPlayers.size() - 1; i++){
 				int startIndex = i + playerIndex + 1;
 				SPlayer currPlayer = cPlayers.get(startIndex % cPlayers.size());
 				if (currPlayer.getTiles().size() < 3){
@@ -137,6 +133,10 @@ public class ServerUtils {
 				}
 			}
 		}
+		//remove player from current players list, and add to eliminated players list
+		cPlayers.remove(player);
+		ePlayers.add(player);
+		
 		addEliminatedPlayerTiles(player, deck, cPlayers);	
 	}
 	
@@ -190,10 +190,9 @@ public class ServerUtils {
 		deck.addAll(player.getTiles());
 		System.out.println(" After " + player.getPlayer().getName() + " was eliminated, " + 
 				player.getTiles().size() + " tiles were added to the deck.");
-				shuffleTiles(deck);
+		shuffleTiles(deck);
 		 
 		if (getDragTilePlayerIndex(currPlayers) != -1) {
-			// Someone has the dragon tile and player with dragon tile was just not immediately eliminated 
 			drawLoop(deck, currPlayers); 
 		}
 	}

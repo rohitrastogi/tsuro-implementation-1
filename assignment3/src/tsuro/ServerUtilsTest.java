@@ -155,10 +155,10 @@ public class ServerUtilsTest {
 		ArrayList<SPlayer> newElimPlayers = new ArrayList<SPlayer>(); 
 		newElimPlayers.add(newP3); 
 		newElimPlayers.add(newP4); 
-		
+
 		BoardState returnedBS = ServerUtils.playATurn(tilePile, currPlayers, new ArrayList<SPlayer>(), testBoard, toPlay); 
-		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, newElimPlayers, newBoard, new ArrayList<SPlayer>()); 
-		
+		BoardState compareBS = new BoardState(newTilePile, newCurrPlayers, newElimPlayers, newBoard, new ArrayList<SPlayer>());
+		//sometimes fails due to randomness as a result of call to shuffle 
 		assertTrue(returnedBS.equals(compareBS)); 
 	}
 	@Test 
@@ -219,6 +219,8 @@ public class ServerUtilsTest {
 		
 		assertTrue(elimPlayers.contains(p1));
 		assertFalse(p1.hasDragonTile());
+		assertTrue(p2.hasDragonTile());
+		//failing because draw loop begins - need to check rules
 		assertEquals(3, deck.size());	
 		
 	}
@@ -286,6 +288,7 @@ public class ServerUtilsTest {
 		//check sizes 
 		assertEquals(31, testServer1.getTilePile().size()); 
 		assertEquals(4, testServer1.getCurrPlayers().get(0).getTiles().size());
+		assertTrue(testServer1.getCurrPlayers().get(0).getTiles().contains(toBeDrawn));
 	}
 
 	@Test
