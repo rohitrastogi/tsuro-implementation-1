@@ -192,7 +192,7 @@ public class ServerUtilsTest {
 	}
 	
 	@Test
-	//dragon tile player is eliminated 
+	//dragon tile player is eliminated and draw loop is initiated 
 	public void testDragonTile2(){
 		ArrayList<Tile> p1Hand = new ArrayList<Tile>();
 		ArrayList<Tile> p2Hand = new ArrayList<Tile>();
@@ -219,11 +219,52 @@ public class ServerUtilsTest {
 		
 		assertTrue(elimPlayers.contains(p1));
 		assertFalse(p1.hasDragonTile());
-		assertTrue(p2.hasDragonTile());
-		//failing because draw loop begins - need to check rules
-		assertEquals(3, deck.size());	
-		
+		//robby ends up with dragon tile after chris had it (after draw loop)
+		assertTrue(p3.hasDragonTile());
+		assertEquals(3, p2.getTiles().size());
+		assertEquals(2, p3.getTiles().size());
+		assertEquals(0, deck.size());	
 	}
+	
+	@Test
+	// dragon tile player is eliminated, draw loop is initiated, draw loop ends when players have 3 tiles each 
+	// make sure nobody has the dragon tile
+	public void testDragonTile3(){
+		ArrayList<Tile> p1Hand = new ArrayList<Tile>();
+		ArrayList<Tile> p2Hand = new ArrayList<Tile>();
+		ArrayList<Tile> p3Hand = new ArrayList<Tile>();
+		ArrayList<SPlayer> currPlayers = new ArrayList<SPlayer>();
+		ArrayList<SPlayer> elimPlayers = new ArrayList<SPlayer>();
+		ArrayList<Tile> deck = new ArrayList<Tile>();
+		
+		p1Hand.add(new Tile(new Path[] {new Path(0, 2), new Path(1, 3), new Path(4, 6), new Path(5, 7)}));
+		p1Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 2), new Path(4, 6), new Path(5, 7)}));
+		p1Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 5), new Path(2, 6), new Path(4, 7)}));
+		p2Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 6), new Path(2, 7), new Path(3, 4)}));
+		p2Hand.add(new Tile(new Path[] {new Path(0, 2), new Path(1, 7), new Path(3, 4), new Path(5, 6)}));
+		p3Hand.add(new Tile(new Path[] {new Path(0, 3), new Path(1, 5), new Path(2, 7), new Path(4, 6)}));
+		p3Hand.add(new Tile(new Path[] {new Path(0, 5), new Path(1, 3), new Path(2, 6), new Path(4, 7)}));
+		
+		SPlayer p1 = new SPlayer(p1Hand, new Position(0, 1, 2), "rohit", Color.BLUE); 
+		p1.takeDragonTile();
+		currPlayers.add(p1);
+		SPlayer p2 = new SPlayer(p2Hand, new Position(1, 2, 0), "chris", Color.DARKGREEN);
+		currPlayers.add(p2);
+		SPlayer p3 = new SPlayer(p3Hand, new Position(2, 1, 6), "robby", Color.GREEN); 
+		currPlayers.add(p3);
+		
+		ServerUtils.eliminatePlayer(p1, currPlayers, elimPlayers, deck);
+		
+		assertTrue(elimPlayers.contains(p1));
+		assertFalse(p1.hasDragonTile());
+		assertFalse(p2.hasDragonTile());
+		assertFalse(p3.hasDragonTile());
+		assertEquals(3, p2.getTiles().size());
+		assertEquals(3, p3.getTiles().size());
+		assertEquals(1, deck.size());	
+	}
+	
+	
 
 	@Test
 	public void testIsGameOver() {

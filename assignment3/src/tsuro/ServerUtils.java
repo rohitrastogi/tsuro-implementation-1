@@ -12,6 +12,8 @@ public class ServerUtils {
 	//prevent instantiation of ServerUtils class
 	private ServerUtils() {}
 	
+	private static boolean drawLoopCalled = false;
+	
 	//~~~~~~TURN FUNCTIONS~~~~~~ // 
 	// Makes sure a play is legal for a given player, board, and tile, as defined in the homework spec 
 	public static boolean isLegalPlay(SPlayer player, Board board, Tile tile) {
@@ -68,8 +70,8 @@ public class ServerUtils {
 		actingPlayer.setPosition(finalActingPosition);
 		
 		//~~~~~STEP 3~~~~~
-		//only draw a tile if you haven't been eliminated 
-		if (!ePlayers.contains(actingPlayer)){
+		//only draw a tile if you haven't been eliminated and if draw loop hasn't been called
+		if (!ePlayers.contains(actingPlayer) && !drawLoopCalled){
 			drawTile(actingPlayer, deck, cPlayers); 
 		}
 		
@@ -87,6 +89,7 @@ public class ServerUtils {
 			advanceTurn(cPlayers); 
 		}
 		
+		drawLoopCalled = false;
 		// Generate a new board state and return
 		return (new BoardState(deck, cPlayers, ePlayers, currBoard, winningPlayers));
 	}
@@ -193,6 +196,7 @@ public class ServerUtils {
 		shuffleTiles(deck);
 		 
 		if (getDragTilePlayerIndex(currPlayers) != -1) {
+			drawLoopCalled = true;
 			drawLoop(deck, currPlayers); 
 		}
 	}
@@ -222,7 +226,6 @@ public class ServerUtils {
 		currPlayers.get(offset).loseDragonTile();
 		System.out.println(currPlayers.get(offset).getPlayer().getName() + " gives up dragon tile!");
 		for(int i = 0; i < (currPlayers.size() * 3); i++) {
-			//DO WRAPAROUND AND GET DRAGON TILE WHEN NO TILES ARE LEFT IN TILEPILE
 			if (deck.size() == 0 && getDragTilePlayerIndex(currPlayers) != -1){
 				break; //no need to keep looping
 			}
