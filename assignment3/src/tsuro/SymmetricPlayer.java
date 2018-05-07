@@ -48,7 +48,7 @@ class LeastSymmetricalComparison implements Comparator<Tile> {
 		if (o1.getSymmetry() < o2.getSymmetry()) {
 			return 1; 
 		}
-		else if (o2.getSymmetry() > o1.getSymmetry()) {
+		else if (o1.getSymmetry() > o2.getSymmetry()) {
 			return -1; 
 		}
 		else {
