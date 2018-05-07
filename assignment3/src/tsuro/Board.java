@@ -19,7 +19,7 @@ public class Board {
 	}
 	
 	public Board(Tile[][] layout) {
-		// TODO tbh not sure if this works (is clone necessary here)
+		//use clone because we do not want to mutate tilelayout
 		tileLayout = layout.clone(); 
 	}
 	

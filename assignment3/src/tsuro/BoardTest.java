@@ -19,6 +19,7 @@ public class BoardTest {
 	Tile toPlay3;
 	Tile toPlay4;
 
+
 	@Test
 	public void testPlaceTile() {
 		setupTest();

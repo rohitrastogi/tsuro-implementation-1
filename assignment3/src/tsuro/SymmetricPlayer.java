@@ -39,8 +39,6 @@ public class SymmetricPlayer extends Player {
 		throw new RuntimeException("Somehow playTurn for player " + this.getName() + " has a hand with no playable tile."); 
 	}
 }
-
-// TODO make sure this is working properly 
 class LeastSymmetricalComparison implements Comparator<Tile> {
 
 	@Override
