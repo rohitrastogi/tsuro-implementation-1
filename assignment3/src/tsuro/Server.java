@@ -62,6 +62,7 @@ public class Server {
 			PlayerInterface currPlayerInterface = currPlayer.getPlayer();
 			System.out.println("Type: " + currPlayerInterface);
 			Tile toPlay = currPlayerInterface.playTurn(board, currPlayer.getTiles(), 0);//why is tiles remaining important?
+			checkTileContract(toPlay);
 			currPlayer.removeTileFromHand(toPlay);
 			state = ServerUtils.playATurn(tilePile, currPlayers, elimPlayers, board, toPlay); //mutates
 		}
@@ -88,6 +89,10 @@ public class Server {
 	}
 	
 	// Getters and Setters
+	public Board getBoard(){
+		return board;
+	}
+	
 	public ArrayList<Tile> getTilePile() {
 		return tilePile; 
 	}
@@ -126,6 +131,60 @@ public class Server {
 		}
 		// TODO throw an exception somewhere 
 		return null; 
+	}
+	
+	public boolean checkTileContract(Tile toPlay){
+		//make sure tile is not currently placed
+		Tile rotated = toPlay.rotate(0);
+		for (int i=0; i<Board.TILES_PER_ROW; i++){
+			for (int j=0; j<Board.TILES_PER_ROW; j++){
+				Tile currTile = board.getLayout()[i][j];
+				if ((currTile != null) && currTile.rotate(0).equals(rotated)){
+					throw new IllegalArgumentException("toPlay tile already placed at (" + i + "," + j +").");
+				}
+			}
+		}
+		
+		//make sure tile is not held in other players' hands
+		//invariant - tiles always have rotation 0
+		List<SPlayer> currPlayers = Server.server.getCurrPlayers();
+		if (currPlayers.size() > 0) {
+			for (int i = 1; i<currPlayers.size(); i++){
+				SPlayer currPlayer = currPlayers.get(i);
+				for (int j = 0; j< currPlayer.getTiles().size(); j++){
+					if (currPlayer.getTiles().get(j).equals(rotated)){
+						throw new IllegalArgumentException(currPlayer.getPlayer().getName() + " has toPlay in their hand somehow.");
+					}
+				}
+			}
+		}
+			
+		//make sure tile is not held in tilepile
+		//invariant - tiles always have rotation 0
+		List<Tile> tilePile = Server.server.getTilePile();
+		for (int i=0; i<tilePile.size(); i++){
+			if (tilePile.get(i).equals(rotated)){
+				throw new IllegalArgumentException("toPlay is in the tilePile somehow.");
+			}
+		}
+		
+		//check that a player only has one copy of each tile
+		//invariant - tiles always have rotation 0
+		int count = 0;
+		SPlayer currPlayer = Server.server.getCurrPlayers().get(0);
+		for (int i = 0; i<currPlayer.getTiles().size(); i++){
+			if (currPlayer.getTiles().get(i).equals(rotated)){
+				count ++;
+			}
+		}
+		if (count > 1){
+			throw new IllegalArgumentException("Somehow, toPlay has a duplicate in CurrPlayer's hand.");
+		}
+		if (count < 1){
+			throw new IllegalArgumentException("Somehow, toPlay is not in currPlayer's hand.");
+		}
+		//contract is valid
+		return true;
 	}
 	
 	// Other helpers

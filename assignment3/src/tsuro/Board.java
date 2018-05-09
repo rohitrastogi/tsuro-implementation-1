@@ -11,7 +11,7 @@ public class Board {
 	// Once a tile is placed in a location, that index will refer to the tile object 
 	private Tile[][] tileLayout; 
 	
-	private ArrayList<Token> tokens = new ArrayList<Token>();
+	private List<Token> tokens = new ArrayList<Token>();
  
 
 	public Board(){
@@ -108,6 +108,7 @@ public class Board {
 	public boolean isEliminationMove(Tile t, SPlayer p) {
 		Position playerPosn = p.getPosition();
 		Position finalPosn = getFinalPosition(t, playerPosn.getAdjacentPosition());
+		//this was to handle old collision code - can be deleted
 		if (finalPosn == null){
 			return true;
 		}
@@ -168,6 +169,10 @@ public class Board {
 			return null; 
 		}
 		return tileLayout[y][x]; 
+	}
+	
+	public List<Token> getTokens(){
+		return tokens;
 	}
 	
 	public void addToken(Token t) {

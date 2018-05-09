@@ -85,7 +85,8 @@ public class Position {
 		}
 		return false; 
 	}
-	
+
+	//checks if other position is adjacent to the tile that 'this' position is on
 	public boolean arePosnsAdjacent(Position other){
 		// TODO: Refactor this to use getAdjacentPosition 
 		//call only in this way (evil): this.arePosnsAdjacent(other)

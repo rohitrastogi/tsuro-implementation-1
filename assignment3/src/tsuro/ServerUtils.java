@@ -30,7 +30,6 @@ public class ServerUtils {
 	 * 4. Check if game is over 
 	 * 5. Bookkeep to prepare next turn
 	**/
-	//TODO pass dragon tile if player with dragon tile is eliminated [causing exception]
 	public static BoardState playATurn(ArrayList<Tile> deck, ArrayList<SPlayer> cPlayers, ArrayList<SPlayer> ePlayers,
 			Board currBoard, Tile toPlay){
 	
@@ -43,7 +42,9 @@ public class ServerUtils {
 		
 		// place the tile 
 		System.out.println(actingPlayer.getPlayer().getName() + " places their tile."); 
-		currBoard.placeTile(toPlay, actingPlayer.getPosition().getX(), actingPlayer.getPosition().getY());
+		int toPlayX = actingPlayer.getPosition().getX();
+		int toPlayY = actingPlayer.getPosition().getY();
+		currBoard.placeTile(toPlay, toPlayX, toPlayY);
 		
 		Position finalActingPosition = currBoard.getFinalPosition(toPlay, actingPlayer.getPosition());
 		System.out.println(actingPlayer.getPlayer().getName() + " moves to " + finalActingPosition);
@@ -164,6 +165,9 @@ public class ServerUtils {
 		SPlayer currPlayer = cPlayers.remove(0);
 		System.out.println("The turn advances to " + cPlayers.get(0).getPlayer().getName() + ".\n");
 		cPlayers.add(currPlayer);
+		List<Token> tokens = Server.server.getBoard().getTokens();
+		Token currToken = tokens.remove(0);
+		tokens.add(currToken);
 	}
 	
 	public static void drawTile(SPlayer player, ArrayList<Tile> deck, ArrayList<SPlayer> currPlayers){
