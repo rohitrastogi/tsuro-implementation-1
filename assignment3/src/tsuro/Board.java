@@ -108,10 +108,6 @@ public class Board {
 	public boolean isEliminationMove(Tile t, SPlayer p) {
 		Position playerPosn = p.getPosition();
 		Position finalPosn = getFinalPosition(t, playerPosn.getAdjacentPosition());
-		//this was to handle old collision code - can be deleted
-		if (finalPosn == null){
-			return true;
-		}
 		return finalPosn.isEdgePosition();
 	}
 	

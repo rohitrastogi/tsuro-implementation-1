@@ -62,7 +62,6 @@ public class SPlayer {
 	}
 	
 	public Position getPosition(){
-//		Token t = player.getToken();
 		return token.getPosition();
 	}
 	
@@ -75,12 +74,10 @@ public class SPlayer {
 	}
 	
 	public void setPosition(Position p){
-//		Token t = player.getToken();
 		token.setPosition(p);
 	}
 	
 	public Color getColor(){
-//		Token t = player.getToken();
 		return token.getColor();
 	}
 	
